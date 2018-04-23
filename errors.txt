@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/script.rpy", line 948: is not terminated with a newline. (Check strings and parenthesis.)
+(Perhaps you left out a " at the end of the first line.)
+        nvlnarr "\"모든 것을 버렸다고요? 거짓말 하지 마세요. 거짓말쟁이 씨.\"{p}\".......\"{p}\"스스로도 가슴 아플 정도로 잘 알고 있지 않나요? \'더 이상의 고통은 싫다\'.\'아픔 없는 곳으로 가고 싶다'\. 매일 밤 그렇게 되뇌었다는 것을."" 
+
+Ren'Py Version: Ren'Py 6.99.14.3.3347
+Sat Apr 21 14:28:47 2018
