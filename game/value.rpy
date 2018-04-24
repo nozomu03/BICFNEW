@@ -38,6 +38,13 @@ image bignightschool:
     linear 0.4 align (.5, .5)
     repeat(6.0)
 
+transform running:
+    zoom 2.0
+    align(.5, .5)
+    linear 0.4 align (.5, .3)
+    linear 0.4 align (.5, .5)
+    repeat(1.6)
+
 image bg_roomblack = im.MatrixColor("bg_roomc.jpg", im.matrix.saturation(0.0))
 image bg_clubblack = im.MatrixColor("bg_club.jpg", im.matrix.invert())
 define bg_clubblack = im.MatrixColor("bg_club.jpg", im.matrix.saturation(0.0))
@@ -80,7 +87,7 @@ transform search:
     linear 1.0 align(1.0, .5)
     linear .5 align(.5, .5)
     linear 1.0 zoom 1.0
-
+#
 init python:
     temp=None
     rine = Character("리네", color="#DF0101", image="rine")

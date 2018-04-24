@@ -41,6 +41,9 @@ label start:
     scene bg_room_night
     show seng_nom at right
     with dissolve
+    show plorogue with dissolve
+    $renpy.pause(3.0)
+    hide plorogue with dissolve
     seng "잘 잤어?"
     main "뭐, 그럭저럭이지."
     play sound "walk_slow.mp3"
@@ -468,7 +471,7 @@ label start:
             $renpy.pause(2.0)
             scene bg_room with wipeleft
             "신발장 옆에 기대어 놓은 그{rt}궤{/rt}것{rt}검{/rt}을 들었다.{p=1.0}시간을 베어내는 검인 이것이 있다면 그녀를 되돌릴 수 있을 것이다."
-            main "<나의 검은 {rt}스파다{/rt}만륜을 베{rt}디{/rt}어내고 {rt}디스트로{/rt}{rt}지오네{/rt} 시간을 거스른다>."
+            main "<나의 검은 {rt}스파다{/rt}모든것을 베{rt}디{/rt}어내고 {rt}디스트로{/rt}{rt}지오네{/rt} 시간을 거스른다>."
             play sound "sword.mp3"
             show cg_crash with Dissolve(2.0)
             $renpy.pause(1.0)
@@ -937,6 +940,7 @@ label star2:
     $renpy.pause(3.0)
     "리네는 다혈질에다 감정을 쉬이 진정하지 못한다.{p=1.0}하지만 그렇기에 뒤끝이 없고 솔직하다.{p=1.0}친구관계에 있어어도 그것은 마찬가지."
     "자신을 계획적으로 따돌리고 상처입힌 성 역시 나처럼 한 번은 용서해 줄 것이다."
+    scene bg_hallway
     show seng_smile 
     show rine_nom at right
     with dissolve
@@ -949,13 +953,10 @@ label star2:
     nvlnarr "\"나는... 행복을 누릴 권리따위...\"{p=1.0}\"없다고 말하고 싶으신거죠? 유감이지만 틀렸습니다.\"{p=1.0}\"나는... 나는 왕을 잡기 위해서...\""
     nvlnarr "\"모든 것을 버렸다고요? 거짓말 하지 마세요. 거짓말쟁이 씨.\"{p=1.0}\".......\""
     nvlnarr "\"스스로도 가슴 아플 정도로 잘 알고 있지 않나요? \'더 이상의 고통은 싫다\'.\'아픔 없는 곳으로 가고 싶다'\. 매일 밤 그렇게 되뇌었다는 것을.{w=1.0} 자, 모든 아픔과 고뇌와 슬픔들을 이곳에 버리고서 저와 함께 떠납시다.{w=1.0} 위로, 당신이 그토록 원하는 \'행복\'이 있는 곳으로.\""
-    nvlnarr "{p=0.1}{p=0.1}{p=0.1}"
-    nvlnarr "{p=0.1}{p=0.1}{p=0.1}"
-    nvlnarr "{p=0.1}{p=0.1}{p=0.1}"
-    nvlnarr "End 1. 이기주의자의 이타적 행복"
+    nvlnarr "\n\nEnd 1. 이기주의자의 이타적 행복"
     nvl clear
     window hide
-    $renpy.pause(5.0)
-    #window show
-    #""
+    show continued with dissolve
+    $renpy.pause(3.0)
+
     return 

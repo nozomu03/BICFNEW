@@ -9,7 +9,7 @@ screen phone:
     add "phone.png"
 
 
-#aaa
+
 
 
 
@@ -391,8 +391,8 @@ screen main_menu():
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
     use navigation
-
-    text "[renpy.version_string] \"[renpy.version_name]\"" style "main_menu_version"
+    vbox:
+        text "{font=SDMiSaeng.ttf}{size=36}{color=#FFFFFF}버드나무 꽃 만발할 그날까지{/color}{/size}{/font}"
 
 
 

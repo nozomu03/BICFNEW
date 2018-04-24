@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = _("BBB")
+define config.name = _("버드나무 꽃 만개할 그날까지")
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -37,7 +37,7 @@ define gui.about = _p("""
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
 ## or semicolons.
 
-define build.name = "BBB"
+define build.name = "Willow"
 
 
 ## Sounds and music ############################################################
@@ -121,7 +121,7 @@ define config.window_hide_transition = None
 
 default preferences.text_cps = 40
 
-
+#
 ## The default auto-forward delay. Larger numbers lead to longer waits, with 0
 ## to 30 being the valid range.
 
@@ -142,7 +142,7 @@ default preferences.afm_time = 40
 ## This generally should not be changed, and if it is, should always be a
 ## literal string, not an expression.
 
-define config.save_directory = "BBB-1523110610"
+define config.save_directory = "Willow-1523110610"
 
 
 ## Icon ########################################################################
