@@ -179,6 +179,11 @@ init python:
 
     build.classify('**~', None)
     build.classify('**.bak', None)
+    build.classify('**.png', None)
+    build.classify('**.jpg', None)
+    build.classify('**.psd', None)    
+    build.classify('**.pdn', None)
+    build.classify('**.cpd', None)
     build.classify('**/.**', None)
     build.classify('**/#**', None)
     build.classify('**/thumbs.db', None)
