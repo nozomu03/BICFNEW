@@ -15,6 +15,7 @@ image movie = Movie(channel="seng", play="testing.webm")
 
 # 여기에서부터 게임이 시작합니다.
 label chsetting:
+    #show mon_rine 
     $preferences.text_cps=40
     $temp=renpy.input("이름 입력")
     "이름은 [temp].{p=1.0}맞는가요?"
@@ -958,5 +959,127 @@ label star2:
     window hide
     show continued with dissolve
     $renpy.pause(3.0)
-
+    scene bg_black with dissolve
+    $renpy.pause(5.0)
+    show chapter1 with dissolve
+    "나는 숨을 골랐다."
+    play sound "bow.mp3"
+    "???" "{font=Andante.ttf}До свидания.{/font}"
+    $renpy.pause(4.0)
+    hide chapter1 with dissolve
+    "뇌를 꿰뚫었다."
+    "자리에서 일어나 달렸다."
+    play sound "walk.mp3"
+    $renpy.pause(2.0)
+    "{color=#088A68}???{/color}" "늬는 바보구나."
+    "목소리.{w=1.0} 어디서 나는 거지?"
+    "{color=#088A68}???{/color}" "체크 식스.{w=1.0} 저격수라면 당연히 지켜야 할 텐데?"
+    "???" "!!!!!!"
+    "위다.{p=1.0}재빨리 활에 화살을 먹여 하늘을 노렸다"
+    "{color=#088A68}???{/color}" "늦었어."
+    play sound "shotgun.mp3"
+    $renpy.pause(1.5)        
+    play sound "shotgun.mp3"
+    $renpy.pause(1.5)        
+    play sound "shotgun.mp3"
+    $renpy.pause(1.5)        
+    "???" "큭..."
+    "{color=#088A68}???{/color}" "자, 체크{rt}외{/rt}메{rt}통{/rt}이{rt}수{/rt}트.{w=1.0} 어떻게 할래?"    
+    "빠져나갈 길은... {w=1.0}없다."
+    "???" "{font=Andante.ttf}Торн-дерево!{/font}"
+    "나의 몸에서 살을 먹이로 삼아 가시가 돋아났다."
+    "{color=#088A68}???{/color}" "어쩜 이렇게 막무가내인지. 늬는 죽더라도 혼자 죽지 않겠다는 것이야?"
+    "대답하지 않았다. {w=1.0}아니, 할 수 없었다."
+    play sound "mamiru.mp3"
+    scene bg_red with Dissolve(6.0)
+    "{color=#088A68}???{/color}" "그런데 말이야. {w=1.0}그거, 소용없어."
+    "분명히 목이 잘렸을 터인 그녀가 멀쩡히 말하고 있다.{p=1.0}바닥에 떨어진 목을 주워 봉합."
+    "{color=#088A68}???{/color}" "살려주고 싶은 마음이 싹 달아나 버렸어.{p=1.0}정말이지 \'안쪽\' 사람들은 이해할 수 없다니까."
+    "머리에 닿는 차가운 금속.{p}펌프 액션 샷건이 내가 다른 이들에게 했던 것처럼 나의 뇌를 박살 낼 것이다."
+    "???" "이봐, 엘{rt}희{/rt}키{rt}망{/rt}. {w=1.0}하나만 물어봐도 될까?"
+    "{color=#088A68}???{/color}" "?"
+    "???" "마지막으로 봤을 때랑 상당히 다른 모습이네. {w=1.0}그 동안 무슨 일이 있었는지 짧게 설명해 주지 않을래?"
+    "{color=#088A68}???{/color}" "싫어."
+    "나는 어깨를 으쓱했다. {w=1.0}아니, 어께\'였던' 것을 으쓱했다."
+    play sound "shotgun.mp3"
+    $renpy.pause(1.5)        
+    play sound "shotgun.mp3"
+    $renpy.pause(1.5)        
+    play sound "shotgun.mp3"
+    $renpy.pause(1.5)        
+    "???" "이런 최후도 나쁘진 않아... {w=1.0}어차피 지옥행 티켓은 확정된 것이나 마찬가진데, 이렇게 사랑했던 사람에게 살해당한다니."
+    "그 말이 그녀에게 닿았는지 닿지 못하였을지 나는 알지 못하였다."
+    "끝."
+    $renpy.pause(4.0)
+    scene bg_black
+    play sound "phonebeep.mp3"
+    $renpy.pause(2.0)
+    ".......{w=1.0}꿈..."
+    scene bg_room with Dissolve(5.0)
+    "한낯.{p=1.0}아무 소리도 들리지 않는 고요한 방."
+    "날 깨운 휴대폰을 바라봤다.{p=1.0}두 통의 부재중 전화. {w=1.0}성에게서 한 통. 리네에게서 한 통."
+    play sound "phonering.mp3"
+    $renpy.pause(8.0)
+    rine "[main]? {w=1.0}[main]이야?{p=1.0}흥분한 리네의 목소리가 나의 귓청을 찢을 듯 했다."
+    seng "리네, 진정해. {w=1.0}그리고 [main]. {w=1.0}너 지금 어디에 있어?"
+    main "아무래도 지금까지 잠들어 있었던 모양이야."
+    seng "주말이라서 알람을 해제해 놓았던 게 화근이군. {w=1.0}어서 운동장으로 와 줘."    
+    main "왜? 리네도 그러고 대체 무슨 일이야?"
+    seng "...설명하자면 복잡해.{p=1.0}밑에서 설명해 줄게."
+    main "알았어."
+    "활동복으로 환복하고 운동장으로 나섰다."
+    scene bg_black with wipeleft
+    play sound "walk.mp3"
+    $renpy.pause(2.0)
+    scene bg_shoes with wiperight
+    rine "주여..."
+    "알아들을 수 없는 말을 빠르게 중얼거리는 리네."
+    show rine_ang at right with dissolve
+    main "리네!"
+    hide rine_ang
+    show rine_nom at right
+    rine "아... 다행이다..."
+    main "무슨 일이야, 이게..."
+    rine "객귀들이..."
+    main "성은?"
+    rine "이미 선생님들이랑 막으러 갔어."
+    play sound "walk.mp3"
+    "나는 달렸다."
+    $renpy.pause(2.0)
+    scene bg_inschool at running with dissolve 
+    "실낱같은 희망을 붙잡고 싶었다.{p=1.0}궤검으로 되돌리면 그만인 사태이기를 간절히 바랬다.{p=1.0}그리고 그 희망은 끊어져 바람에 휩쓸려 날아가버렸다."
+    main "젠장... 이건..."
+    "궤검으로는 되돌릴 수 없다.{p}이미 이 시간은 불가변으로 변했을 것이다."
+    "바닥에 떨어진 SMG를 주웠다."
+    main "싸우고 싶지 않은데..."
+    show mon_rine with vpunch
+    main "정말이지... 이 녀석들이 나타나는 시기는 너무 절묘하다니까."
+    "쐈다."
+    play sound "smg.mp3"
+    $renpy.pause(.5)
+    play sound "smg.mp3"
+    $renpy.pause(.5)
+    play sound "smg.mp3"
+    $renpy.pause(.5)
+    "{color=#FFF000}리네?{/color}" "그래봤자... 남는 것은 아픔 뿐..."
+    main "닥쳐. {w=1.0}진짜도 아닌 모조품 주제에."
+    "{color=#FFF000}리네?{/color}" "너는... 나의... 아픔... {w=1.0}나는... 너의... 아픔..."
+    play sound "smg.mp3"
+    $renpy.pause(2.0)
+    hide mon_rine with dissolve 
+    main "기분 나쁜 녀석들..."
+    "{color=#088A68}???{/color}" "왕이 되길 바라지만 그럴 수 없어 흉내내는 것을 너는 어떻게 생각해?"
+    "목소리가 나는 곳을 쳐다봤다."
+    show bad_nom with dissolve
+    "{color=#088A68}???{/color}" "아아, 될 수 있다면 그 무기 좀 내려줬으면 좋겠네요."
+    main "개소리 집어쳐."
+    "{color=#088A68}???{/color}" "... {w=1.0}그 기세. 마음에 들었습니다."
+    $renpy.pause(2.0)
+    "{color=#088A68}???{/color}" "{color=#0FFF00}전력을 다해 죽이겠어. {w=1.0}다른 누구도 아닌 늬를.{/color}"
+    play sound "shotgun.mp3"
+    $renpy.pause(1.5)
+    "육중한 샷건의 발포음."
+    main "느려!"
+    "총을 버리고 검을 뽑았다."
+    
     return 

@@ -1,22 +1,44 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 120, in script
-    return
-Exception: Could not find return label (u'D:\\\uc0c8 \ud3f4\ub354\\renpy-6.99.14.3-sdk\\bic/game/script.rpy', 1524301967, 2).
+  File "game/script.rpy", line 1080, in script
+    $renpy.pause(1.5)
+  File "game/script.rpy", line 1080, in <module>
+    $renpy.pause(1.5)
+IOError: Couldn't find file 'gun.mp3'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 120, in script
-    return
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\ast.py", line 1421, in execute
-    next_node(renpy.game.context().lookup_return(pop=True))
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\execution.py", line 618, in lookup_return
-    raise Exception("Could not find return label {!r}.".format(self.return_stack[-1]))
-Exception: Could not find return label (u'D:\\\uc0c8 \ud3f4\ub354\\renpy-6.99.14.3-sdk\\bic/game/script.rpy', 1524301967, 2).
+  File "game/script.rpy", line 1080, in script
+    $renpy.pause(1.5)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\ast.py", line 848, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\python.py", line 1812, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/script.rpy", line 1080, in <module>
+    $renpy.pause(1.5)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\exports.py", line 1307, in pause
+    rv = renpy.ui.interact(mouse='pause', type='pause', roll_forward=roll_forward)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\ui.py", line 287, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 2624, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 3284, in interact_core
+    renpy.audio.audio.periodic()
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\audio\audio.py", line 976, in periodic_thread_main
+    periodic_pass()
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\audio\audio.py", line 920, in periodic_pass
+    c.periodic()
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\audio\audio.py", line 409, in periodic
+    topf = load(self.file_prefix + filename + self.file_suffix)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\audio\audio.py", line 69, in load
+    rv = renpy.loader.load(fn)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\loader.py", line 555, in load
+    raise IOError("Couldn't find file '%s'." % name)
+IOError: Couldn't find file 'gun.mp3'.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.14.1.3218
-BBB 1.0
-Mon Apr 23 14:31:57 2018
+버드나무 꽃 만개할 그날까지 1.0
+Wed Apr 25 23:50:46 2018

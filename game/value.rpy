@@ -55,6 +55,8 @@ image seng_mamiru = im.Crop("seng_nom.png", (0, 254, 250, 307))
 define seng_mamiru = im.Crop("seng_nom.png", (0, 254, 250, 307))
 image seng_mamirui = im.MatrixColor(seng_mamiru, im.matrix.colorize("#DF0101", "#1C1C1C"))
 image seng_mamiruii = im.MatrixColor(seng_mamiru, im.matrix.invert())
+image mon_rine = im.MatrixColor("rine_ang.png", im.matrix.colorize("#DF0101", "#000000"))
+image bg_red = im.MatrixColor("bg_black.png", im.matrix.colorize("#f00000", "#DF0101"))
 image side another nom:
     "seng_another"
 
