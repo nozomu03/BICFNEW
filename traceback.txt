@@ -1,44 +1,68 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 1080, in script
-    $renpy.pause(1.5)
-  File "game/script.rpy", line 1080, in <module>
-    $renpy.pause(1.5)
-IOError: Couldn't find file 'gun.mp3'.
+After initialization, but before game start.
+  File "game/screens.rpy", line 39, in prepare_screen
+    screen inseng:
+  File "game/screens.rpy", line 39, in prepare
+    screen inseng:
+  File "game/screens.rpy", line 40, in prepare
+    if s_ms==False:
+  File "game/screens.rpy", line 40, in prepare
+    if s_ms==False:
+  File "game/screens.rpy", line 41, in prepare
+    frame:
+  File "game/screens.rpy", line 41, in prepare
+    frame:
+  File "game/screens.rpy", line 43, in prepare
+    vbox:
+  File "game/screens.rpy", line 43, in prepare
+    vbox:
+  File "game/screens.rpy", line 45, in prepare
+    textbutton "       Y" action Hide('inseng' transition=Dissolve(.2))
+  File "game/screens.rpy", line 45, in prepare
+    textbutton "       Y" action Hide('inseng' transition=Dissolve(.2))
+SyntaxError: invalid syntax (game/screens.rpy, line 45)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1080, in script
-    $renpy.pause(1.5)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\ast.py", line 848, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\python.py", line 1812, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "game/script.rpy", line 1080, in <module>
-    $renpy.pause(1.5)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\exports.py", line 1307, in pause
-    rv = renpy.ui.interact(mouse='pause', type='pause', roll_forward=roll_forward)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\ui.py", line 287, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 2624, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 3284, in interact_core
-    renpy.audio.audio.periodic()
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\audio\audio.py", line 976, in periodic_thread_main
-    periodic_pass()
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\audio\audio.py", line 920, in periodic_pass
-    c.periodic()
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\audio\audio.py", line 409, in periodic
-    topf = load(self.file_prefix + filename + self.file_suffix)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\audio\audio.py", line 69, in load
-    rv = renpy.loader.load(fn)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\loader.py", line 555, in load
-    raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'gun.mp3'.
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\bootstrap.py", line 306, in bootstrap
+    renpy.main.main()
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\main.py", line 523, in main
+    run(restart)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\main.py", line 90, in run
+    renpy.display.screen.prepare_screens()
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\screen.py", line 873, in prepare_screens
+    s.ast.prepare_screen()
+  File "game/screens.rpy", line 39, in prepare_screen
+    screen inseng:
+  File "game/screens.rpy", line 39, in prepare
+    screen inseng:
+  File "game/screens.rpy", line 40, in prepare
+    if s_ms==False:
+  File "game/screens.rpy", line 40, in prepare
+    if s_ms==False:
+  File "game/screens.rpy", line 41, in prepare
+    frame:
+  File "game/screens.rpy", line 41, in prepare
+    frame:
+  File "game/screens.rpy", line 43, in prepare
+    vbox:
+  File "game/screens.rpy", line 43, in prepare
+    vbox:
+  File "game/screens.rpy", line 45, in prepare
+    textbutton "       Y" action Hide('inseng' transition=Dissolve(.2))
+  File "game/screens.rpy", line 45, in prepare
+    textbutton "       Y" action Hide('inseng' transition=Dissolve(.2))
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\pyanalysis.py", line 699, in ast_eval
+    return self.ast_eval_literal(expr)[0]
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\pyanalysis.py", line 683, in ast_eval_literal
+    expr = py_compile(expr, 'eval', ast_node=True)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\python.py", line 638, in py_compile
+    raise e
+SyntaxError: invalid syntax (game/screens.rpy, line 45)
 
 Windows-8-6.2.9200
 Ren'Py 6.99.14.1.3218
 버드나무 꽃 만개할 그날까지 1.0
-Wed Apr 25 23:50:46 2018
+Sat Apr 28 11:20:15 2018

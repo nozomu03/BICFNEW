@@ -31,6 +31,7 @@ label start:
     nvlnarr "열심히 살아가야 하는 이유는 무엇인가.{p=1.0}하루하루 살아가는 삶 속에서 견디기 힘든 고난이 있다 하여도{p=1.0}우리는 나아가야만 하는가?"
     nvl clear
     window hide
+    show screen phonebutton
     scene bg_black
     play sound "alarm.mp3"
     $renpy.pause(2.0)
