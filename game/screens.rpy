@@ -4,6 +4,7 @@
 
 init offset = -1
 
+#휴대폰###########################
 screen phonebutton:
     textbutton "휴대전화" xalign .96 yalign .04 action[Hide('phonebutton'), Show('phone', transition=wipeup)] 
    # $renpy.transition("vpunch")
@@ -30,10 +31,12 @@ screen phone:
 screen inrine:
     if r_ms==False:
         frame:
-            align(.9, 0.5)
+            align(.727, 0.5)
             vbox:
                 text "{color=#000000}연락 불가능{/color}"
                 textbutton "       Y" action Hide('inrine')
+
+
 
 
 
@@ -44,7 +47,7 @@ screen inseng:
             vbox:
                 text "{color=#000000}연락 불가능{/color}"
                 textbutton "       Y" action Hide('inseng', transition=Dissolve(.2))
-
+##################################
 
 image daruma_kickhover = im.MatrixColor("daruma_kick.png", im.matrix.invert()) 
 

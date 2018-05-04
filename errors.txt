@@ -2,9 +2,10 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 31: u'actionHide' is not a keyword argument or valid child for the textbutton statement.
-    textbutton "      Y" actionHide('inrine')
-                                   ^
+File "game/value.rpy", line 121: invalid syntax
+    guard = Character(u"이스프킨" what_color="#FC9B9B", who_color="#806060")
+                                                ^
+    
 
 Ren'Py Version: Ren'Py 6.99.14.1.3218
-Sat Apr 28 11:01:32 2018
+Thu May 03 16:24:12 2018

@@ -988,11 +988,14 @@ label star2:
     "{color=#088A68}???{/color}" "자, 체크{rt}외{/rt}메{rt}통{/rt}이{rt}수{/rt}트.{w=1.0} 어떻게 할래?"    
     "빠져나갈 길은... {w=1.0}없다."
     "???" "{font=Andante.ttf}Торн-дерево!{/font}"
+    play sound "blooding.mp3"
     "나의 몸에서 살을 먹이로 삼아 가시가 돋아났다."
+    $renpy.pause(2.0)
     "{color=#088A68}???{/color}" "어쩜 이렇게 막무가내인지. 늬는 죽더라도 혼자 죽지 않겠다는 것이야?"
     "대답하지 않았다. {w=1.0}아니, 할 수 없었다."
     play sound "mamiru.mp3"
-    scene bg_red with Dissolve(6.0)
+    "가시 중 하나가 그녀의 목을 끊었다."
+    $renpy.pause(6.0)
     "{color=#088A68}???{/color}" "그런데 말이야. {w=1.0}그거, 소용없어."
     "분명히 목이 잘렸을 터인 그녀가 멀쩡히 말하고 있다.{p=1.0}바닥에 떨어진 목을 주워 봉합."
     "{color=#088A68}???{/color}" "살려주고 싶은 마음이 싹 달아나 버렸어.{p=1.0}정말이지 \'안쪽\' 사람들은 이해할 수 없다니까."
@@ -1007,7 +1010,8 @@ label star2:
     play sound "shotgun.mp3"
     $renpy.pause(1.5)        
     play sound "shotgun.mp3"
-    $renpy.pause(1.5)        
+    $renpy.pause(1.5)
+    scene bg_red with Dissolve(4.0)
     "???" "이런 최후도 나쁘진 않아... {w=1.0}어차피 지옥행 티켓은 확정된 것이나 마찬가진데, 이렇게 사랑했던 사람에게 살해당한다니."
     "그 말이 그녀에게 닿았는지 닿지 못하였을지 나는 알지 못하였다."
     "끝."
@@ -1043,7 +1047,7 @@ label star2:
     main "무슨 일이야, 이게..."
     rine "객귀들이..."
     main "성은?"
-    rine "이미 선생님들이랑 막으러 갔어."
+    rine "이미 다른 애들이랑 막으러 갔어."
     play sound "walk.mp3"
     "나는 달렸다."
     $renpy.pause(2.0)
@@ -1069,18 +1073,232 @@ label star2:
     $renpy.pause(2.0)
     hide mon_rine with dissolve 
     main "기분 나쁜 녀석들..."
-    "{color=#088A68}???{/color}" "왕이 되길 바라지만 그럴 수 없어 흉내내는 것을 너는 어떻게 생각해?"
+    "{color=#088A68}???{/color}" "왕이 되길 바라지만 그럴 수 없어 흉내내는 것을 당신은 어떻게 생각하나요?"
     "목소리가 나는 곳을 쳐다봤다."
     show bad_nom with dissolve
     "{color=#088A68}???{/color}" "아아, 될 수 있다면 그 무기 좀 내려줬으면 좋겠네요."
     main "개소리 집어쳐."
-    "{color=#088A68}???{/color}" "... {w=1.0}그 기세. 마음에 들었습니다."
+    "{color=#088A68}???{/color}" "... 그 기세.{w=1.0} 마음에 들었습니다."
     $renpy.pause(2.0)
-    "{color=#088A68}???{/color}" "{color=#0FFF00}전력을 다해 죽이겠어. {w=1.0}다른 누구도 아닌 늬를.{/color}"
+    "{color=#088A68}???{/color}" "{color=#DF0101}전력을 다해 죽이겠어. {w=1.0}다른 누구도 아닌 늬를.{/color}"
     play sound "shotgun.mp3"
     $renpy.pause(1.5)
-    "육중한 샷건의 발포음."
-    main "느려!"
-    "총을 버리고 검을 뽑았다."
-    
+    "육중한 샷건의 발포음. {w=1.0}이번엔 아슬아슬하게 걸쳐서 피했지만 근거리 교전이라면 내가 훨씬 불리할 것이다.{p=1.0}총을 갈기며 후퇴"
+    play sound "smg.mp3"
+    hide bg_inschool
+    hide bad_nom 
+    scene bg_inschool at backrunning
+    show bad_noms
+    $renpy.pause(1.5)
+    "{color=#088A68}???{/color}" "훌륭한 판단입니다만... {w=1.0}다른 사람이면 몰라도 저에게는 소용 없답니다."
+    "총구가 나의 심장을 겨눈다."
+    play sound "shotgun.mp3"
+    $renpy.pause(.1)
+    show bg_inschool at dodge
+    show bad_noms at leftbad 
+    with moving
+    $renpy.pause(1.5)
+    "굴러 피했다."
+    "{color=#088A68}???{/color}" "정말... {w=1.0}가만히 좀 있으세요."
+    #show screen phonebutton
+    main "내가 미치지 않고서야 그런 일 없을거야."
+    "{color=#CEF6F5}???{/color}" "이봐! 그만 빠진다! 더 이상 머물면 개죽음 당할 뿐이야!"
+    "{color=#088A68}???{/color}" "흠... 아쉽군요. {w=1.0}{color=#DF0101}당신을 제 손으로 직접 찢어 죽이고 싶었는데.{/color}"    
+    hide bad_noms 
+    play sound "walk.mp3"
+    $renpy.pause(2.0)
+    play sound "smg.mp3"
+    main "어딜!"
+    $renpy.pause(1.5)
+    "화려하게 회피하며 도주한다. {w=1.0}쫒으려고 했으나..."
+    play sound "unsummon.mp3"
+    $renpy.pause(2.0)
+    "역소환 되어 사라졌다."
+    $renpy.pause(3.0)
+    main "이런..."
+    "그녀가 서 있던 곳에 무엇인가 떨어져 있다."
+    show signal with dissolve
+    "철로 만들어진 상징이다."
+    play sound "walk_slow.mp3"
+    $renpy.pause(2.0)
+    "힘 없는 발소리다."
+    show seng_nom at right with dissolve
+    seng "[main]..."
+    "눈에 띄는 상처는 없는 것 같다."
+    main "성, 괜찮아?"
+    seng "보시다시피. 검에 살짝 긁히긴 했는데 괜찮아.{p=1.0}그것보다... {w=1.0}응?"
+    "내가 들고 있는 것과 똑같은 상징을 들고 있는 성."
+    main "그 쪽에도 있었던 거야?"
+    seng "응..."
+    main "이건... 뭘까..."
+    seng "글쎄... 안톤도 이건 처음 본다는 눈치였고..."
+    play sound "walk.mp3"
+    rine "얘들아! {w=1.0}괜찮아?"
+    show rine_sad with dissolve
+    seng "응."
+    "리네는 시선을 움직이다 내 손바닥에 고정했다."
+    $renpy.pause(1.0)
+    main "왜 그래? {w=1.0}이걸 보고 무엇인가 떠오르는 게 있어?"
+    rine "응... 뭐랄까... 어디선가 본 적 있는 것 같은데..."
+    hide rine_sad
+    show rine_think
+    "리네는 곰곰히 생각하기 시작했다."
+    $renpy.pause(2.0)
+    show rine_sad 
+    rine "...{w=1.0} 미안... 모르겠어... {p=1.0}{size=10}이상하네... 분명 어디선가 본 적이 있었는데... {w=1.0}어디였지... 어디였더라..."
+    main "그래? {w=1.0}뭐, 괜찮지 않을까?{p=1.0}안톤에게 부탁하면 분명 알아봐 줄거야."
+    seng "그렇네.{p=1.0}안톤이 이게 무엇인지 모른다는 것은 조금 의외였지만 안톤이라면 금방 이게 무엇인지 알아낼 수 있겠지."
+    play sound "walk_slow.mp3"
+    "우리는 발을 돌려 건물 안으로 들어왔다."
+    $renpy.pause(2.0)
+    scene bg_shoes
+    show seng_nom at center
+    show rine_nom at right
+    with dissolve
+    teacher "모두 무사한가요?"
+    show read_nom at left with dissolve
+    seng "예."
+    teacher "저, 성 양, [main] 양."
+    "[main], seng" "네?"
+    teacher "교장선생님께서 저번에 여러분들께서 제안했던 기획서를 수락하셨습니다.{p=1.0}곧장 공장지대로 보낼 생각이신 것 같습니다."
+    main "그런...데요?"
+    teacher "만약에 그렇게 된다면 첫번저 완성품이 제작되기 전까지 이곳을 떠나 공장 내에서 머물러야 합니다."
+    seng "예."
+    teacher "호위가 둘 붙을 것입니다. {w=1.0}한 명은 저고, 다른 한 명은... "
+    show picture with dissolve
+    "한 여인의 사진."
+    teacher "이 사람입니다."
+    seng "누구죠?"
+    teacher "\'이스프킨\'이란 이름의 방랑자입니다. {p=1.0}공장지대 남편의 불꽃숲에 사는 관리자라고 하더군요."
+    main "불꽃숲...{w=1.0} 여러 이유로 이 학교에 들어오지 않은 채 황야 속에서 살아가는 사람들이 있다는 것은 알고 있습니다.{p=1.0}하지만 불꽃숲 안은 고열 떄문에 사람이 살 수 없을 텐데요."
+    teacher "그의 눈은 불꽃을 보고, 그곳에서 나오는 열을 조종할 수 있는 힘이 있습니다."
+    main "불꽃을 본다...{w=1.0}라..."
+    main "과연. {w=1.0}\'불을{rt}이{/rt} {rt}스{/rt}보{rt}프{/rt}{rt} 킨{/rt}는 자\'라 불릴 만 하군요.{p=1.0}하지만 그게 어떻게 가능하죠?"
+    teacher "설명하자면 복잡합니다만... 음...{w=1.0}그래. 손에 닿은 물질의 질량을 조절하는 관리자가 있었죠, 저번에?"
+    main '네... 분명 있었었죠.{p=1.0}이름은 기억이 안납니다만...'
+    teacher "그것과 비슷합니다.{p=1.0}당신도 알다시피 열과 그 열이 가지고 있는 에너지 역시 흐름에 묶여있는 존재지요."
+    main "즉 그 흐름을 수정해서 출력을 낮추거나 올리거나 한다는 건가요?"
+    teacher "바로 그렇습니다.{p=1.0}그럼, 자세한 것이 결정되면 다시 오겠습니다."
+    hide read_nom with dissolve
+    play sound "walk_slow.mp3"
+    $renpy.pause(2.0)
+    seng "우리도 돌아가자.{p=1.0}여기에 계속 있다간 객귀들이 남긴 잔기에 눌릴 것 같아."
+    main "나도 그런 것 같아.{p=1.0}어서 여길 떠나자."
+    play sound "walk_slow.mp3"
+    $renpy.pause(2.0)
+    scene bg_black with wipeleft
+    nvlnarr "\"손을 뻗는 것으로도, 겁의 시간을 달려나가도 닿을 수 없는 공간.{p=1.0}그 곳에 나는 나의 모든 것을 묻고 이리로 왔다.\""
+    window hide
+    "옛날.{p=1.0}나는 한 사람의 도움을 받았다.{p=1.0}이름없는 떠돌이인 그.{p=1.0}그의 손에 몇번이나 구해지며 나는 간신히 지금까지 성장했다."
+    "하지만 이제 그는 없다.{p=1.0}그리고 그와의 맹약을 깨고서 다시 이 경계에 섰다."
+    "교외.{p=1.0}나는 그와 처음으로 헤어지기 전 약속했다. {p=1.0}\'다시는 바깥으로 나가지 않겠다.\' {w=1.0}그 약속을 이렇게나 빨리 깨게 될 줄이야."
+    scene bg_schooldoor 
+    show rine_nom at center 
+    show seng_nom at right 
+    with dissolve
+    seng "다녀올게."
+    rine "응! 몸 다치지 말고 잘 갔다와!"
+    scene bg_black with wiperight
+    "교문 앞에는 버스와 닮았지만 곳곳이 철로 된 봉으로 강화된 차에 몸을 실었다."
+    play sound "car.mp3"
+    "출발."
+    teacher "한참 걸릴티네 미리 좀 자 두세요."
+    main "알겠습니다."
+    "나는 눈을 붙였다."
+    nvlnarr "\"화살을 쏘아라,{w=1.0} 검을 휘둘러라,{w=1.0} 방패를 높이 들어라!{w=1.0} 약속된 안식이 우리를 기다린다! {w=1.0}끝을 향한 행군을 시작하자!{w=1.0} ypa!{w=1.0} ypa!{w=1.0} ypa!\"{p=1.0}       -\'첫 군주\' 레폰체리아 벨로도디아-"
+    nvl clear 
+    window hide
+    "???" "저 아이가 [main]..."
+    "처음 듣는 목소리. {p=1.0}나는 눈을 떴다."
+    scene bg_bus 
+    show guard_nom
+    with irisout
+    guard "안녕, [main]."
+    main "당신이... 이스프킨이군요."
+    guard "응."
+    "뒤에서 성과 안톤이 소곤거리는 소리가 들린다."
+    guard "그래, 내 이름은 \'이스프킨\'. {w=1.0}하지만 될 수 있다면 \'안타{rt}썩{/rt}슈{rt}은{/rt}프{rt}불{/rt}라{rt}꽃{/rt}인\'이라고 불러줬으면 좋겠어."
+    "냄새가 난다. {w=1.0}그녀의 온 몸에서 나는 냄새 때문에 질식할 것 같았다.{p=1.0}\'검정\'과 \'빨강\', 그리고 \'보라\'로 이루어진 피와 죽음의 냄새. 그것이 그녀가 살아온 인생이 무엇이었는지 단적으로 알려주었다."
+    main "(뭐... 뭐야... 이건... 이 사람은 지금까지... 얼마나 많은 사람을 {color=#DF0101}살해{/color}한거지?)"
+    "우리와 나이차가 그렇게 많이 떨어져 있는 것 같지는 않았다.{p=1.0}그런데... 어째서 이런 압도적인 차이가...?"
+    main "네...{w=1.0}?"
+    guard "랄까, 그냥 해 본 소리야."
+    "부자연스로운 웃음을 짓는다.{p=1.0}나는 깨달았다. {w=1.0}그녀는 \'동류\'다.{p=1.0}나와, 성과, 리네와 동일한, 자신만의 아픔을 가지고 있는 {w=1.0}자신을 완성하지 못하는 미완성품."
+    "그녀의 눈동자 속에 머무는 것은... {w=1.0}\'광기\'이다.{p=1.0}모든 것을 파괴하고 싶어하는, 원초적인 욕구들의 집합체."
+    guard "그렇게 빤히 보니까 {w=1.0}조금 부끄러운걸?"
+    main "아, 죄송합니다."
+    "시선을 거두었다."
+    teacher "이제 거의 도착했습니다. 내릴 준비를 해야 할 것 같군요."    
+    main "그나저나 여기는 길의 정비가 아주 잘 되어 있군요.{p=1.0}표지판도 제대로 서 있고 말이죠."
+    guard "그건 당연한 거야. {w=1.0}공장지대는 아직 찾는 사람들이 많이 있으니까.{p=1.0}\'객귀\'들을 막기 위한 병기들의 생산 역시 아직까지는 정상적으로 이어지고 있고 말이야."
+    main "그렇군요."
+    scene bg_black with wiperight
+    $renpy.pause(3.0)
+    "버스에서 내렸다."
+    play sound "car.mp3"
+    $renpy.pause(2.0)
+    "버스가 다시 출발하고 우리는 교사 안으로 들어갔다."
+    guard "교사 밖으로는 나가지 않는 게 좋아. {w=1.0}학교 구역을 제외한 다른 구역들 말이야."
+    "이스프킨이 말했다."
+    main "왜 그러죠?"
+    guard "...별로... {w=1.0}좋은 꼴은 못 볼거야."
+    "알겠습니다."
+    play sound "walk_slow.mp3"
+    $renpy.pause(2.0)
+    "안톤은 이 학교의 교장과 다른 선생들과의 회담이 있다고 말하며 그리로 가고 이곳에는 우리 셋만 남았다."
+    seng "여기서 가만히 이러고 있는 것도 그러니까 배정된 숙소로 가 있어요."
+    guard "그래. {w=1.0}그렇게 나쁜 생각은 아니네."
+    scene bg_room2
+    show seng_nom at center
+    show guard_nom at right
+    with wipeleft
+    "귀빈실.{p=1.0}나는 쓴웃음을 지을 수 밖에 없었다."
+    guard "왜 그렇게 기분 나쁘게 웃어?"
+    main "아뇨, 귀빈실에는 안 좋은 추억이 좀 있어서 말이죠."
+    guard "너도 그래? {w=1.0}우연이네."
+    main "당신도요?"
+    guard "응. {w=1.0}뭐, 내 경우를 따지자면 귀빈실 자체 보다는 이곳, 공장지대에 악연이 있는 것에 가깝겠지만."
+    seng "무슨 일 있었나요?"
+    guard "...응. {w=1.0}이곳에서 좀... 껄끄러운 일이 있었어."
+    $renpy.fix_rollback()        
+    menu:
+        "캐묻는 것은 실례이다. 더 이상은 알려 하지 말자.":
+            $renpy.fix_rollback()        
+            main "그랬군요..."
+            guard "...큭. {w=1.0}지금 와서 생각하자면 우스운 일이었지...{p=1.0}{size=5}하지만 그 일이 없었더라면 인류가 이 개고생을 할 이유가 없었겠지{/size}"
+        "설명해 주실 수 있으신가요?":
+            main "무슨 일이 있었는지 이야기 해 주실 수 있으신가요?"
+            guard "........"
+            main "불쾌하셨다면 죄송해요."
+            guard "아니야, 딱히 불쾌해 할 일도 아니니까.{p=1.0}대략적으로만 설명해 줄게.{w=1.0} 여긴... 내가 첫 살인을 했던 장소야."
+            seng "네?"
+            guard "바로 이 귀빈실이야. {w=1.0}벌써 3년이나 흐른 이야기지만."
+            main "에..."
+            guard "옛날 이야기는 여기까지."
+            $renpy.fix_rollback()        
+            $destroy+=3
+            "그녀는 분명히 말했다.{p=1.0}\'살인\'이라고..."
+            "무슨 일이 있었던 거지? {w=1.0}아니, 내가 알려고 해도 되는 일인가?"
+    "분위기가 묘해져 버렸다."
+    guard "자, 옛날 이야기는 여기까지 하자."
+    $renpy.pause(8.0)
+    play sound "knock.mp3"
+    "???" "[main] 님, 성 님. {w=1.0}당신들이 보호자 분께서 당신들을 호출하셨습니다.{p=1.0}같이 가 주실 수 있으실까요?"
+    seng "알겠습니다."
+    main "다녀오겠습니다, 이스프킨."
+    guard "그래..."
+    play sound "walk_slow.mp3"
+    $renpy.pause(2.0)
+    scene bg_inschool with dissolve
+    play sound "walk_slow.mp3"
+    $renpy.pause(2.0)
+    scene bg_middle with dissolve
+    play sound "walk_slow.mp3"
+    $renpy.pause(2.0)
+    scene bg_hallway with dissolve
+    play sound "jab.mp3"
+    $renpy.pause(2.0)
+    teacher "저는 인정할 수 없습니다! {w=1.0}그런 것 따위, 용납 불가능합니다!"
+    "{color=#000FFF}???{/color}" "닥쳐!"
+    teacher "이런 식이라면 저는 더 이상 할 말이 없습니다."
     return 
