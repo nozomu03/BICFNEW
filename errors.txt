@@ -2,10 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/value.rpy", line 121: invalid syntax
-    guard = Character(u"이스프킨" what_color="#FC9B9B", who_color="#806060")
-                                                ^
-    
+File "game/script.rpy", line 870: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation.
+    $preferences.text_cps=40
+    ^
 
 Ren'Py Version: Ren'Py 6.99.14.1.3218
-Thu May 03 16:24:12 2018
+Fri May 11 16:27:10 2018

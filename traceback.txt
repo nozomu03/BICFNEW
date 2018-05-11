@@ -1,58 +1,78 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "renpy/common/00keymap.rpy", line 411, in script
-    python hide:
-  File "renpy/common/00keymap.rpy", line 421, in <module>
-    renpy.take_screenshot((config.thumbnail_width, config.thumbnail_height))
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+While loading <'Image' u'mark_5.png'>:
+  File "game/script.rpy", line 1312, in script
+    "{color=#000FFF}???{/color}" "닥쳐!"
+  File "renpy/common/00library.rpy", line 256, in say
+    who(what, interact=interact, *args, **kwargs)
+IOError: Couldn't find file 'mark_5.png'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\bootstrap.py", line 306, in bootstrap
-    renpy.main.main()
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\main.py", line 421, in main
-    if renpy.parser.report_parse_errors():
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\parser.py", line 2664, in report_parse_errors
-    renpy.display.error.report_parse_errors(full_text, error_fn)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\error.py", line 185, in report_parse_errors
-    error_fn=error_fn,
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\game.py", line 285, in invoke_in_new_context
-    return callable(*args, **kwargs)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\error.py", line 43, in call_exception_screen
-    return renpy.ui.interact(mouse="screen", type="screen", suppress_overlay=True, suppress_underlay=True)
+  File "game/script.rpy", line 1312, in script
+    "{color=#000FFF}???{/color}" "닥쳐!"
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\ast.py", line 643, in execute
+    renpy.exports.say(who, what, interact=self.interact, *args, **kwargs)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\exports.py", line 1174, in say
+    renpy.store.say(who, what, *args, **kwargs)
+  File "renpy/common/00library.rpy", line 256, in say
+    who(what, interact=interact, *args, **kwargs)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\character.py", line 1013, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, **display_args)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\character.py", line 817, in do_display
+    **display_args)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\character.py", line 566, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
   File "F:\renpy\renpy-6.99.13-sdk\renpy\ui.py", line 287, in interact
     rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
   File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 2624, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 3072, in interact_core
-    renpy.exports.reload_script()
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\exports.py", line 1574, in reload_script
-    renpy.game.call_in_new_context("_save_reload_game")
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\game.py", line 337, in call_in_new_context
-    return renpy.execution.run_context(False)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\execution.py", line 835, in run_context
-    context.run()
-  File "renpy/common/00keymap.rpy", line 411, in script
-    python hide:
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\ast.py", line 848, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\python.py", line 1812, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "renpy/common/00keymap.rpy", line 421, in <module>
-    renpy.take_screenshot((config.thumbnail_width, config.thumbnail_height))
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\exports.py", line 1526, in take_screenshot
-    renpy.game.interface.take_screenshot(scale, background=background)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 2085, in take_screenshot
-    surf = renpy.display.scale.smoothscale(surf, scale)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\scale.py", line 93, in real_smoothscale
-    dest = pgrender.surface_unscaled(size, src)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\pgrender.py", line 116, in surface
-    surf = Surface((width + 4, height + 4), 0, sample)
-TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 3098, in interact_core
+    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 2038, in draw_screen
+    renpy.config.screen_height,
+  File "render.pyx", line 485, in renpy.display.render.render_screen
+  File "render.pyx", line 233, in renpy.display.render.render
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\layout.py", line 711, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 145, in renpy.display.render.render
+  File "render.pyx", line 233, in renpy.display.render.render
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\transition.py", line 361, in render
+    top = render(self.new_widget, width, height, st, at)
+  File "render.pyx", line 145, in renpy.display.render.render
+  File "render.pyx", line 233, in renpy.display.render.render
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\layout.py", line 711, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 145, in renpy.display.render.render
+  File "render.pyx", line 233, in renpy.display.render.render
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\layout.py", line 711, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 145, in renpy.display.render.render
+  File "render.pyx", line 233, in renpy.display.render.render
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\screen.py", line 639, in render
+    child = renpy.display.render.render(self.child, w, h, st, at)
+  File "render.pyx", line 145, in renpy.display.render.render
+  File "render.pyx", line 233, in renpy.display.render.render
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\layout.py", line 711, in render
+    surf = render(child, width, height, cst, cat)
+  File "render.pyx", line 145, in renpy.display.render.render
+  File "render.pyx", line 233, in renpy.display.render.render
+  File "accelerator.pyx", line 108, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 233, in renpy.display.render.render
+  File "accelerator.pyx", line 108, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 233, in renpy.display.render.render
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 580, in render
+    return cache.get(self, render=True)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 266, in get
+    surf = image.load()
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 625, in load
+    surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\loader.py", line 555, in load
+    raise IOError("Couldn't find file '%s'." % name)
+IOError: Couldn't find file 'mark_5.png'.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.14.1.3218
- 
-Thu May 03 16:21:57 2018
+버드나무 꽃 만개할 그날까지 1.0
+Fri May 11 16:28:39 2018

@@ -3,10 +3,151 @@
 ################################################################################
 
 init offset = -1
+#소지 아이템######################
+init python:
+    firstitem="시간의 궤검-포스키아"
+    seconditem="눈의 각인"
+    thirditem="사슬-구속"
+    forthitem="윤무/시작과 끝의 예속"
 
+#의문점(가칭)#####################
+init python:
+    firstcurious=None
+    secondcurious=None
+    thirdcurious=None
+
+#screen menutext:
+
+transform downing:
+    align(0.01, -0.3)
+    linear 0.5 align (0.01, 0.002)
+
+transform alpha1(sec=.5):
+    alpha(0.0)
+    pause(sec)
+    linear(.5)  alpha(1.0)
+
+transform alphamove(o_xpos=0, o_ypos=100):
+    xpos o_xpos
+    linear(2.0) pos(1400, o_ypos)
+    #pause(.2)
+    pos(0, 0) 
+    linear(1.0) pos(o_xpos, o_ypos)
+    #pause(.2)
+    linear (1.0) pos(1400, 0)
+    pos(0, 0)
+    linear (1.0) pos(o_xpos, renpy.random.randint(254, 600))
+    linear (1.0) pos(o_ypos, renpy.random.randint(254, 600))
+    linear (1.0) pos(o_xpos, renpy.random.randint(254, 600))
+    linear (1.0) pos(1400, renpy.random.randint(254, 600))
+    pos(0, 0)
+    linear (1.0) pos(o_xpos, renpy.random.randint(231, 525))
+    repeat(90000)
+    
+
+
+screen curious_button:
+    textbutton "{color=#000000}메뉴{/color}" xalign .96 yalign .04 action[Hide('curious_button'), Show('curious', transition=dissolve)]
+
+screen curious:
+    #group_big
+    $f_ypos=renpy.random.randint(100, 600)
+    $f_xpos=renpy.random.randint(0, 1000)
+    $s_ypos=renpy.random.randint(100, 600)
+    $s_xpos=renpy.random.randint(0, 1000)
+    $t_ypos=renpy.random.randint(100, 600)
+    $t_xpos=renpy.random.randint(0, 1000)
+    $f1_ypos=renpy.random.randint(100, 600)
+    $f1_xpos=renpy.random.randint(0, 1000)
+    $f2_ypos=renpy.random.randint(100, 600)
+    $f2_xpos=renpy.random.randint(0, 1000)
+
+    #group_small 
+    $fs_ypos=renpy.random.randint(0, 630)
+    $fs_xpos=renpy.random.randint(100, 500)
+    $ss_ypos=renpy.random.randint(300, 630)
+    $ss_xpos=renpy.random.randint(50, 500)
+    $ts_ypos=renpy.random.randint(30, 630)
+    $ts_xpos=renpy.random.randint(400, 500)
+    $f1s_ypos=renpy.random.randint(20, 630)
+    $f1s_xpos=renpy.random.randint(379, 500)
+    $f2s_ypos=renpy.random.randint(427, 630)
+    $f2s_xpos=renpy.random.randint(329, 500)
+##############################################
+
+
+
+    add "bg_redblack.png"
+#    text "[f_ypos]" xpos 100 ypos 100
+    add "mark_1.png" ypos f_ypos at alphamove(o_xpos=f_xpos, o_ypos=f_ypos)
+    add "mark_2.png" ypos s_ypos at alphamove(o_xpos=s_xpos, o_ypos=s_ypos)
+    add "mark_3.png" ypos t_ypos at alphamove(o_xpos=t_xpos, o_ypos=t_ypos)
+    add "mark_4.png" ypos f1_ypos at alphamove(o_xpos=f1_xpos, o_ypos=f1_ypos)
+    add "mark_5.png" ypos f2_ypos at alphamove(o_xpos=f2_xpos, o_ypos=f2_ypos)
+    #####################################################################################
+
+    add "mark_6.png" ypos fs_ypos at alphamove(o_xpos=fs_xpos, o_ypos=fs_ypos)
+    add "mark_7.png" ypos ss_ypos at alphamove(o_xpos=ss_xpos, o_ypos=ss_ypos)
+    add "mark_8.png" ypos ts_ypos at alphamove(o_xpos=ts_xpos, o_ypos=ts_ypos)
+    add "mark_9.png" ypos f1s_ypos at alphamove(o_xpos=f1s_xpos, o_ypos=f1s_ypos)
+    add "mark_10.png" ypos f2s_ypos at alphamove(o_xpos=f2s_xpos, o_ypos=f2s_ypos)
+
+    textbutton "{font=SDMiSaeng.ttf}{color=#FF0101}{size=100}Menu{/size}{/color}{/font}" xalign 0.01 yalign -0.3 at downing
+    modal True
+    textbutton "닫기" xalign .96 yalign .04 action[Hide('curious'), Show('curious_button', transition=dissolve)]
+
+    vbox:
+        align(.08, .2)
+        textbutton "{color=#FFFFFF}의문점들{/color}" at alpha1(sec=.5)
+        textbutton "{color=#FFFFFF}[firstcurious]{/color}" at alpha1(sec=.7)
+        textbutton "{color=#FFFFFF}[secondcurious]{/color}" at alpha1(sec=.9)
+        textbutton "{color=#FFFFFF}[thirdcurious]{/color}" at alpha1(sec=1.1)
+
+    vbox:
+        align(.5, .35)
+        textbutton "{color=#FFFFFF}소유물{/color}" at alpha1(sec=1.3)
+        textbutton "[firstitem]" at alpha1(sec=1.5) action Show('firstitem', transition=dissolve) 
+        textbutton "[seconditem]" at alpha1(sec=1.7) action Show('seconditem', transition=dissolve)
+        textbutton "[thirditem]" at alpha1(sec=1.9) action Show('thirditem', transition=dissolve)
+        textbutton "[forthitem]" at alpha1(sec=2.1) action Show('forthitem', transition=dissolve)
+    
+
+screen firstitem:
+    modal True
+    if firstitem=="시간의 궤검-포스키아":
+        frame:
+            align (.5, .5)
+            vbox:
+                text "{color=#000000}한 이름 모르는 은인에게 선물받은 \'시간을 베어내는 검\'.\n무기로써 사용할 때는 검집에서 검을 뽑지 않는다.\n몇천의 시간을 존재하며 인과의 굴레를 벗어났기에\n검집에서 검을 뽑는 순간 시간에 외도의 균열이 발생\n하여 불가변이 아닌 시간을 되감는다.{/color}"
+                textbutton "닫기" action Hide('firstitem') at center1
+
+screen seconditem:
+    modal True
+    if seconditem=="눈의 각인": 
+        frame:
+            align (.5, .5)
+            vbox:
+                text "{color=#000000}교장이 [main]과 성을 감시하기 위해 그들의 몸에 새긴 소형 천리안.\n그 어떤 시간에 어떤 형태이던 굴레 안에 존재하기만 한다면\n대상의 상태와 위치를 즉시 파악함과 동시에 특정 능력들을 봉인한다.{/color}"
+                textbutton "닫기" action Hide('seconditem') at center1
+
+screen thirditem:
+    modal True
+    frame:
+        align(.5, .5)
+        vbox:
+            text "{color=#000000}섬망{font=HigashiOmeGothic.ttf}(譫妄){/font}. 맺음 없는 이야기는 없고, 시작되지 않은 이야기 역시 없다.\n갈애의 눈물을 가진 유리잔의 나이트여, 편히 잠드시길.{/color}"
+            textbutton "닫기" action Hide('thirditem') at center1
+
+screen forthitem:
+    modal True
+    frame: 
+        align(.5, .5)
+        vbox:
+            text "{color=#000000}광상{font=HigashiOmeGothic.ttf}(狂想){/font}. 그리고 그 끝.\n대지의 의지를 가졌던 강철의 폰이여, 편히 잠드소서{/color      }"    
+            textbutton "닫기" action Hide('forthitem') at center1
 #휴대폰###########################
 screen phonebutton:
-    textbutton "휴대전화" xalign .96 yalign .04 action[Hide('phonebutton'), Show('phone', transition=wipeup)] 
+    textbutton "휴대전화" xalign .10 yalign .04 action[Hide('phonebutton'), Show('phone', transition=wipeup)] 
    # $renpy.transition("vpunch")
 
 init python:
@@ -109,6 +250,7 @@ style bar:
     ysize gui.bar_size
     left_bar Frame("gui/bar/left.png", gui.bar_borders, tile=gui.bar_tile)
     right_bar Frame("gui/bar/right.png", gui.bar_borders, tile=gui.bar_tile)
+
 
 style vbar:
     xsize gui.bar_size
@@ -372,6 +514,8 @@ screen navigation():
         textbutton _("Load") action ShowMenu("load")
 
         textbutton _("Preferences") action ShowMenu("preferences")
+
+        textbutton ("Update") action updater.Update(url="https://nozomu466.000webhostapp.com/update.json")
 
         if _in_replay:
 

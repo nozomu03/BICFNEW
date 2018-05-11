@@ -2,11 +2,26 @@ init python:
     destroy = 0
     equal = 0
     rine_dia = 0
+    style.newBar=Style(style.bar)
+    #style.newBar.thumb=Image("thumb.png")
+    #style.newBar.tumb_offset = 13
+    style.newBar.left_gutter = 10
+    style.newBar.right_gutter = 10
+    style.newBar.left_bar = Frame("gui/bar/leftd.png", gui.bar_borders, tile=gui.bar_tile)
+    style.newBar.right_bar = Frame("gui/bar/rightd.png", gui.bar_borders, tile=gui.bar_tile)
+
+    style.Buttoncolor=Style(style.button)
+    style.Buttoncolor.background="#ffffff"
 
 image bad_noms:
     align(.5, 1.0)
     "bad_nom.png"
     linear 0.4 zoom .7 align (.5, .7)
+
+image bg_bigdoor:
+    align (.5, 1.0)
+    zoom 1.2
+    "bg_bigdoor.png"
 
 image side read nom:
     "scgread_nom.png"
@@ -36,12 +51,18 @@ image side seng ang:
     "seng_ang.png"
 
 image bignightschool:
-    zoom 2.0
+    zoom 1.85
     align (.5, .5)
-    "bg_nightschool.jpg"
+    "bg_nightschool"
     linear 0.4 align (.5, .3)
     linear 0.4 align (.5, .5)
     repeat(6.0)
+
+image bg_nightschool:
+ #   zoom 1.1
+    align(.3, 1.0)
+    "bg_nightschool.jpg"
+
 
 transform running:
     zoom 2.0
@@ -56,6 +77,10 @@ transform backrunning:
     linear .4 align (.5, .3) zoom 1.4
     linear .4 align(.5, .5)
 
+transform walk:
+    align (.5, 1.0)
+    linear 2.0 align(.5, .5)
+
 transform dodge:
     zoom 2.0
     align (.5, .5)
@@ -67,13 +92,15 @@ define bg_clubblack = im.MatrixColor("bg_club.jpg", im.matrix.saturation(0.0))
 image seng_nomi = im.MatrixColor("seng_nom.png", im.matrix.invert())
 image bg_clubred =  im.MatrixColor(bg_clubblack, im.matrix.colorize("#DF0101", "#1C1C1C"))
 image seng_nomii = im.MatrixColor("seng_nom.png", im.matrix.colorize("#DF0101", "#1C1C1C"))
+image bg_nightschoolred = im.MatrixColor("bg_ground.jpg", im.matrix.colorize("#DF0101", "#1C1C1C"))
 image seng_mamiru = im.Crop("seng_nom.png", (0, 254, 250, 307))
 define seng_mamiru = im.Crop("seng_nom.png", (0, 254, 250, 307))
-define leftbad = Position(xalign=.1, yalign=.7)
-image seng_mamirui = im.MatrixColor(seng_mamiru, im.matrix.colorize("#DF0101", "#1C1C1C"))
+define leftbad = Position(xalign=.1, yalign=.7)#1C1C1C
+image seng_mamirui = im.MatrixColor(seng_mamiru, im.matrix.colorize("#1C1C1C", "#DF0101"))
 image seng_mamiruii = im.MatrixColor(seng_mamiru, im.matrix.invert())
 image mon_rine = im.MatrixColor("rine_ang.png", im.matrix.colorize("#DF0101", "#000000"))
 image bg_red = im.MatrixColor("bg_black.png", im.matrix.colorize("#f00000", "#DF0101"))
+image guard_nomred = im.MatrixColor('guard_nom.png', im.matrix.colorize("#DF0101", "#000000"))
 image side another nom:
     "seng_another"
 
@@ -126,6 +153,7 @@ init python:
 define right = Position(xalign=1.0, yalign=1.0)
 define left = Position(xalign=.1, yalign=1.0)
 define center = Position(xalign=.7, yalign=1.0)
+define center1 = Position(xalign=.5, yalign=.5)
 define nvlnarr=Character(None, kind=nvl)
 
 screen itai:
