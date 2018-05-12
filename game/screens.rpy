@@ -7,7 +7,7 @@ init offset = -1
 init python:
     firstitem="시간의 궤검-포스키아"
     seconditem="눈의 각인"
-    thirditem="사슬-구속"
+    thirditem=None
     forthitem="윤무/시작과 끝의 예속"
 
 #의문점(가칭)#####################
@@ -108,8 +108,11 @@ screen curious:
         textbutton "{color=#FFFFFF}소유물{/color}" at alpha1(sec=1.3)
         textbutton "[firstitem]" at alpha1(sec=1.5) action Show('firstitem', transition=dissolve) 
         textbutton "[seconditem]" at alpha1(sec=1.7) action Show('seconditem', transition=dissolve)
-        textbutton "[thirditem]" at alpha1(sec=1.9) action Show('thirditem', transition=dissolve)
-        textbutton "[forthitem]" at alpha1(sec=2.1) action Show('forthitem', transition=dissolve)
+        if seconditem == None:
+            textbutton  "[thirditem]"
+        else:
+            textbutton "[thirditem]" at alpha1(sec=1.9) action Show('thirditem', transition=dissolve)
+       # textbutton "[forthitem]" at alpha1(sec=2.1) action Show('forthitem', transition=dissolve)
     
 
 screen firstitem:
@@ -132,11 +135,18 @@ screen seconditem:
 
 screen thirditem:
     modal True
-    frame:
-        align(.5, .5)
-        vbox:
-            text "{color=#000000}섬망{font=HigashiOmeGothic.ttf}(譫妄){/font}. 맺음 없는 이야기는 없고, 시작되지 않은 이야기 역시 없다.\n갈애의 눈물을 가진 유리잔의 나이트여, 편히 잠드시길.{/color}"
-            textbutton "닫기" action Hide('thirditem') at center1
+    if thirditem=="영혼이 담긴 병" and truething==False:
+        frame:
+            align(.5, .5)
+            vbox:
+                text "{color=#000000}분홍빛을 띄는 영혼이 담긴 투명한 유리병이다.{/color}"
+                textbutton "닫기" action Hide('thirditem') at center1
+    if thirditem=="영혼이 담긴 병." and truething==True:
+        frame:
+            align(.5, .5)
+            vbox:
+                text "{color=#000000}섬망{font=HigashiOmeGothic.ttf}(譫妄){/font}. 맺음 없는 이야기는 없고, 시작되지 않은 이야기 역시 없다.\n갈애의 눈물을 가진 유리잔의 나이트여, 편히 잠드시길.{/color}"
+                textbutton "닫기" action Hide('thirditem') at center1
 
 screen forthitem:
     modal True

@@ -1,23 +1,19 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'Image' u'mark_5.png'>:
-  File "game/script.rpy", line 1312, in script
-    "{color=#000FFF}???{/color}" "닥쳐!"
-  File "renpy/common/00library.rpy", line 256, in say
-    who(what, interact=interact, *args, **kwargs)
-IOError: Couldn't find file 'mark_5.png'.
+While running game code:
+  File "game/script.rpy", line 1548, in script
+    "차가운 정적만이 방 안에 감돌고 있다.{p-.5}나는 미리 계산했던 대로 세 걸음을 걸어가 손을 뻗었다.{p=.5}딱딱한 나무의 감촉."
+Exception: Unknown text tag u'p-.5'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1312, in script
-    "{color=#000FFF}???{/color}" "닥쳐!"
+  File "game/script.rpy", line 1548, in script
+    "차가운 정적만이 방 안에 감돌고 있다.{p-.5}나는 미리 계산했던 대로 세 걸음을 걸어가 손을 뻗었다.{p=.5}딱딱한 나무의 감촉."
   File "F:\renpy\renpy-6.99.13-sdk\renpy\ast.py", line 643, in execute
     renpy.exports.say(who, what, interact=self.interact, *args, **kwargs)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\exports.py", line 1174, in say
-    renpy.store.say(who, what, *args, **kwargs)
-  File "renpy/common/00library.rpy", line 256, in say
-    who(what, interact=interact, *args, **kwargs)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\exports.py", line 1176, in say
+    who(what, *args, **kwargs)
   File "F:\renpy\renpy-6.99.13-sdk\renpy\character.py", line 1013, in __call__
     self.do_display(who, what, cb_args=self.cb_args, **display_args)
   File "F:\renpy\renpy-6.99.13-sdk\renpy\character.py", line 817, in do_display
@@ -38,10 +34,6 @@ Full traceback:
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 145, in renpy.display.render.render
   File "render.pyx", line 233, in renpy.display.render.render
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\transition.py", line 361, in render
-    top = render(self.new_widget, width, height, st, at)
-  File "render.pyx", line 145, in renpy.display.render.render
-  File "render.pyx", line 233, in renpy.display.render.render
   File "F:\renpy\renpy-6.99.13-sdk\renpy\display\layout.py", line 711, in render
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 145, in renpy.display.render.render
@@ -58,21 +50,19 @@ Full traceback:
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 145, in renpy.display.render.render
   File "render.pyx", line 233, in renpy.display.render.render
-  File "accelerator.pyx", line 108, in renpy.display.accelerator.transform_render
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\layout.py", line 1110, in render
+    st, at)
+  File "render.pyx", line 145, in renpy.display.render.render
   File "render.pyx", line 233, in renpy.display.render.render
-  File "accelerator.pyx", line 108, in renpy.display.accelerator.transform_render
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 580, in render
-    return cache.get(self, render=True)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 266, in get
-    surf = image.load()
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 625, in load
-    surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\loader.py", line 555, in load
-    raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'mark_5.png'.
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\text\text.py", line 1807, in render
+    virtual_layout = Layout(self, width, height, renders, drawable_res=False, size_only=True)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\text\text.py", line 561, in __init__
+    self.paragraphs = self.segment(text.tokens, style, renders, text)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\text\text.py", line 1067, in segment
+    raise Exception("Unknown text tag %r" % text)
+Exception: Unknown text tag u'p-.5'
 
 Windows-8-6.2.9200
 Ren'Py 6.99.14.1.3218
 버드나무 꽃 만개할 그날까지 1.0
-Fri May 11 16:28:39 2018
+Sat May 12 19:29:46 2018

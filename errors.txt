@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 870: Line is indented, but the preceding say statement statement does not expect a block. Please check this line's indentation.
-    $preferences.text_cps=40
-    ^
+File "game/script.rpy", line 1560: end of line expected.
+    nvlnarr "스스로 가야할 길을 잊은 도둑고양이여, 명심하게나.\n한 때 철저히 지켜지던 비밀도 결국에는 밝혀졌음을.\n그대가 꾸민 일 역시 그대만이 알고 있는 것이 아닐지니, 언제나 주위를 잘 살피며 나아가게나.\n"PS. 유리잔의 심상은 깨져 기사를 안에서부터 죽여나갔다. 왕도를 걷는 왕을 쫒아 그를 죽이려 했건만, 자신이 왕도의 끝에 도달하여 왕관을 쓴 채 죽음을 맞이한 것이다.""
+                                                                                                                                ^
 
 Ren'Py Version: Ren'Py 6.99.14.1.3218
-Fri May 11 16:27:10 2018
+Sat May 12 19:41:08 2018

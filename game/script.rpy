@@ -16,6 +16,7 @@ image movie = Movie(channel="seng", play="testing.webm")
 
 
 init python:
+    temp2=False
     f_ypos=None
 # 여기에서부터 게임이 시작합니다.
 label chsetting:
@@ -483,7 +484,7 @@ label start:
             play sound "timebreak.mp3"
             scene bg_roomblack with Fade(8.0, 0.0, 8.0, color="#fff")
             main "<돌아와 나의 시간과 겹쳐라, 성.>"
-            play sound "explosion.MP3"
+            play sound "explosion.mp3"
             scene bg_room with Dissolve(5.0)
             "시간이 바뀌었다."
             main "정말아지, 못할 짓만 시키네..."
@@ -1329,8 +1330,8 @@ label star2:
             hide read_nom with dissolve
             play sound "walk_slow.mp3"
             $renpy.pause(2.0)
-            seng "분명 방금 전의 표정... 평소랑 달랐었지?"
             main "우리가 참견할 일은 아니야. {w=1.0}안톤에게도 안톤만의 사정이 있겠지.{p=1.0}이곳은 우리가 있던 학교가 아니라 외지니까 일단은 그의 말을 듣자."
+            seng "분명 방금 전의 표정... 평소랑 달랐었지?"
             seng "네가 그렇게 말한다면야."
         "안톤? 표정이 별로 좋지 않은데요.":
             $renpy.fix_rollback() 
@@ -1358,10 +1359,10 @@ label star2:
             main "그는 우리 학교의 어떤 선생님들보다 우리를 보호하려고 노력하고 있어.{p=1.0}지금은... 그 노력을 존중해주자."
             seng "...알았어."
             $firstcurious="안톤이 우리에게 숨기고자 하는 것은 무엇일까?"
-            $temp=True
+            $temp2=True
     scene bg_black with wipeleft
     play sound "walk_slow.mp3"
-    if temp==True:
+    if temp2==True:
         "안톤. {w=1.0}당신의 노력에, 수고에 언제나 감사하고 있습니다. 그리고...{w=1.0} 죄송합니다."
     $renpy.pause(2.0)
     play sound "door.mp3"
@@ -1503,7 +1504,7 @@ label star2:
         "얼마나 긴 시간이 흘렀을까."        
         "서서히 휘두르는 팔에 감각이 마비되어 간다."
         "내가 베어온 수많은 사람들과 같이. {w=1.0}나 역시 똑같은 운명을 맞이할 것이다.{p=1.0}결국... 실패하였다."
-        show guard_nom at center1
+        show guard_nom at center2
         guard "안톤... 미안해..."
         play sound "bite.mp3"
         $renpy.pause(1.0)
@@ -1512,7 +1513,7 @@ label star2:
         play sound "bite.mp3"
         $renpy.pause(1.0)
         play sound "blooding.mp3" 
-        show guard_nomred at center1 with Dissolve(4.0)
+        show guard_nomred at center2 with Dissolve(4.0)
         guard "카렉... 파른... 그리운 사람들... {w=1.0}당신들의 곁으로 갑니다..."
         play sound "jab.mp3"
         hide guard_nom
@@ -1523,7 +1524,7 @@ label star2:
         play sound "walk_slow.mp3"
         $renpy.pause(2.0)
         teacher "이 앞이려나요..."
-        show read_nom at center1 with dissolve
+        show read_nom at center2 with dissolve
         play sound "door.mp3"
         scene bg_black with dissolve
         "어둡다. 매우 어둡다.{p=1.0}한 치 앞도 보이지 않을 정도이다."
@@ -1544,11 +1545,11 @@ label star2:
         teacher "거기 아무도 없어요?"
         "{color=#F0F8FF}???{/color}" "......."
         teacher "빠져나간건가..."
-        "차가운 정적만이 방 안에 감돌고 있다.{p-.5}나는 미리 계산했던 대로 세 걸음을 걸어가 손을 뻗었다.{p=.5}딱딱한 나무의 감촉."
+        "차가운 정적만이 방 안에 감돌고 있다.{p=.5}나는 미리 계산했던 대로 세 걸음을 걸어가 손을 뻗었다.{p=.5}딱딱한 나무의 감촉."
         play sound "chest.mp3"
         $renpy.pause(2.0)
         scene bg_bigdoor 
-        show read_nom at center1
+        show read_nom at center2
         with dissolve
         teacher "이건..."
         "편지...?"
@@ -1556,9 +1557,7 @@ label star2:
         $renpy.pause(2.0)
         $preferences.text_cps=40
         $preferences.text_cps=0
-        nvlnarr "스스로 가야할 길을 잊은 도둑고양이여, 명심하게나.\n한 때 철저히 지켜지던 비밀도 결국에는 밝혀졌음을.\n그대가 꾸민 일 역시 그대만이 알고 있는 것이 아닐지니, 언제나 주위를 잘 살피며 나아가게나."
-        nvlnarr "\n\n\n"
-        nvlnarr "PS. 유리잔의 심상은 깨져 기사를 안에서부터 죽여나갔다. 왕도를 걷는 왕을 쫒아 그를 죽이려 했건만, 자신이 왕도의 끝에 도달하여 왕관을 쓴 채 죽음을 맞이한 것이다."
+        nvlnarr "스스로 가야할 길을 잊은 도둑고양이여, 명심하게나.\n한 때 철저히 지켜지던 비밀도 결국에는 밝혀졌음을.\n그대가 꾸민 일 역시 그대만이 알고 있는 것이 아닐지니, 언제나 주위를 잘 살피며 나아가게나.\n\nPS. 유리잔의 심상은 깨져 기사를 안에서부터 죽여나갔다. 왕도를 걷는 왕을 쫒아 그를 죽이려 했건만, 자신이 왕도의 끝에 도달하여 왕관을 쓴 채 죽음을 맞이한 것이다."
         $preferences.text_cps=40        
         teacher "....... {w=1.0}핫!"
         play sound "walk.mp3"
@@ -1580,6 +1579,8 @@ label star2:
         "뚜껑을 닫아 가방에 넣고 숙소로 뛰었다."
         play sound "walk.mp3"
         scene bg_ground at running
+        $renpy.pause(1.5)
+        scene bg_ground at running
         teacher "제발... 아이들만은..."
         "아이들만은 건드리지 않았기를..."
         $renpy.pause(.4)    
@@ -1587,9 +1588,9 @@ label star2:
         play sound "walk.mp3"
         $renpy.pause(5.0)
         scene bg_room 
-        show seng_nom
+        show seng_nom at right
         with wiperight
-        "밖에서 빠른 걸음소리가 들린다."
+        "밖에서 빠른 걸음소리가 들린다.{w=.5}총성과 뜀박질..."
         "누구지?"
         $renpy.fix_rollback()        
         menu:
@@ -1599,5 +1600,206 @@ label star2:
                 $renpy.pause(2.0)
                 show read_nom with dissolve
                 teacher "{size=5}하느님 감사합니다...{/size}몸은 괜찮은가요?"
-                         "경계한다."
+                main "왜 그러세요? 숨도 꽤 몰아쉬게 계신데, 달려 오셨나요?"
+                teacher "다행히군요... 여기는 아무 일도 없었나요..."
+                if temp2==True:
+                    "우리를 막아섰던 이스프킨에게 무슨 일이 있었던 것일까?"
+                    teacher "주무시는데 깨워서 죄송합니다. 계속 주무셔요."
+                    $renpy.fix_rollback()        
+                    menu:
+                        "이스프킨은 어디에 있죠?":
+                            $renpy.fix_rollback()        
+                            main "이스프킨은 어디에 있죠? 당신과 함께 있을 것이라 생각했는데..."
+                            teacher "그녀는... 지금 학교지대를 벗어나 공장까지 갔습니다."
+                            main "왜죠?"
+                            teacher "제가 무언가 부탁했기 때문이죠."
+                            main "그 부탁이 무엇인가요?"
+                            hide read_nom
+                            show read_think
+                            teacher "........"
+                            "무언가 고민하는 듯 하다."
+                            hide read_think
+                            show read_nom 
+                            teacher "이것과 똑같이 생긴 병을 가져와 달라고 했습니다."
+                            "가방에서 꺼내져 내 눈 앞에 놓인 것은 투명한 핑크색 액체처럼 보이는 것을 담고 있는 병이었다."
+                            seng "이건..."
+                            main "무엇인지 알 것 같아?"
+                            seng "응..."
+                            "머뭇거림."
+                            main "무엇이길래 그래?"
+                            seng "영혼... 저건...{w=.5} 인간의 영혼이야..."
+                            teacher "네. 당신이 말했듯이 이것은 사람의 영혼을 담아 놓은 병이지요."
+                            seng "이게 왜 당신께 있는 것이죠?"
+                            teacher "교장선생님의 명령...{w=.5}이라고 한다면 믿어 주실건가요?"
+                            main "그럴 리가요."
+                            teacher "...하지만 사실은 사실입니다.{p=.5}나머지는 좋을 대로 생각해 주세요."
+                            main "........"
+                            $secondcurious="안톤은 어째서 사람의 영혼이 든 병을 가지고 있을까?"
+                            teacher "아, 그렇지. {w=.5}이것을 가지고 계세요. 제가 달라고 할 때까지만."
+                            seng "...별로 내키진 않지만... 알겠습니다."
+                            $thirditem="영혼이 담긴 병"
+                            "그는 채 우리가 무엇을 말하기도 전에 나가버렸다."
+                        "알겠습니다.":
+                            $renpy.fix_rollback()        
+                            main "그럼 알겠습니다. 당신은 안 주무시나요?"
+                            teacher "아직은요."
+                            "성이 의심스러운 눈초리로 쳐다본다. 손을 뻗어서 제지."
+                    hide read_nom
+                    hide read_smile
+                    play sound "walk_slow.mp3"
+                    $renpy.pause(2.0)
+                    play sound "door.mp3"
+                    $renpy.pause(2.0)
+            "경계한다.":
+                $renpy.fix_rollback()   
+                play sound "knock.mp3"
+                teacher "[main] 양, 성 양. {w=.5}안톤입니다. 거기 안에 계시나요?"
+                seng "안톤이라는데 열어야 하는 거 아니야?"
+                main "잠깐 기다려."
+                play sound "knock.mp3"
+                teacher "제발... 안에 계신다면 대답해 주세요..."
+                main "당신은 누구인가요?"
+                teacher "아, 무사하셨군요... "
+                "...우리들의 안위를 제일 먼저 걱정했다.{p=.5}진짜...인가...?"
+                play sound "door.mp3"
+                show read_nom with dissolve
+                $renpy.pause(2.0)
+                teacher "성 양... [main] 양... 무사하셨군요..."
+                seng "무슨 일이죠? 아까전엔 총성까지 들리던데..."
+                teacher "우리와 똑같습니다. {w=.5}아마 무기 양산을 방해하려는 목적이겠죠."
+                "객귀들의 침입인가..."
+                teacher "지금은 전부 사라졌습니다만... 다시 올지 오지 않을 지는 모르겠습니다.{p=.5}혹여 총성이 들리더라도 너무 놀라지 마시고 이 곳에 있으면 될 겁니다."
+                main "밖으로 피난하는게 안전하지 않을까요?"
+                teacher "아뇨. 바깥은 돌아다니는 파수들을 제외하곤 거의 아무도 없습니다. 하지만 이곳은 마법과 경비병들이 지키고 있죠.{p=.5}괜찮을 겁니다."               
+                seng "알겠습니다. 그리 하지요."
+                hide read_nom 
+                play sound "door.mp3"
+                $renpy.pause(2.0)
+        main "무슨 일이 일어나고 있는걸까?"
+        seng "글쎄. 우리는 상상하지 못할 큰 일일지도 모르지."
+        main "걱정 마. 이번에는 내가 지켜줄테니까."
+        hide seng_nom
+        show seng_smile at right
+        seng "응!"
+    "(다음날 아침)"
+    scene bg_room 
+    show seng_nom with dissolve
+    with dissolve
+    play sound "knock.mp3"
+    teacher "안톤입니다."
+    $renpy.pause(2.0)
+    play sound "door.mp3"
+    show read_nom with dissolve
+    teacher "어제 밤에는 제대로 못 주무셨죠?"
+    seng "조금... 수면 부족 상태이긴 해요."
+    teacher "그런 때에 이런 부탁 드려서 정말 죄송하지만, 저랑 같이 누굴 좀 만나로 가야 할 것 같습니다."
+    main "누구죠?"
+    teacher "공장지대의 공장장입니다. {w=.5}제가 보여준 설계도와 제 설명만으로는 부족한지 여러분을 만나고 싶다고 하더군요."
+    main "그렇다면 가겠습니다."
+    "나는 가방을 들었다."
+    play sound "walk_slow.mp3"
+    scene bg_inschool with dissolve
+    $renpy.pause(2.0)
+    play sound "door.mp3"
+    $renpy.pause(2.0)
+    play sound "walk_slow.mp3"
+    $renpy.pause(2.0)
+    scene bg_black with wipeleft
+    $renpy.pause(3.0)
+    scene bg_library 
+    show factory_nom at center2   
+    show seng_nom at right
+    with wiperight
+    "서재."
+    factory "당신들이 이것을 처음으로 기획한 사람이군요?"
+    seng "그렇습니다."
+    factory "제가 여쭙고 싶은 것은 여기 이 부분입니다."
+    "그가 짚은 부분은 기관부였다."
+    main "이곳이요?"
+    factory "예. 여기에 당신들이 기입한 이 부품의 규격을 구하는 수식을 도저히 이해할 수 없습니다."
+    "설명했다."
+    factory "그런가요...{p=.5}알겠습니다. 그렇다면 그리 알고 작업하도록 하죠. {w=.5}시제품은 2주 뒤면 그쪽에 도착할 겁니다."
+    main "알겠습니다."
+    play sound "door.mp3"
+    scene bg_hallway 
+    show seng_nom at center2 
+    show read_nom at right  
+    with dissolve
+    teacher "잘 끝났나요?"
+    main "네."
+    teacher "후아... 이제 이 곳에서 해야할 일은 얼추 끝났군요. {w=.5}차가 도착하는 대로 이곳에서 떠날 수 있겠어요."
+    seng "거기서 여기까지 오는데 2시간 정도 걸렸으니, 지금 차량을 요청해도 2시간이 비는군요."
+    teacher "그렇군요. 흠... {w=.5}그렇다면 그 동안은 자유시간으로 합시다. 학교가 있는 곳을 벗어나지 않는 범위 내에서 자유롭게 놀도록 하세요."
+    seng "알겠습니다."
+    teacher "저는 이곳의 선생님들과 할 이야기가 있으니 자리를 비우겠습니다."
+    play sound "walk_slow.mp3"
+    hide read_nom
+    $renpy.pause(2.0)
+    if temp2 != False
+        seng "[main]."
+        main "그래. 쫒을거야."
+        scene bg_black with wiperight
+        "우리는 조심스럽게 안톤의 뒤를 밟았다."
+        play sound "walk_slow.mp3"
+        $repny.pause(2.0)
+        "작은 컨테이너 화장실 안으로 들어간 그.{p=.5}창문으로 조심스럽게 엿보았다."
+        scene bg_bathroom 
+        show read_nom at right
+        with wipeleft
+        read "좋아... 이제 이것만 넣으면..."
+        "그가 무엇인가 만들고 있다."
+        main "(저... 저건!)"
+        "약학에 자신이 없는 나라 해도 저것이 무엇인지는 분명하게 알 수 있었다."
+        seng "달의 잠...? 저게 왜...?"
+        main "...분명 달의 잠은..."
+        seng "맞아. 죽은 사람을 다시 되살릴 때 쓰는 거지."
+        if thirditem!=None:
+            main "....왜? 어째서...? {w=.5}아!"
+            "뇌를 스치는 충격."
+            seng "...?"
+            main "나는 가방에서 \'그것\'을 꺼냈다."
+            seng "...!!!!"
+            main "이스프킨..."
+        else:
+            "숨을 죽인채 관찰했다."
+            teacher "이 일과 관계없는 모든 분들께... {w=.5}미안...합니다... "
+            "그는 무언가를 부었다."
+            play sound "explosion.mp3"
+            scene bg_bathroom at explosion 
+            main "큭!"
+            seng "지진?"
+            "나는 다시 보았다."
+            "그는 시체를 끌고 왔다."
+            "그... 시체는..."
+            show read_nom 
+            show guard_nomred 
+            with dissolve
+            "[main], 성" "이스프킨?"
+        seng "이스프킨은... 죽은거야?"
+        "이스프킨이... \'죽었다\'?"            
+        teacher "이스프킨..."
+        main "죽...음...?"
+        seng "[main]?"
+        main "아... 아..."
+        seng "젠장... 이 와중에 스위치가..."
+        $destroy+=10
+        seng "[main], [main]!"
+        $destroy+=10
+        seng "하... 이걸 어떻게 해야..."
+        "몸이 식어온다."
+        "지인의 죽음."
+        "목도."
+        "잊어야 하는.{p=.5}잊으려 했던.{p=.5}잊었다고 생각한 기억들이 솟는다."
+        main "아... 아... 아..."
+        $destroy+=10
+        seng "[main]. 조금만 참아...!"
+        $destroy+=10
+        main "아...아..."
+        $destroy+=10
+        seng "제기랄...!"
+        $renpy.transition(vpunch)
+        show screen aaaaa
+        scene bg_black with Dissolve(1.0)
+        seng "[main]!"
+        
     return 
