@@ -54,8 +54,6 @@ label check:
         for i in drives:
             if os.path.isfile(i+"/test.txt"):
                 USB=i
-            else:
-                UBS="File Not Found"
     #"[USB]"
     $temp=persistent.name
     if not persistent.ok:
@@ -91,7 +89,7 @@ label start:
     $renpy.fix_rollback() 
     call check from _call_check       
     call chsetting from _call_chsetting_1
-    if UBS !=None:
+    if USB!=None:
         show seng_nom2 at Position(xalign=.0, yalign=.0)
     window show
     nvlnarr "열심히 살아가야 하는 이유는 무엇인가.{p=1.0}하루하루 살아가는 삶 속에서 견디기 힘든 고난이 있다 하여도{p=1.0}우리는 나아가야만 하는가?"
@@ -1873,8 +1871,8 @@ label star2:
 
     label game3:
         scene bg_black
-        if UBS !=None:
-            show seng_nom2 at Position(xalign=.0, yalign=.0)
+        if USB==None:
+            "...."
         centered "다시 왔구나?"
         extend "\n음... 너무 강압적이었던 거려나?"
         extend "\n한 번 정도는 괜찮겠지."
