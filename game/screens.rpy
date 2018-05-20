@@ -27,6 +27,17 @@ transform alpha1(sec=.5):
     pause(sec)
     linear(.5)  alpha(1.0)
 
+transform alpha2(sec=.5):
+    alpha(0.0)
+    pause(.5)
+    linear(sec) alpha(1.0)
+transform quake:
+    align(.5, .5)
+    linear .1 ypos -10
+    linear .1 ypos 0
+    linear .1 ypos 10
+    repeat(10.0)
+
 transform alphamove(o_xpos=0, o_ypos=100):
     xpos o_xpos
     linear(2.0) pos(1400, o_ypos)
@@ -513,37 +524,37 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("Start") action Start()
+            textbutton _("{size=30}Start{/size}") at alpha1(sec=.5) action Start() 
 
         else:
 
-            textbutton _("History") action ShowMenu("history")
+            textbutton _("{size=30}History{/size}") at alpha1(sec=1.0) action ShowMenu("history")
 
-            textbutton _("Save") action ShowMenu("save")
+            textbutton _("{size=30}Save{/size}") at alpha1(sec=1.5) action ShowMenu("save")
 
-        textbutton _("Load") action ShowMenu("load")
+        textbutton _("{size=30}Load{/size}") at alpha1(sec=2.0) action ShowMenu("load")
 
-        textbutton _("Preferences") action ShowMenu("preferences")
+        textbutton _("{size=30}Preferences{/size}") at alpha1(sec=2.5) action ShowMenu("preferences")
 
-        textbutton ("Update") action updater.Update(url="https://nozomu466.000webhostapp.com/update.json")
+        #textbutton ("Update") action updater.Update(url="https://nozomu466.000webhostapp.com/update.json")
 
         if _in_replay:
 
-            textbutton _("End Replay") action EndReplay(confirm=True)
+            textbutton _("{size=30}End Replay{/size}") at alpha1(sec=3.0) action EndReplay(confirm=True) 
 
         elif not main_menu:
 
-            textbutton _("Main Menu") action MainMenu()
+            textbutton _("{size=30}Main Menu{/size}") at alpha1(sec=3.5) action MainMenu()
 
-        textbutton _("About") action ShowMenu("about")
+        textbutton _("{size=30}About{/size}") at alpha1(sec=4.0) action ShowMenu("about")
 
         if renpy.variant("pc"):
 
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("Help") action ShowMenu("help")
+            textbutton _("{size=30}Help{/size}") at alpha1(sec=4.5) action ShowMenu("help")
 
             ## The quit button is banned on iOS and unnecessary on Android.
-            textbutton _("Quit") action Quit(confirm=not main_menu)
+            textbutton _("{size=30}Exit{/size}") at alpha1(sec=5.0) action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -563,10 +574,15 @@ style navigation_button_text:
 ##
 ## http://www.renpy.org/doc/html/screen_special.html#main-menu
 
-screen main_menu():
 
-    ## This ensures that any other menu screen is replaced.
-    tag menu
+screen main_menu():
+   # show sound
+    ## This ensures that any other menu screen is replaced
+        #$renpy.music.play('foot.mp3', 'music')    
+       # $renpy.music.queue('door.mp3', 'music')
+       ## $renpy.music.queue('Mr.J tema.mp3', 'music', False)
+    #$renpy.music.stop()
+    #tag menu
 
     style_prefix "main_menu"
 
@@ -580,7 +596,8 @@ screen main_menu():
     ## contents of the main menu are in the navigation screen.
     use navigation
     vbox:
-        text "{font=SDMiSaeng.ttf}{size=36}{color=#FFFFFF}버드나무 꽃 만발할 그날까지{/color}{/size}{/font}"
+        align(.77, .85)
+        text "{font=SDMiSaeng.ttf}{size=72}{color=#FFFFFF}버{w=.5}드{w=.5}나{w=.5}무{w=.5} 꽃{w=.5} 만{w=.5}발{w=.5}할{w=.5} 그{w=.5}날{w=.5}까{w=.5}지{w=.5}{w=.5}...{/color}{/size}{/font}" at alpha2(sec=15.0)
 
 
 

@@ -1,27 +1,21 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/script.rpy", line 1548, in script
-    "차가운 정적만이 방 안에 감돌고 있다.{p-.5}나는 미리 계산했던 대로 세 걸음을 걸어가 손을 뻗었다.{p=.5}딱딱한 나무의 감촉."
-Exception: Unknown text tag u'p-.5'
+While loading <'MatrixColor' <'Image' u'bg_roomc.jpg'> (0.2126, 0.7152, 0.0722, 0, 0, 0.2126, 0.7152, 0.0722, 0, 0, 0.2126, 0.7152, 0.0722, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1)>:
+  File "game/script.rpy", line 533, in script
+    scene bg_roomblack with Fade(8.0, 0.0, 8.0, color="#fff")
+IOError: Couldn't find file 'bg_roomc.jpg'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 1548, in script
-    "차가운 정적만이 방 안에 감돌고 있다.{p-.5}나는 미리 계산했던 대로 세 걸음을 걸어가 손을 뻗었다.{p=.5}딱딱한 나무의 감촉."
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\ast.py", line 643, in execute
-    renpy.exports.say(who, what, interact=self.interact, *args, **kwargs)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\exports.py", line 1176, in say
-    who(what, *args, **kwargs)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\character.py", line 1013, in __call__
-    self.do_display(who, what, cb_args=self.cb_args, **display_args)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\character.py", line 817, in do_display
-    **display_args)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\character.py", line 566, in display_say
-    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\ui.py", line 287, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "game/script.rpy", line 533, in script
+    scene bg_roomblack with Fade(8.0, 0.0, 8.0, color="#fff")
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\ast.py", line 1310, in execute
+    renpy.exports.with_statement(trans, paired)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\exports.py", line 1409, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 2190, in do_with
+    clear=clear)
   File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 2624, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
   File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 3098, in interact_core
@@ -34,35 +28,45 @@ Full traceback:
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 145, in renpy.display.render.render
   File "render.pyx", line 233, in renpy.display.render.render
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\layout.py", line 711, in render
-    surf = render(child, width, height, cst, cat)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\transition.py", line 178, in render
+    renpy.display.render.render(self.transitions[-1], width, height, 0, 0)
+  File "render.pyx", line 145, in renpy.display.render.render
+  File "render.pyx", line 233, in renpy.display.render.render
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\transition.py", line 361, in render
+    top = render(self.new_widget, width, height, st, at)
   File "render.pyx", line 145, in renpy.display.render.render
   File "render.pyx", line 233, in renpy.display.render.render
   File "F:\renpy\renpy-6.99.13-sdk\renpy\display\layout.py", line 711, in render
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 145, in renpy.display.render.render
   File "render.pyx", line 233, in renpy.display.render.render
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\screen.py", line 639, in render
-    child = renpy.display.render.render(self.child, w, h, st, at)
-  File "render.pyx", line 145, in renpy.display.render.render
-  File "render.pyx", line 233, in renpy.display.render.render
   File "F:\renpy\renpy-6.99.13-sdk\renpy\display\layout.py", line 711, in render
     surf = render(child, width, height, cst, cat)
   File "render.pyx", line 145, in renpy.display.render.render
   File "render.pyx", line 233, in renpy.display.render.render
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\layout.py", line 1110, in render
-    st, at)
+  File "accelerator.pyx", line 108, in renpy.display.accelerator.transform_render
+  File "render.pyx", line 233, in renpy.display.render.render
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\image.py", line 414, in render
+    return wrap_render(self.target, width, height, st, at)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\image.py", line 229, in wrap_render
+    rend = render(child, w, h, st, at)
   File "render.pyx", line 145, in renpy.display.render.render
   File "render.pyx", line 233, in renpy.display.render.render
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\text\text.py", line 1807, in render
-    virtual_layout = Layout(self, width, height, renders, drawable_res=False, size_only=True)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\text\text.py", line 561, in __init__
-    self.paragraphs = self.segment(text.tokens, style, renders, text)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\text\text.py", line 1067, in segment
-    raise Exception("Unknown text tag %r" % text)
-Exception: Unknown text tag u'p-.5'
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 580, in render
+    return cache.get(self, render=True)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 266, in get
+    surf = image.load()
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 1213, in load
+    surf = cache.get(self.image)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 266, in get
+    surf = image.load()
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 625, in load
+    surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\loader.py", line 555, in load
+    raise IOError("Couldn't find file '%s'." % name)
+IOError: Couldn't find file 'bg_roomc.jpg'.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.14.1.3218
 버드나무 꽃 만개할 그날까지 1.0
-Sat May 12 19:29:46 2018
+Sat May 19 19:50:48 2018

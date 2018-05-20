@@ -14,14 +14,60 @@
             range 100
 image movie = Movie(channel="seng", play="testing.webm")
 
+init python:
+    import os
+    user=None
+    location=None
+  #  import getpass
+
+
+
+label temp:
+   # "dkdkdkk"
+    $persistent.value_b=renpy.list_saved_games()
+    $persistent.check=True
+    #"dldlddlld"
+    python:
+        name=[]
+        user = os.getenv('username')
+        location="C:/Users/"+user+"/AppData\Roaming/RenPy/Willow-1523110610"
+        for root, dirs, files in os.walk(location):
+            for fname in files:
+                renpy.unlink_save(fname.replace("-LT1.save", ""))
+    #"[name]"
+    #"[b]"
+    #"에에 [a]"
+    return
 
 init python:
     temp2=False
     f_ypos=None
+    temp=None
+    import os.path
+    USB=None
 # 여기에서부터 게임이 시작합니다.
+label check:
+    python:
+        dl = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        drives = ['%s:' % d for d in dl if os.path.exists('%s:' % d)]
+        print (drives)
+        for i in drives:
+            if os.path.isfile(i+"/test.txt"):
+                USB=i
+            else:
+                UBS="File Not Found"
+    #"[USB]"
+    $temp=persistent.name
+    if not persistent.ok:
+        return
+    else:
+        if persistent.check!=True:
+            call temp from _call_temp
+        call game3 from _call_game3
 label chsetting:
     #show mon_rine 
     $preferences.text_cps=40
+    scene bg_willow
     $temp=renpy.input("이름 입력")
     "이름은 [temp].{p=1.0}맞는가요?"
     menu: 
@@ -29,9 +75,24 @@ label chsetting:
             return
         "아니오":
             call chsetting from _call_chsetting
+
+label check2:
+    python:        
+        for root, dirs, files in os.walk(location):
+            for fname in files:
+                time=os.stat(location+"/"+fname).st_atime
+                for index in persistent.value_b:
+                    if(index==time):
+                        renpy.quit
+
 label start:
-    $renpy.fix_rollback()        
+    $renpy.music.stop(2.0)
+    $renpy.music.play('Mr.J2_1.mp3', 'music')    
+    $renpy.fix_rollback() 
+    call check from _call_check       
     call chsetting from _call_chsetting_1
+    if UBS !=None:
+        show seng_nom2 at Position(xalign=.0, yalign=.0)
     window show
     nvlnarr "열심히 살아가야 하는 이유는 무엇인가.{p=1.0}하루하루 살아가는 삶 속에서 견디기 힘든 고난이 있다 하여도{p=1.0}우리는 나아가야만 하는가?"
     nvl clear
@@ -46,7 +107,7 @@ label start:
     "꿈 없는 잠에서 깨어났다.{p=1.0}찌뿌둥한 몸을 뻗어 굳은 근육을 풀었다.{p=1.0}눈을 떴다."
     scene bg_room_night
     show seng_nom at right
-    with dissolve
+    with irisout
     show plorogue with dissolve
     $renpy.pause(3.0)
     hide plorogue with dissolve
@@ -58,9 +119,9 @@ label start:
     play sound "doorclosed.mp3"
     scene bg_bathroom with dissolve
     "남은 잠기운을 지우기 위해 세수했다."
-    play sound "waterflushing.mp3"
+    play sound "washing.mp3"
     $renpy.pause(2.0)
-    play sound "waterflushing.mp3"
+    play sound "washing.mp3"
     $renpy.pause(2.0)
     play sound "doorclosed.mp3"
     $renpy.pause(2.0)
@@ -83,15 +144,15 @@ label start:
     "내려왔다."
     $renpy.pause(2.0)
     scene bignightschool with dissolve
-    play sound "running.mp3"
+    play sound "walk.mp3"
     "달렸다."
     $renpy.pause(6.0)
     scene bignightschool
-    play sound "running.mp3"
+    play sound "walk.mp3"
     $renpy.pause(6.0)
     "숨이 턱까지 차오르며 폐가 찢어질 듯 아팠다.{p=1.0}무시하고 달렸다."
     scene bignightschool
-    play sound "running.mp3"
+    play sound "walk.mp3"
     $renpy.pause(6.0)
     stop sound
     hide bignightschool with fade
@@ -292,7 +353,7 @@ label start:
     show seng_nom at right
     with wipeleft
     main "선생님."
-    show read_nom at center with dissolve
+    show read_nom at Position(xalign=.5, yalign=1.0) with dissolve
     teacher "아, [main] 양. 성 양.{p=1.0}무슨 일이시죠?"
     main "완성했습니다."
     teacher "예?"
@@ -386,7 +447,7 @@ label start:
     $renpy.pause(4.0)
     scene bg_meal with fade
     show seng_sad
-    seng sad "밥 잘 먹었어."
+    seng "밥 잘 먹었어."
     "그렇지 않다는 것을 내가 잘 알고 있다."
     main "........"
     "괜찮을까..."
@@ -427,13 +488,13 @@ label start:
             scene bg_top
             show seng_sad at right
             with fade
-            seng sad "......."
+            seng "......."
             main "성... 너..."
-            seng sad "...[main]. 결국 날 찾았구나."
+            seng "...[main]. 결국 날 찾았구나."
             main "멈춰."
-            seng sad "아니, 못 멈춰."
+            seng "아니, 못 멈춰."
             main "제발."
-            seng sad "미안, [main]."
+            seng "미안, [main]."
             "...늦었다."
             "성의 인상이 변한다."
             hide seng_sad
@@ -879,7 +940,7 @@ label star2:
     main "에...?"
     play sound "blooding.mp3"
     scene bg_clubred
-    show seng_mamirui 
+    show seng_mamirui at center
     with Dissolve(6.0)
     $renpy.pause(6.0)
     seng1 "대체... 왜..."
@@ -1208,6 +1269,7 @@ label star2:
     teacher "한참 걸릴티네 미리 좀 자 두세요."
     main "알겠습니다."
     "나는 눈을 붙였다."
+    nvl clear
     nvlnarr "\"화살을 쏘아라,{w=1.0} 검을 휘둘러라,{w=1.0} 방패를 높이 들어라!{w=1.0} 약속된 안식이 우리를 기다린다! {w=1.0}끝을 향한 행군을 시작하자!{w=1.0} ypa!{w=1.0} ypa!{w=1.0} ypa!\"{p=1.0}       -\'첫 군주\' 레폰체리아 벨로도디아-"
     nvl clear 
     window hide
@@ -1224,7 +1286,7 @@ label star2:
     guard "그래, 내 이름은 \'이스프킨\'. {w=1.0}하지만 될 수 있다면 \'안타{rt}썩{/rt}슈{rt}은{/rt}프{rt}불{/rt}라{rt}꽃{/rt}인\'이라고 불러줬으면 좋겠어."
     "냄새가 난다. {w=1.0}그녀의 온 몸에서 나는 냄새 때문에 질식할 것 같았다.{p=1.0}\'검정\'과 \'빨강\', 그리고 \'보라\'로 이루어진 피와 죽음의 냄새. 그것이 그녀가 살아온 인생이 무엇이었는지 단적으로 알려주었다."
     main "(뭐... 뭐야... 이건... 이 사람은 지금까지... 얼마나 많은 사람을 {color=#DF0101}살해{/color}한거지?)"
-    "우리와 나이차가 그렇게 많이 떨어져 있는 것 같지는 않았다.{p=1.0}그런데... 어째서 이런 압도적인 차이가...?"
+    "우리와 나이 차가 그렇게 큰 것 같지는 않았다.{p=1.0}그런데... 어째서 이런 압도적인 차이가...?"
     main "네...{w=1.0}?"
     guard "랄까, 그냥 해 본 소리야."
     "부자연스로운 웃음을 짓는다.{p=1.0}나는 깨달았다. {w=1.0}그녀는 \'동류\'다.{p=1.0}나와, 성과, 리네와 동일한, 자신만의 아픔을 가지고 있는 {w=1.0}자신을 완성하지 못하는 미완성품."
@@ -1366,7 +1428,7 @@ label star2:
         "안톤. {w=1.0}당신의 노력에, 수고에 언제나 감사하고 있습니다. 그리고...{w=1.0} 죄송합니다."
     $renpy.pause(2.0)
     play sound "door.mp3"
-    scene bg_room2 
+    scene bg_room 
     show seng_nom
     with wiperight
     $renpy.pause(2.0)
@@ -1472,29 +1534,29 @@ label star2:
         guard "진짜배기가 안 나왔다는 건데... {w=1.0}안톤... 나라도 버틸 수 있는 한계가 있어... {p=1.0}부탁이니 내 힘이 다하기 전에 끝내줘..."
         play sound "walk.mp3"
         $renpy.pause(2.0)
-        play sound "slash.wav"
+        play sound "slash.mp3"
         $renpy.pause(1.0)
-        play sound "slash.wav"
+        play sound "slash.mp3"
         $renpy.pause(1.0)
-        play sound "slash.wav"
+        play sound "slash.mp3"
         $renpy.pause(1.0)
         play sound "mamiru.mp3"
         $renpy.pause(1.0)
         "베었다."
-        play sound "slash.wav"
+        play sound "slash.mp3"
         $renpy.pause(1.0)
-        play sound "slash.wav"
+        play sound "slash.mp3"
         $renpy.pause(1.0)
-        play sound "slash.wav"
+        play sound "slash.mp3"
         $renpy.pause(1.0)
         play sound "mamiru.mp3"
         $renpy.pause(1.0)
         "한 명 더."        
-        play sound "slash.wav"
+        play sound "slash.mp3"
         $renpy.pause(1.0)
-        play sound "slash.wav"
+        play sound "slash.mp3"
         $renpy.pause(1.0)
-        play sound "slash.wav"
+        play sound "slash.mp3"
         $renpy.pause(1.0)
         play sound "mamiru.mp3"
         $renpy.pause(1.0)
@@ -1504,7 +1566,7 @@ label star2:
         "얼마나 긴 시간이 흘렀을까."        
         "서서히 휘두르는 팔에 감각이 마비되어 간다."
         "내가 베어온 수많은 사람들과 같이. {w=1.0}나 역시 똑같은 운명을 맞이할 것이다.{p=1.0}결국... 실패하였다."
-        show guard_nom at center2
+        show guard_nom at Position(xalign=.5, yalign=1.0)
         guard "안톤... 미안해..."
         play sound "bite.mp3"
         $renpy.pause(1.0)
@@ -1513,7 +1575,7 @@ label star2:
         play sound "bite.mp3"
         $renpy.pause(1.0)
         play sound "blooding.mp3" 
-        show guard_nomred at center2 with Dissolve(4.0)
+        show guard_nomred at Position(xalign=.5, yalign=1.0) with Dissolve(4.0)
         guard "카렉... 파른... 그리운 사람들... {w=1.0}당신들의 곁으로 갑니다..."
         play sound "jab.mp3"
         hide guard_nom
@@ -1557,7 +1619,8 @@ label star2:
         $renpy.pause(2.0)
         $preferences.text_cps=40
         $preferences.text_cps=0
-        nvlnarr "스스로 가야할 길을 잊은 도둑고양이여, 명심하게나.\n한 때 철저히 지켜지던 비밀도 결국에는 밝혀졌음을.\n그대가 꾸민 일 역시 그대만이 알고 있는 것이 아닐지니, 언제나 주위를 잘 살피며 나아가게나.\n\nPS. 유리잔의 심상은 깨져 기사를 안에서부터 죽여나갔다. 왕도를 걷는 왕을 쫒아 그를 죽이려 했건만, 자신이 왕도의 끝에 도달하여 왕관을 쓴 채 죽음을 맞이한 것이다."
+        nvlnarr "스스로 가야할 길을 잊은 도둑고양이여, 명심하게나.\n한 때 철저히 지켜지던 비밀도 결국에는 밝혀졌음을.\n그대가 꾸민 일 역시 그대만이 알고 있는 것이 아닐지니, 언제나 주위를 잘 살피며 나아가게나."
+        nvlnarr "PS. 유리잔의 심상은 깨져 기사를 안에서부터 죽여나갔다. 왕도를 걷는 왕을 쫒아 그를 죽이려 했건만, 자신이 왕도의 끝에 도달하여 왕관을 쓴 채 죽음을 맞이한 것이다."
         $preferences.text_cps=40        
         teacher "....... {w=1.0}핫!"
         play sound "walk.mp3"
@@ -1681,6 +1744,7 @@ label star2:
         hide seng_nom
         show seng_smile at right
         seng "응!"
+    scene bg_black with dissolve
     "(다음날 아침)"
     scene bg_room 
     show seng_nom with dissolve
@@ -1689,7 +1753,7 @@ label star2:
     teacher "안톤입니다."
     $renpy.pause(2.0)
     play sound "door.mp3"
-    show read_nom with dissolve
+    show read_nom at right with dissolve
     teacher "어제 밤에는 제대로 못 주무셨죠?"
     seng "조금... 수면 부족 상태이긴 해요."
     teacher "그런 때에 이런 부탁 드려서 정말 죄송하지만, 저랑 같이 누굴 좀 만나로 가야 할 것 같습니다."
@@ -1722,7 +1786,7 @@ label star2:
     main "알겠습니다."
     play sound "door.mp3"
     scene bg_hallway 
-    show seng_nom at center2 
+    show seng_nom at center
     show read_nom at right  
     with dissolve
     teacher "잘 끝났나요?"
@@ -1733,20 +1797,20 @@ label star2:
     seng "알겠습니다."
     teacher "저는 이곳의 선생님들과 할 이야기가 있으니 자리를 비우겠습니다."
     play sound "walk_slow.mp3"
-    hide read_nom
+    hide read_nom 
     $renpy.pause(2.0)
-    if temp2 != False
+    if temp2 != False:
         seng "[main]."
         main "그래. 쫒을거야."
         scene bg_black with wiperight
         "우리는 조심스럽게 안톤의 뒤를 밟았다."
         play sound "walk_slow.mp3"
-        $repny.pause(2.0)
+        $renpy.pause(2.0)
         "작은 컨테이너 화장실 안으로 들어간 그.{p=.5}창문으로 조심스럽게 엿보았다."
         scene bg_bathroom 
         show read_nom at right
         with wipeleft
-        read "좋아... 이제 이것만 넣으면..."
+        teacher "좋아... 이제 이것만 넣으면..."
         "그가 무엇인가 만들고 있다."
         main "(저... 저건!)"
         "약학에 자신이 없는 나라 해도 저것이 무엇인지는 분명하게 알 수 있었다."
@@ -1799,7 +1863,146 @@ label star2:
         seng "제기랄...!"
         $renpy.transition(vpunch)
         show screen aaaaa
-        scene bg_black with Dissolve(1.0)
+        scene bg_black 
+        with vpunch
         seng "[main]!"
+        "Black, {w=1.0}Out."
+        $renpy.pause(4.0)
+        hide screen aaaaa
+        call psycopuzzle from _call_psycopuzzle
+
+    label game3:
+        scene bg_black
+        if UBS !=None:
+            show seng_nom2 at Position(xalign=.0, yalign=.0)
+        centered "다시 왔구나?"
+        extend "\n음... 너무 강압적이었던 거려나?"
+        extend "\n한 번 정도는 괜찮겠지."
+        extend "\n봐줄게. 이렇게 끝내는 것."
+        extend "\n이어해도 좋아."
+        extend "\n{color=#DF0101}네 이야기를{/color}."
+        $destroy = persistent.destroy
+        $equal = persistent.equal
+        show screen dest
+        "의문의 목소리" "너는 생각했을 것이다."
+        main "......."
+        "의문의 목소리" "\'내가 도망치는것은 그네들과의 약속을 지키기 위해서\'라고."
+        main "......."
+        "의문의 목소리" "네 옆에서 죽었다."
+        main "......."
+        "의문의 목소리" "제일 먼저 네 어머니가."
+        play sound "scream.mp3"
+        show cg_blood at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        "의문의 목소리" "그 다음으로 네 동생들."
+        play sound "scream.mp3"
+        show cg_blood2 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood3 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood4 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        "의문의 목소리" "기타 등등..."
+        play sound "scream.mp3"
+        show cg_blood5 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood6 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood7 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood8 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood9 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood10 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood11 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood12 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood13 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood14 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood15 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood16 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood17 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood18 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood19 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        play sound "scream.mp3"
+        show cg_blood20 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
+        $renpy.pause(2.0)
+        main "{size=5}아니야... 나는... 그러지... 않았어...{/size}"
+        "의문의 목소리" "뭐라고?"
+        main "{size=10}나는... 그러지 않았어...{/size}"
+        "의문의 목소리" "잘 안들리는데?"
+        main "나는 그러지 않았어!!!!!!"
+        "의문의 목소리" "아니. {w=.5}네가 그랬어."
+        main "아니야, {w=.5}아니야, {w=.5}아니야, {w=.5}아니야, {w=.5}아니야!"
+        "의문의 목소리" "맞아, {w=.5}맞아, {w=.5}맞아, {w=.5}맞아, {w=.5}맞아, {w=.5}맞아."
+        main "......."
+        "의문의 목소리" "넌 그들을 \'배신\'했어. {w=.5}널 길러준 어머니를. {w=.5}너와 놀아준 친구들을. {w=.5}너의 소중한 동생들을. 전부."
+        main "불가항력... 이었잖아..."
+        "의문의 목소리" "과연 그럴까?"
+        main "........"
+        "의문의 목소리" "네가 달리던 발을 멈추어서 어떤 한 사람을 붙잡았다면.{p=.5}{color=#FF0000}{b}과연 그들은 죽었을까?{/b}{/color}"
+        main "아니야.... 아니라고... 그네들이 죽은 것은... 내 책임이..."
+        "의문의 목소리" "해답은 너도 알고 있잖아?"
+        main "...아..."
+        "알고 있었다. {w=.5}나는 도망쳤다. 다른 이들을 제물 삼아, 운명으로부터."
+        "의문의 목소리" "그러니, 너는 아무와도 같이 있을 수 없겠지."
+        main "........"
+        "의문의 목소리" "\'친구\' 한 명 없겠지."
+        main "아니."
+        "의문의 목소리" "\'성\'? \'리네\'? {p=.5}그들이 정말로 너의 친구일까?"
+        main "믿을 수 있어."
+        "의문의 목소리" "정말로? 그네들도 그렇게 생각할까? 자신의 목숨을 네게 맡기고 싶어할까?"
+        main "당연하지."
+        "의문의 목소리" "다짐하지 않았어? 그 날, 네 손으로 \'무명\'을 죽인 날에.{p=.5}아무도 믿지 않고, 모든 것을 의심하여 대비하겠다고?{p=.5}너도 알고 있잖아. \'친구\'라고, \'보호자\'라 믿을 수 있는 사람은 더 이상 이 세상에는 없다는 것을.{p=.5}믿음의 끝에는 \'파국\'과 \'아픔\'만이 있다는 것을."
+        "의문의 목소리" "사실은 그렇지? 그들을 신뢰하지 못하지? {p=1.0}{color=#FF0000}{b}의심{/b}{/color}하고 있지?"
+        main "........."
+        "\'아니다\'라 단언할 수 있다.{p=1.0}\'아니다\'라 단언해야만 한다."
+        "의문의 목소리" "너. 정말 이기적이야."
+        main "........"
+        "의문의 목소리" "남을 완전히 믿지 않으면서 스스로를 속이고, 남들을 속이고.{p=.5}그런게 용서받을 수 있을까?"
+        main "아... 아..."
+        "말이 나오지 않았다."
+        main "(뭐야... 왜... 목소리가...?)"
+        "의문의 목소리" "그들이 너를 어떻게 생각하는 지는 나 역시 알 수 없어.{p=.5}하지만 그것이 거짓된, 위선이라고 하여도 베풀어 준 사람한테는 고마워 해야하겠지?"
+        main "......."
+        main "(아... 그런가...)"
+        "나는 깨달았다."
+        main "(목소리가 나오지 않는 이유를. {w=.5}말을 할 수 없는 이유를.{p=1.0}마음 속으로 \'인정\'한 것이다. 나의 죄를. 그의 말을.)"
+        "의문의 목소리" "죄인에게는 그 자가 지은 죄에 맞는 벌이 있어야 하지. {w=.5}안 그래?"
+        "끄덕였다."
+        "그가 손을 뻗었다."
+        play sound "soul.mp3"
+        main "아."
+        "따스하다."
+        "아프지 않다."
+        "그저... 파도 없는 잔잔한 바다에서 느린 보트를 타고서 그 위에 누운 듯한 느낌."
+        "아주... 아주 오랜만에 느끼는... 그런 것..."
+        "의문의 목소리" "드디어... 몸을... 얻었다..."
         
-    return 
+    $renpy.full_restart() 

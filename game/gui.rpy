@@ -63,6 +63,7 @@ define gui.interface_text_font = "NanumGothic.ttf"
 ## The size of normal dialogue text.
 define gui.text_size = 22
 
+define gui.choice_size=30
 ## The size of character names.
 define gui.name_text_size = 30
 
@@ -204,7 +205,7 @@ define gui.choice_button_height = None
 define gui.choice_button_tile = False
 define gui.choice_button_borders = Borders(100, 5, 100, 5)
 define gui.choice_button_text_font = gui.text_font
-define gui.choice_button_text_size = gui.text_size
+define gui.choice_button_text_size = gui.choice_size
 define gui.choice_button_text_xalign = 0.5
 define gui.choice_button_text_idle_color = "#000000"
 define gui.choice_button_text_hover_color = "#ffffff"
@@ -364,7 +365,7 @@ define gui.nvl_list_length = 6
 
 ## The height of an NVL-mode entry. Set this to None to have the entries
 ## dynamically adjust height.
-define gui.nvl_height = 200
+define gui.nvl_height = 100
 
 ## The spacing between NVL-mode entries when gui.nvl_height is None, and between
 ## NVL-mode entries and an NVL-mode menu.
