@@ -1,72 +1,32 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While loading <'MatrixColor' <'Image' u'bg_roomc.jpg'> (0.2126, 0.7152, 0.0722, 0, 0, 0.2126, 0.7152, 0.0722, 0, 0, 0.2126, 0.7152, 0.0722, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1)>:
-  File "game/script.rpy", line 533, in script
-    scene bg_roomblack with Fade(8.0, 0.0, 8.0, color="#fff")
-IOError: Couldn't find file 'bg_roomc.jpg'.
+While running game code:
+  File "game/script.rpy", line 49, in script
+    python:
+  File "game/script.rpy", line 66, in <module>
+    config.periodic_callback=check2(image="seng_nom")
+  File "game/script.rpy", line 63, in check2
+    renpy.hide(image)
+Exception: Hide may not run while in init phase.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 533, in script
-    scene bg_roomblack with Fade(8.0, 0.0, 8.0, color="#fff")
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\ast.py", line 1310, in execute
-    renpy.exports.with_statement(trans, paired)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\exports.py", line 1409, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 2190, in do_with
-    clear=clear)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 2624, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 3098, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 2038, in draw_screen
-    renpy.config.screen_height,
-  File "render.pyx", line 485, in renpy.display.render.render_screen
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\layout.py", line 711, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 145, in renpy.display.render.render
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\transition.py", line 178, in render
-    renpy.display.render.render(self.transitions[-1], width, height, 0, 0)
-  File "render.pyx", line 145, in renpy.display.render.render
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\transition.py", line 361, in render
-    top = render(self.new_widget, width, height, st, at)
-  File "render.pyx", line 145, in renpy.display.render.render
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\layout.py", line 711, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 145, in renpy.display.render.render
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\layout.py", line 711, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 145, in renpy.display.render.render
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "accelerator.pyx", line 108, in renpy.display.accelerator.transform_render
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\image.py", line 414, in render
-    return wrap_render(self.target, width, height, st, at)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\image.py", line 229, in wrap_render
-    rend = render(child, w, h, st, at)
-  File "render.pyx", line 145, in renpy.display.render.render
-  File "render.pyx", line 233, in renpy.display.render.render
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 580, in render
-    return cache.get(self, render=True)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 266, in get
-    surf = image.load()
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 1213, in load
-    surf = cache.get(self.image)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 266, in get
-    surf = image.load()
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\im.py", line 625, in load
-    surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\loader.py", line 555, in load
-    raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'bg_roomc.jpg'.
+  File "game/script.rpy", line 49, in script
+    python:
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\ast.py", line 848, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\python.py", line 1812, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "game/script.rpy", line 66, in <module>
+    config.periodic_callback=check2(image="seng_nom")
+  File "game/script.rpy", line 63, in check2
+    renpy.hide(image)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\exports.py", line 702, in hide
+    raise Exception("Hide may not run while in init phase.")
+Exception: Hide may not run while in init phase.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.14.1.3218
 버드나무 꽃 만개할 그날까지 1.0
-Sat May 19 19:50:48 2018
+Mon May 21 23:15:38 2018

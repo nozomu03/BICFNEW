@@ -43,17 +43,33 @@ init python:
     temp2=False
     f_ypos=None
     temp=None
+    emotion="nom"
     import os.path
-    USB=None
 # 여기에서부터 게임이 시작합니다.
+
+#######################################
+#미완성: USB에 mycharacter_감정.png 파일 넣어서 인벤토리, 겜 화면에서 활용...
+#구현률 85%...
+#init:
+#    python:
+#        dl=None
+#        def check2():
+#            show_image=False
+#            USB=None
+#            dl = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+#            drives = ['%s:' % d for d in dl if os.path.exists('%s:' % d)]
+#            print (drives)
+#            for i in drives:
+#                if os.path.isfile(i+"/test.txt"):
+#                    USB=i
+#                    print(USB)
+#                    show_image=True
+#            if show_image:
+#                renpy.hide("seng_"+emotion)
+#                renpy.show("seng_"+emotion, at_list=[Transform(pos=(100, 0))])
+#                    
+#        config.periodic_callback=check2
 label check:
-    python:
-        dl = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-        drives = ['%s:' % d for d in dl if os.path.exists('%s:' % d)]
-        print (drives)
-        for i in drives:
-            if os.path.isfile(i+"/test.txt"):
-                USB=i
     #"[USB]"
     $temp=persistent.name
     if not persistent.ok:
@@ -89,8 +105,8 @@ label start:
     $renpy.fix_rollback() 
     call check from _call_check       
     call chsetting from _call_chsetting_1
-    if USB!=None:
-        show seng_nom2 at Position(xalign=.0, yalign=.0)
+    if persistent.USB!=None:
+       show seng_nom2 at Position(xalign=.0, yalign=.0)
     window show
     nvlnarr "열심히 살아가야 하는 이유는 무엇인가.{p=1.0}하루하루 살아가는 삶 속에서 견디기 힘든 고난이 있다 하여도{p=1.0}우리는 나아가야만 하는가?"
     nvl clear
@@ -1871,14 +1887,14 @@ label star2:
 
     label game3:
         scene bg_black
-        if USB==None:
-            "...."
+        call events_run_period
         centered "다시 왔구나?"
         extend "\n음... 너무 강압적이었던 거려나?"
         extend "\n한 번 정도는 괜찮겠지."
         extend "\n봐줄게. 이렇게 끝내는 것."
         extend "\n이어해도 좋아."
         extend "\n{color=#DF0101}네 이야기를{/color}."
+        $emotion="ang"
         $destroy = persistent.destroy
         $equal = persistent.equal
         show screen dest

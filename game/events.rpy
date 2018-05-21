@@ -5,8 +5,9 @@
 # First up, we define some simple events for the various actions, that
 # are run only if no higher-priority event is about to occur.
 
-init:
-    $ event("cut", "rine_dia >= 80", event.only(), priority=200)
+init python:
+    event("cut", "rine_dia >= 80", event.only(), priority=200)
+    #event("check1", "persistent.USB==1")
    # $ event("cut_bad", "rine_dia == -20", priority=210)
 
 
@@ -24,3 +25,9 @@ label cut:
     rine "납득하고 싶지 않지만... 납득 할 수 밖에 없어 보이네..."
     "그녀에게 상황을 설명하는데 성공한 듯 했다."
     "한숨 돌려도 되려나."
+
+label check1:
+    "..."
+    show seng_nom at right
+    "."
+    return

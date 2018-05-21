@@ -574,7 +574,6 @@ style navigation_button_text:
 ##
 ## http://www.renpy.org/doc/html/screen_special.html#main-menu
 
-
 screen main_menu():
    # show sound
     ## This ensures that any other menu screen is replaced
@@ -583,7 +582,6 @@ screen main_menu():
        ## $renpy.music.queue('Mr.J tema.mp3', 'music', False)
     #$renpy.music.stop()
     #tag menu
-
     style_prefix "main_menu"
 
     add gui.main_menu_background
