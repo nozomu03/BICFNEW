@@ -34,7 +34,7 @@ label temp:
         for root, dirs, files in os.walk(location):
             for fname in files:
                 renpy.unlink_save(fname.replace("-LT1.save", ""))
-    #"[name]"
+    #"[name]"4
     #"[b]"
     #"에에 [a]"
     return

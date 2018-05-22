@@ -61,9 +61,9 @@ define gui.name_text_font = "NanumGothic.ttf"
 define gui.interface_text_font = "NanumGothic.ttf"
 
 ## The size of normal dialogue text.
-define gui.text_size = 22
+define gui.text_size = 20
 
-define gui.choice_size=30
+define gui.choice_size=20
 ## The size of character names.
 define gui.name_text_size = 30
 
