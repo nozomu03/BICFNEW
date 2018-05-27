@@ -1,32 +1,52 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 49, in script
-    python:
-  File "game/script.rpy", line 66, in <module>
-    config.periodic_callback=check2(image="seng_nom")
-  File "game/script.rpy", line 63, in check2
-    renpy.hide(image)
-Exception: Hide may not run while in init phase.
+  File "game/script.rpy", line 106, in script call
+    call check from _call_check
+  File "game/script.rpy", line 80, in script call
+    call game3 from _call_game3
+  File "game/script.rpy", line 2061, in script
+    $renpy.pause(3.0)
+  File "game/script.rpy", line 2061, in <module>
+    $renpy.pause(3.0)
+IOError: Couldn't find file 'drawning'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 49, in script
-    python:
+  File "game/script.rpy", line 106, in script call
+    call check from _call_check
+  File "game/script.rpy", line 80, in script call
+    call game3 from _call_game3
+  File "game/script.rpy", line 2061, in script
+    $renpy.pause(3.0)
   File "F:\renpy\renpy-6.99.13-sdk\renpy\ast.py", line 848, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "F:\renpy\renpy-6.99.13-sdk\renpy\python.py", line 1812, in py_exec_bytecode
     exec bytecode in globals, locals
-  File "game/script.rpy", line 66, in <module>
-    config.periodic_callback=check2(image="seng_nom")
-  File "game/script.rpy", line 63, in check2
-    renpy.hide(image)
-  File "F:\renpy\renpy-6.99.13-sdk\renpy\exports.py", line 702, in hide
-    raise Exception("Hide may not run while in init phase.")
-Exception: Hide may not run while in init phase.
+  File "game/script.rpy", line 2061, in <module>
+    $renpy.pause(3.0)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\exports.py", line 1307, in pause
+    rv = renpy.ui.interact(mouse='pause', type='pause', roll_forward=roll_forward)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\ui.py", line 287, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 2624, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\display\core.py", line 3284, in interact_core
+    renpy.audio.audio.periodic()
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\audio\audio.py", line 976, in periodic_thread_main
+    periodic_pass()
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\audio\audio.py", line 920, in periodic_pass
+    c.periodic()
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\audio\audio.py", line 409, in periodic
+    topf = load(self.file_prefix + filename + self.file_suffix)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\audio\audio.py", line 69, in load
+    rv = renpy.loader.load(fn)
+  File "F:\renpy\renpy-6.99.13-sdk\renpy\loader.py", line 555, in load
+    raise IOError("Couldn't find file '%s'." % name)
+IOError: Couldn't find file 'drawning'.
 
 Windows-8-6.2.9200
 Ren'Py 6.99.14.1.3218
 버드나무 꽃 만개할 그날까지 1.0
-Mon May 21 23:15:38 2018
+Sun May 27 18:02:35 2018

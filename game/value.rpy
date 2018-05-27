@@ -136,7 +136,7 @@ init python:
     #style.say_thought.line_leading=10
     style.ruby_style = Style(style.default)
     style.ruby_style.size = 10
-    style.ruby_style.yoffset=-20
+    style.ruby_style.yoffset=-25
     style.default.ruby_style=style.ruby_style
 
 define moving = MoveTransition(0.4, enter=None, leave=None)
@@ -186,6 +186,7 @@ init python:
     seng1 = Character("성?", what_color="#DF0101", who_color="#DF0101")
     guard = Character("이스프킨", what_color="#FC9B9B", who_color="#806060")
     factory = Character("안슈아", color="#868A08")
+    anothervoice = Character("Ψ{rt}한{/rt}", who_color="#000069", what_color="#C65FF9")
     style.window.left_padding=30
     a=0
     b=0
@@ -227,7 +228,7 @@ label psycopuzzle:
     extend "\n뭐, 처음부터 상관 없었어."
     extend "\n네가 뭘 어떻게 생각하던지 말이야."
     extend "\n{color=#000000}안녕. 이건 끝이야, 여기서.{/color}"
-    call temp
+    call temp from _call_temp_1
     $ persistent.destroy = destroy
     $ persistent.equal = equal
     $ persistent.name = temp

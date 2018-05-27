@@ -1887,7 +1887,7 @@ label star2:
 
     label game3:
         scene bg_black
-        call events_run_period
+        call events_run_period from _call_events_run_period
         centered "다시 왔구나?"
         extend "\n음... 너무 강압적이었던 거려나?"
         extend "\n한 번 정도는 괜찮겠지."
@@ -2011,12 +2011,64 @@ label star2:
         "의문의 목소리" "죄인에게는 그 자가 지은 죄에 맞는 벌이 있어야 하지. {w=.5}안 그래?"
         "끄덕였다."
         "그가 손을 뻗었다."
+        $destroy+=10
         play sound "soul.mp3"
+        $destroy+=10
+        $destroy+=10
         main "아."
         "따스하다."
         "아프지 않다."
         "그저... 파도 없는 잔잔한 바다에서 느린 보트를 타고서 그 위에 누운 듯한 느낌."
         "아주... 아주 오랜만에 느끼는... 그런 것..."
-        "의문의 목소리" "드디어... 몸을... 얻었다..."
-        
+        "의문의 목소리" "드디어... 몸을... 얻었다..."        
+        anothervoice "드디어..."
+        "손가락을 움직여 보았다.{p=.5}정상이다.{p=.5}치고 있었던 \'막\'을 거두었다."
+        scene bg_floor with irisout
+        anothervoice "크으으... 머리야..."
+        seng "[main]! 괜찮아? 무사해?"
+        anothervoice "......."
+        play sound "blanket.wav"
+        scene bg_room
+        show seng_nom at left
+        with dissolve
+        $renpy.pause(.2)
+        hide seng_nom
+        show seng_smile at left
+        seng "일어났구나! 다행이다..."
+        "나는 손을 휘둘렀다."
+        play sound "sword.mp3"
+        $renpy.pause(1.0)
+        seng "악!"
+        "보이지 않는 바람의 칼날이 \'그 녀석\'은 성이라 부르던 소녀의 손등에 상처를 냈다."
+        hide seng_smile
+        show seng_nom at left
+        seng "......."
+        anothervoice "......."
+        seng "너는... 내 친구가 아니구나."
+        anothervoice "인사가 늦었네. 내 이름은 Ψ{rt}한{/rt}.{p=.5}뭐, 당분간은 \'잘 부탁한다\'라고 해 두지."
+        hide seng_nom
+        show seng_battle 
+        "한 발짝 물러서 나를 경계한다.{p=.5}그 모습은 보고서 그녀 역시 또 다른 한 명의 \'관리자\'라고 내심 깨달았다."
+        seng "...어째서 [main]의 몸을 빼앗은 거지?"
+        anothervoice "그야 나는 \'신편\'이니까.{p=.5}빼앗는 것이 본능인걸?"
+        seng "........"
+        anothervoice "상처 입힌 건 미안해. 본의가 아니었어."
+        "여전히 나를 경계하며 말문을 열지 않고 있다."
+        anothervoice "너랑 싸우고 싶지 않아. {w=.5}너는 내가 존재할 수 있게 해주는 숙주의 친구니까."
+        seng "나는 너를 신뢰할 수 없어.{w=.5}신편을 믿는 것 만큼 바보같은 일도 없다는 것을 알고 있거든"
+        anothervoice "이런. 섭섭한걸. {w=.5}일단은 숙주의 행동 방침을 존중하고 있는데 말이지."
+        play sound "drawning.wav"
+        $renpy.pause(1.7)
+        stop sound
+        "성은 발검했다."
+        anothervoice "그래서 어떻게 할 거야?{p=.5}그걸로 날 찌르기려도 하려고?"
+        seng "당연하지."
+        anothervoice "헤? 넌 날 못 찔러."
+        seng "아니. 찌를 수 있어."
+        anothervoice "못 찔러. 너는 [main]의 몸을 상처 입힐 수 없어."
+        seng "아니야!"
+        anothervoice "{b}그럼 네 손이 떨고 있는 건 기분 탓일까?{/b}"
+        seng "...칫."
+        anothervoice "너는 어쩔 수 없이 나에게 협력할 수 밖에 없어.{p=.5}지금은 너를 해치지 않아. 그런데, 자랑은 아니지만 나. 기분이 상당히 빨리 변하거든.{p=.5}언제 어떻게 변해서 너를 {b}{color=#F00}죽여{/color}{/b}버릴지 몰라."\
+        seng ""
     $renpy.full_restart() 
