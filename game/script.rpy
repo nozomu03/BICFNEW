@@ -1,4 +1,6 @@
-﻿screen dest:
+﻿#define build.google_play_key = ""
+
+screen dest:
     hbox:
         text "{color=#ffffff}붕괴도{/color}"
         
@@ -1280,7 +1282,7 @@ label star2:
     "교문 앞에는 버스와 닮았지만 곳곳이 철로 된 봉으로 강화된 차에 몸을 실었다."
     play sound "car.mp3"
     "출발."
-    teacher "한참 걸릴티네 미리 좀 자 두세요."
+    teacher "한참 걸릴테니 미리 좀 자 두세요."
     main "알겠습니다."
     "나는 눈을 붙였다."
     nvl clear
@@ -1289,6 +1291,7 @@ label star2:
     window hide
     "???" "저 아이가 [main]..."
     "처음 듣는 목소리. {p=1.0}나는 눈을 떴다."
+    "등에 검을 메고 있다.{p=.5}흥미롭게 생긴 검인걸. "
     scene bg_bus 
     show guard_nom
     with irisout
@@ -1305,6 +1308,9 @@ label star2:
     guard "랄까, 그냥 해 본 소리야."
     "부자연스로운 웃음을 짓는다.{p=1.0}나는 깨달았다. {w=1.0}그녀는 \'동류\'다.{p=1.0}나와, 성과, 리네와 동일한, 자신만의 아픔을 가지고 있는 {w=1.0}자신을 완성하지 못하는 미완성품."
     "그녀의 눈동자 속에 머무는 것은... {w=1.0}\'광기\'이다.{p=1.0}모든 것을 파괴하고 싶어하는, 원초적인 욕구들의 집합체."
+    "무심코 그녀의 검에 시선이 갔다."
+    scene bg_bus with pixellate
+    "뭐지...? 이 현기증은..."
     guard "그렇게 빤히 보니까 {w=1.0}조금 부끄러운걸?"
     main "아, 죄송합니다."
     "시선을 거두었다."
@@ -1322,7 +1328,7 @@ label star2:
     "이스프킨이 말했다."
     main "왜 그러죠?"
     guard "...별로... {w=1.0}좋은 꼴은 못 볼거야."
-    "알겠습니다."
+    seng "알겠습니다."
     play sound "walk_slow.mp3"
     $renpy.pause(2.0)
     "안톤은 이 학교의 교장과 다른 선생들과의 회담이 있다고 말하며 그리로 가고 이곳에는 우리 셋만 남았다."
@@ -2014,7 +2020,7 @@ label star2:
         $destroy+=10
         play sound "soul.mp3"
         $destroy+=10
-        $destroy+=10
+        $destroy+=7
         main "아."
         "따스하다."
         "아프지 않다."
@@ -2069,6 +2075,248 @@ label star2:
         seng "아니야!"
         anothervoice "{b}그럼 네 손이 떨고 있는 건 기분 탓일까?{/b}"
         seng "...칫."
-        anothervoice "너는 어쩔 수 없이 나에게 협력할 수 밖에 없어.{p=.5}지금은 너를 해치지 않아. 그런데, 자랑은 아니지만 나. 기분이 상당히 빨리 변하거든.{p=.5}언제 어떻게 변해서 너를 {b}{color=#F00}죽여{/color}{/b}버릴지 몰라."\
-        seng ""
-    $renpy.full_restart() 
+        anothervoice "너는 어쩔 수 없이 나에게 협력할 수 밖에 없어.{p=.5}지금은 너를 해치지 않아.{w=1.0} 그런데, 자랑은 아니지만 나. 기분이 상당히 빨리 변하거든.{p=.5}언제 어떻게 변해서 너를 {b}{color=#F00}죽여{/color}{/b}버릴지 몰라."
+        play sound "sworddrop.wav" 
+        seng "........"
+        $renpy.pause(.5)
+        "검이 떨어졌다."
+        anothervoice "딱히 다른 사람들한테 피해를 끼칠 생각은 없어.{p=.5}내가 원하는 건 살아가는 것 뿐이니까."
+        seng "거짓말."
+        anothervoice "믿어 줬으면 좋겠어."
+        play sound "walk_slow.mp3"
+        "걸음을 내딛었다."
+        $renpy.pause(2.0)
+        "오랜만의 걸음."
+        "\'살아있다\'라는 것을 인식했다."
+        play sound "door.mp3"
+        seng "어디로 가는거야."
+        anothervoice "산책... 이려나..."
+        seng "길...을 잃을 일은 없겠군."
+        anothervoice "다녀올게."
+        play sound "walk_slow.mp3"
+        scene bg_hallway2 at walk with dissolve
+        "나는 [main]의 기억을 훑었다.{w=.5} 이 몸의 주인이 원래와 다르다는 것을 아는 사람은 성 한 명이면 충분하다."
+        play sound "door.mp3"
+        show rine_nom at right with dissolve
+        $renpy.pause(1.5)
+        hide rine_sad
+        show rine_nom at right
+        rine "[main]!"
+        "마침 좋은 상대가 나타났다."
+        anothervoice "리네."
+        rine "몸은 이제 괜찮은거야?"
+        anothervoice "당연하지. 잠깐 기절한 걸로 어떻게 되지는 않아."
+        rine "다행이다..."
+        menu:
+            "잠깐 산책하고 있었는데, 같이 갈래?":
+                main "잠깐 산책하고 있었는데, 같이 갈래?"
+                rine "아니, 괜찮아."
+                anothervoice "그럼 안녕."
+
+            "뭐하고 있었어?":
+                main "뭐하고 있었어?"
+                rine "연구...{w=.5}려나?"       
+                anothervoice "잘 되가?"
+                rine "응!{p=.5}{size=3}평소랑 뭔가 다른데...{/size}{p=.5}너는 뭐해?"
+                anothervoice "잠깐 산책."
+                rine "그럼 잘가!"
+                anothervoice "응. 열심히 해!"
+                $rine_mis+=3
+
+        hide rine_nom
+        scene bg_middle with dissolve        
+        play sound "walk_slow.mp3"
+        $renpy.pause(1.5)
+        "성공적으로 넘긴건가.{p=.5}조금 불안했지만 문제는 없어 보인다."
+        play sound "walk_slow.mp3"
+        "그대로 몸을 돌려 계단을 내려갔다."
+        $renpy.pause(2.0)
+        scene bg_inschool with dissolve
+        "여기가 운동장인가."
+        play sound "walk_slow.mp3"
+        $renpy.pause(2.0)
+        "퍼석이는 흙이 운동화를 더럽힌다.{p=.5}아니, 더럽히려 했다."
+        "흙과, 물과, 피로 더럽혀지고 불에 그을려 형태를 유지하는 것 자체가 신기할 정도인 이 운동화에 약간의 흙이 만든 얼룩은 티 조차 나지 않았다."
+        play sound "sandwalk.wav"
+        "자박거리며 갈라지고, 부서지는 흙의 소리."
+        $renpy.pause(6.0)
+        "흙에 운동화의 자국이 남았다.{p=.5}미묘하게 물기가 남아있는 흙.{p=.5}내가 \'저쪽\'에 있는 동안 비라도 내렸던 걸까."
+        anothervoice "그러고보니 오늘이 무슨 요일인지도 모르네..."
+        "하지만 중요한 일은 아니다."
+        play sound "walk_slow.mp3"
+        $renpy.pause(2.0)
+        "탁한 공기의 냄새"
+        "그대로이다."
+        show guard_nom at right with dissolve
+        "이스프킨이란 이름의 떠돌이이다."
+        guard "{size=10}죽었다 살아난 사람이면 좀 더 새로이 주어진 기회에 감사하며 살아가면 되는데 ... 왜 굳이 피곤하게 사는걸까.{/size}"
+        anothervoice "네?"
+        guard "오, [main]. 몸은 좀 괜찮아?"
+        anothervoice "네. 이제 괜찮아졌어요."
+        guard '다행이네. 그래도 너무 무리는 하지 말고.'
+        hide guard_nom
+        play sound "walk_slow.mp3"
+        "중얼거리며 사라지는 이스프킨."
+        $renpy.pause(2.0)
+        "감회에 젖어있는 것은 여기까지이다."
+        "어서 검의 회수를 서두르지 않으면 약속을 지킬 수 없게 되어버린다.{p=.5}운이 좋게도 \'궤\'는 지금 나의 손에 있다.{p=.5}후딱 끝내버리고 원래대로 돌려놓자."
+        play sound "walk_slow.mp3"
+        $renpy.pause(2.0)
+        scene bg_black with wiperight
+        play sound "walk_slow.mp3"
+        $renpy.pause(2.0)
+        scene bg_teacher with wipeleft
+        nvlnarr "사랑. 인간은 누군가를 사랑하기에 약해진다.\n\n-가장 쓸모 없는 감정에 대한 물음에 돌아온 린의 대답.-"
+        play sound "sliding.mp3"
+        scene bg_teacher 
+        $renpy.pause(1.5)
+        anothervoice "저... 선생님?"
+        show read_nom at right with dissolve    
+        teacher "[main] 양이군요. 움직여도 괜찮은가요?"
+        main "멀쩡해요."
+        teacher "왜 오신 지 용건을 물어봐도 될까요?"
+        main "선생님은 \'다섯 개의 검\'이라는 이야기를 아시나요?"
+        teacher "아, 알고 있습니다. 당신의 검인 \'궤\' 역시 그 중 하나이죠."
+        main "네. 그... 나머지 검들에 대한 기록된 책 같은 걸 얻을 수 없을까요?"
+        teacher "찾아보면 몇 개 나올 것 같지만서도... 왜 그러시죠?"
+        main "이스프킨 때문에요."
+        teacher "호오... 그건 무슨 뜻이죠?"
+        main "그녀에게선 \'냄새\'가 나요."
+        teacher "......."
+        "그의 눈이 날카로워졌다."
+        teacher "......."
+        main "........"
+        teacher "냄새, 인가요..."
+        main "네."
+        teacher "무슨 냄새였죠?"
+        main "피와 살육과 증오의 냄새.{p=.5}저와 같은 냄새가 났어요. 정상적으로 살아온 사람이라면 절대 풍길 수 없는 냄새죠."
+        teacher "지금 같은 시대에 과연 정상적으로 사는 사람이 있을까요?"
+        main "안톤. 살인과 살육은 다릅니다. 그 사람은 살인자가 아니에요."
+        main "그런 사람이 어떻게 당신과 알고 있는 거죠?"
+        teacher "비밀입니다." 
+        "비밀... 인가.{w=.5} 확실히 선뜻 말해 줄 만한 일은 아니겠지.{p=.5}어떻게 할까?"        
+        #$renpy.fix_rollback()        
+        call anton_dia from _call_anton_dia        
+        main "그러면 그 이야기는 그만하겠습니다."
+        teacher "예, 아무튼 이스프킨 때문에 \'다섯 개의 검\'에 대한 관심이 생겼다고요?"
+        main "네. 그 냄새를 맡고 그녀가 등에 지고 있는 것을 다시 보았을 떄 깨달았어요.{p=.5}진품인지 아닌지는 모르겠지만 \'아\'와 비슷하게 생겼더군요."                
+        teacher "그건 복제품입니다. 더군다나 그녀는 관리자도 아니고요."
+        main "제 \'신편\'의 능력을 기억하시나요?"
+        teacher "\'이야기를 듣는다\'. {w=.5}음, 그렇군요."
+        main "그 검의 이야기는 저를 아찔하게 만들 정도였습니다.{p=.5}저는 진품이라고 생각했지만 복제품이면서도 그 정도의 힘을 낼 수 있다면, 제 것은 얼마나 큰 힘을 내 줄까요."
+        teacher "요컨대 알지 못하는 사용법이 있을지 모르니 검에 대해 자세히 기록된 자료를 읽어보고 싶다는 것이군요."
+        main "예."
+        teacher "알겠습니다. 찾아 보도록 하죠."
+        show continued with dissolve
+        $renpy.pause(1.5)  
+        scene bg_white with dissolve
+        show chapter2 with dissolve
+        $renpy.pause(1.5)
+        hide chapter2
+        nvlnarr "그것은 오뉴월에 내리는 눈이었다.{p=.5}온 세상을 순백으로 물들이고, 물들이고, 물들여 곧 시야를 전부 가려냈다."
+        nvl clear
+        hide window 
+        "CV-01" "어쩌시겠습니까?"
+        "의장" "음..."
+        "CV-01" "시간이 없습니다. 이번에는 다행히 사람 몇 명 죽은 것으로 끝났지만 다음 번엔 어떻게 될 지 모릅니다."
+        "의장" "이스프킨... 그 녀석만 없어진다면..."
+        "CV-01" "죽이면 되지 않습니까."
+        "의장" "소용없어. 죽여봤자 다른 이들이 되살릴거야."
+        "CV-02" "학교를 무너뜨립시다."
+        "의장" "학교를?"
+        "CV-02" "예."
+        "의장" "물론 가능하겠지. 하지만 너도 알고 있겠지? 자원은 한정되있어. 무혈로써 승리하는 것은 불가능하더라도 소비하는 자원을 최소화 해야만 해."
+        "CV-02" "꼭 물리적으로 치는 것 만이 승리로 향하는 방법은 아닙니다. 제가 무혈 승리를 쟁취해 보이겠습니다."
+        "CV-01" "거짓말!"
+        "CV-02" "학교라는 것은 본디 관리자들을 보호하기 위해 만들어진 곳. 저들이 찬양해 마지않는 \'첫번째 조커\'가 이루어낸 업적입니다."
+        "CV-01" "더 이상 들을 가-"
+        "의장" "닥쳐라. 계속해 보도록."
+        "CV-02" "다행이도 이번 조커는 우리가 확보했지 않습니까? 그것을 이용하는 겁니다.{p=.5}[nameless]을 보냅시다. 그에게."
+        scene bg_room with vpunch
+        anothervoice "꿈인가..."
+        "[nameless].{p=.5}그녀를 죽이려 한 이이자, 그녀의 멘토이자, 그녀의 어머니."
+        "나는 일어섰다."
+        seng "유치한 가면 무도회에 어울려 주는 것도 한계가 있어."
+        anothervoice "...이 몸을 빌리는 건 이번 달 말일까지야."
+        seng "왜?"
+        anothervoice "너는 믿지 않겠지만 [main]을 위해서야.{p=.5}그녀가 할 수 없는 일들을 대신 하기 위해서 몸을 빌린 것 뿐이야."
+        seng "물론 믿지 않을거야."
+        "나는 어께를 으쓱였다."
+        play sound "walk_slow.mp3"
+        scene bg_hallway
+        show read_nom at right 
+        with dissolve
+        teacher "[main] 양. 최대한 자료를 모아왔습니다."
+        "그의 손에 들려 있는 박스 안에는 작은 수첩과 공책, 몇몇개의 책.{p=.5}나는 그것을 수령했다."
+        play sound "walk_slow.mp3"
+        scene bg_top with dissolve
+        "구할 수 있는 것 중에서 축척이 가장 큰 지도와, 컴퍼스, 자. 자료들."
+        play sound "pen.mp3"
+        "계산했다."
+        play sound "pen.mp3"
+        "특정했다.{p=.5}나머지 검들이 있을 만한 곳을."
+        anothervoice "음..."
+        "이것은 [nameless]의 발자취를 쫒는 일이다.{w=.5}나의 입장이 아닌 [nameless]의 입장에서 생각해야만 한다."        
+        anothervoice "...역시 여긴가..."
+        "\'재액의 화당\'. 누군가 고의로 깎은 것 마냥 날카로운 절벽과 꺼지지 않는 불꽃들과 객귀들이 있는 곳."
+        "\'내려갈 때 열 명, 바닥에서 다섯 명 다시 올라오면 한 명\'.{p=.5}정신적으로나 육체적으로나 지치는 원정이다. 거기까지 가는 것으로도 일이겠지."
+        anothervoice "준비에 들일 수 있는 시간이 부족해... 최대한 빨리 끝내야 하는데..."
+        "혼자서 가는 것은 당연히 불가능하다. 최소한 네 명은 움직여야 한다. 성과 리네의 손을 빌린다 해도..."
+        "이스프킨은 데려가는 것은 위험하다. 최근의 그녀는 모르겠지만 그녀의 과거를 아는 입장에서 그녀의 도움을 바라는 것은 최소한의 양심을 파는 행위이다."
+        ".......{w=.5}손이 부족하다. 그녀는 내가 돌아왔는 지 모르고 있을 것이다. 그렇다면 여기서 내가 그녀와 손을 잡는다 하여도 나를 비난하는 사람은 없을 것이다."
+        "...비난할 사람이 남아 있다면, 이지만."
+        "내게 그걸 결론지을 권리가 있을까?"
+        "그녀가 죄를 지은 사람은 내가 아닌 그녀들, 이미 죽어버린 그녀들인데."
+        "나는, 그녀의 죄를 덮고서 그녀를 이용할 수 있나?"
+        "아니, 없다. 나에게는 그것을 결정할 권리가 없다."
+        "...{w=.5}...{w=.5}...{w=.5}..."
+        "나는 일어섰다."
+        "길의 안전을 확인하는 파수가 둘. 싸우기 위한 사람이 하나. 그리고 짐을 들 사람 하나.{p=.5}최소 네 명이다. 이 수를 채우지 않고 가는 것은 죽여달라고 사정하는 것과 다를 바 없다."
+        "나머지 한 명을 구해야한다."
+        "...하지만, 어떻게?"
+        scene bg_balck with dissolve
+        $firstcurious=None
+        $secondcurious=None
+        $thirdcurious=None        
+        $firstitem=None
+        $seconditem=None
+        $thirditem=None
+        $forthitem=None
+        "나는, 잠에서, 깼다."
+        scene bg_floor with irisout
+        guard "......."
+        "일어나지 않고서 천장을 바라보았다."
+        "......."
+        guard "아아..."
+        "어쨌든 일어나야만 하겠지."
+        play sound "blanket.wav"
+        $renpy.pause(2.0)       
+        scene bg_room with dissolve
+        "덥고 건조한 날씨다.{p=.5}불 바로 옆에 있기에 당연하다면 당연한 일이지만 익숙해 질 수는 없었다."
+        guard "......."
+        "머리맡에 놓여 있던 약을 집어들었다."
+        play sound "medicine.wav"
+        $renpy.pause(6.0)
+        "물 없이 삼켰다.{p=.5}쓴 맛의 여운이 혀에 남았다."
+        "밖으로는 여전히 작열하는 불꽃만이 보인다."
+        "안톤을 제외하고는 찾는 사람 하나 없는 고독한 이 땅.{p=.5}\'외로움\'을 느끼지 못한다고 한다면 거짓말이 되겠지.{p=.5}그러나 약속은 약속. 이곳을 지키는 것은 나의 의무이다." 
+        play sound "walk_slow.mp3"
+        "발소리."
+        $renpy.pause(2.0)
+        guard "무엇을 얻기 위해 왔느냐, 무엇을 잃기 위해 왔느냐. 그대는 안톤인가?"
+        anothervoice "...아니요."
+        "일전에 안톤에 부탁으로 그와 동했을 때 있었던 아이의 목소리다."
+        guard "불꽃과 아픔의 대지에 찾아온 생명이여. 그대의 이름은 [main] 인가?"
+        anothervoice "...네."
+        guard "생명이여. 이곳에 존재하기 위한 대가를 알고 있는가?"
+        anothervoice "알고 있습니다."
+        guard "좋다. 그대가 나에게 향하는 것을 허락하겠노라."
+        "길잡이를 보냈다."
+        play sound "walk_slow.mp3"
+        $renpy.pause(2.0)
+        play sound "door.mp3"
+        $renpy.pause(2.0)
+        guard "음?"
+        anothervoice "왜 그러시죠?"
+        play sound 
+        $renpy.full_restart() 

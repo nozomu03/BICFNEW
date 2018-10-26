@@ -2,10 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 65: invalid syntax
-            renpy.show("seng_nom" at_list=[Transform(pos=(100, 0))])
-                                         ^
-    
+File "game/script.rpy", line 2198: choice menuitem expects a non-empty block.
+    "계속한다.":
+            ^
 
-Ren'Py Version: Ren'Py 6.99.14.1.3218
-Mon May 21 23:09:21 2018
+Ren'Py Version: Ren'Py 7.0.0.196
+Wed Jul 18 11:25:26 2018

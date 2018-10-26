@@ -2,6 +2,8 @@ init python:
     destroy = 0
     equal = 0
     rine_dia = 0
+    rine_mis = 0
+    anton_miss = 0
     truething=False
 
     style.newBar=Style(style.bar)
@@ -14,6 +16,10 @@ init python:
 
     style.Buttoncolor=Style(style.button)
     style.Buttoncolor.background="#ffffff"
+
+image bg_hallway2:
+    "bg_hallway.jpg"
+    zoom 1.5
 
 image bad_noms:
     align(.5, 1.0)
@@ -82,7 +88,7 @@ transform backrunning:
 transform walk:
     align (.5, 1.0)
     linear 2.0 align(.5, .5)
-
+    
 transform dodge:
     zoom 2.0
     align (.5, .5)
@@ -136,7 +142,7 @@ init python:
     #style.say_thought.line_leading=10
     style.ruby_style = Style(style.default)
     style.ruby_style.size = 10
-    style.ruby_style.yoffset=-25
+    style.ruby_style.yoffset=-17
     style.default.ruby_style=style.ruby_style
 
 define moving = MoveTransition(0.4, enter=None, leave=None)
@@ -176,6 +182,7 @@ transform sizeing:
 
 init python:
     temp=None
+    
     rine = Character("리네", color="#DF0101", image="rine")
     main = Character("[temp]", color="#6E6E6E")
     seng = Character("성", color="#91ff6d", image="seng")
@@ -186,7 +193,8 @@ init python:
     seng1 = Character("성?", what_color="#DF0101", who_color="#DF0101")
     guard = Character("이스프킨", what_color="#FC9B9B", who_color="#806060")
     factory = Character("안슈아", color="#868A08")
-    anothervoice = Character("Ψ{rt}한{/rt}", who_color="#000069", what_color="#C65FF9")
+    anothervoice = Character("Ψ", who_color="#000069", what_color="#C65FF9")
+    nameless = Character(" ", what_color="#B9062F")
     style.window.left_padding=30
     a=0
     b=0
