@@ -58,7 +58,7 @@ transform alphamove(o_xpos=0, o_ypos=100):
 
 
 screen curious_button:
-    textbutton "{color=#000000}메뉴{/color}" xalign .96 yalign .04 action[Hide('curious_button'), Show('curious', transition=dissolve)]
+    textbutton "{color=#ffffff}메뉴{/color}" xalign .96 yalign .04 action[Hide('curious_button'), Show('curious', transition=dissolve)]
 
 screen curious:
     #group_big
@@ -117,12 +117,19 @@ screen curious:
     vbox:
         align(.5, .35)
         textbutton "{color=#FFFFFF}소유물{/color}" at alpha1(sec=1.3)
-        textbutton "[firstitem]" at alpha1(sec=1.5) action Show('firstitem', transition=dissolve) 
-        textbutton "[seconditem]" at alpha1(sec=1.7) action Show('seconditem', transition=dissolve)
-        if seconditem == None:
-            textbutton  "[thirditem]"
+        if firstitem == None:
+            textbutton "None" at alpha1(sec=1.5)
         else:
-            textbutton "[thirditem]" at alpha1(sec=1.9) action Show('thirditem', transition=dissolve)
+            textbutton "[firstitem]" at alpha1(sec=1.5) action Show('firstitem', transition=dissolve) 
+        if seconditem == None:
+            textbutton "None" at alpha1(sec=1.7)
+        else:
+            textbutton "[seconditem]" at alpha1(sec=1.7) action Show('seconditem', transition=dissolve)
+        if thirditem == None:
+            textbutton "None" at alpha1(sec=1.9)
+        else:
+            textbutton "[thirditem]" at alpha1(sec=1.7) action Show('thirditem', transition=dissolve)
+
        # textbutton "[forthitem]" at alpha1(sec=2.1) action Show('forthitem', transition=dissolve)
     
 
@@ -141,7 +148,7 @@ screen seconditem:
         frame:
             align (.5, .5)
             vbox:
-                text "{color=#000000}교장이 [main]과 성을 감시하기 위해 그들의 몸에 새긴 소형 천리안.\n그 어떤 시간에 어떤 형태이던 굴레 안에 존재하기만 한다면\n대상의 상태와 위치를 즉시 파악함과 동시에 특정 능력들을 봉인한다.{/color}"
+                text "{color=#000000}교장이 학생들을 감시하기 위해 몸에 새긴 소형 천리안.\n그 어떤 시간에 어떤 형태이던 굴레 안에 존재하기만 한다면\n대상의 상태와 위치를 즉시 파악함과 동시에 특정 능력들을 봉인한다.{/color}"
                 textbutton "닫기" action Hide('seconditem') at center1
 
 screen thirditem:

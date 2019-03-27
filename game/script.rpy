@@ -2076,7 +2076,7 @@ label star2:
         anothervoice "{b}그럼 네 손이 떨고 있는 건 기분 탓일까?{/b}"
         seng "...칫."
         anothervoice "너는 어쩔 수 없이 나에게 협력할 수 밖에 없어.{p=.5}지금은 너를 해치지 않아.{w=1.0} 그런데, 자랑은 아니지만 나. 기분이 상당히 빨리 변하거든.{p=.5}언제 어떻게 변해서 너를 {b}{color=#F00}죽여{/color}{/b}버릴지 몰라."
-        play sound "sworddrop.wav" 
+        play sound "sworddrop.mp3" 
         seng "........"
         $renpy.pause(.5)
         "검이 떨어졌다."
@@ -2137,7 +2137,7 @@ label star2:
         $renpy.pause(2.0)
         "퍼석이는 흙이 운동화를 더럽힌다.{p=.5}아니, 더럽히려 했다."
         "흙과, 물과, 피로 더럽혀지고 불에 그을려 형태를 유지하는 것 자체가 신기할 정도인 이 운동화에 약간의 흙이 만든 얼룩은 티 조차 나지 않았다."
-        play sound "sandwalk.wav"
+        play sound "sandwalk.mp3"
         "자박거리며 갈라지고, 부서지는 흙의 소리."
         $renpy.pause(6.0)
         "흙에 운동화의 자국이 남았다.{p=.5}미묘하게 물기가 남아있는 흙.{p=.5}내가 \'저쪽\'에 있는 동안 비라도 내렸던 걸까."
@@ -2165,8 +2165,8 @@ label star2:
         scene bg_black with wiperight
         play sound "walk_slow.mp3"
         $renpy.pause(2.0)
-        scene bg_teacher with wipeleft
         nvlnarr "사랑. 인간은 누군가를 사랑하기에 약해진다.\n\n-가장 쓸모 없는 감정에 대한 물음에 돌아온 린의 대답.-"
+        scene bg_teacher with wipeleft
         play sound "sliding.mp3"
         scene bg_teacher 
         $renpy.pause(1.5)
@@ -2200,19 +2200,20 @@ label star2:
         main "그러면 그 이야기는 그만하겠습니다."
         teacher "예, 아무튼 이스프킨 때문에 \'다섯 개의 검\'에 대한 관심이 생겼다고요?"
         main "네. 그 냄새를 맡고 그녀가 등에 지고 있는 것을 다시 보았을 떄 깨달았어요.{p=.5}진품인지 아닌지는 모르겠지만 \'아\'와 비슷하게 생겼더군요."                
-        teacher "그건 복제품입니다. 더군다나 그녀는 관리자도 아니고요."
+        teacher "그건 복제품입니다."
         main "제 \'신편\'의 능력을 기억하시나요?"
         teacher "\'이야기를 듣는다\'. {w=.5}음, 그렇군요."
         main "그 검의 이야기는 저를 아찔하게 만들 정도였습니다.{p=.5}저는 진품이라고 생각했지만 복제품이면서도 그 정도의 힘을 낼 수 있다면, 제 것은 얼마나 큰 힘을 내 줄까요."
         teacher "요컨대 알지 못하는 사용법이 있을지 모르니 검에 대해 자세히 기록된 자료를 읽어보고 싶다는 것이군요."
         main "예."
         teacher "알겠습니다. 찾아 보도록 하죠."
-        show continued with dissolve
+        window hide 
+        show continued2 with dissolve
         $renpy.pause(1.5)  
-        scene bg_white with dissolve
+        scene bg_black with dissolve
         show chapter2 with dissolve
         $renpy.pause(1.5)
-        hide chapter2
+        hide chapter2 with dissolve
         nvlnarr "그것은 오뉴월에 내리는 눈이었다.{p=.5}온 세상을 순백으로 물들이고, 물들이고, 물들여 곧 시야를 전부 가려냈다."
         nvl clear
         hide window 
@@ -2232,6 +2233,7 @@ label star2:
         "CV-01" "더 이상 들을 가-"
         "의장" "닥쳐라. 계속해 보도록."
         "CV-02" "다행이도 이번 조커는 우리가 확보했지 않습니까? 그것을 이용하는 겁니다.{p=.5}[nameless]을 보냅시다. 그에게."
+        play sound "jab.mp3"
         scene bg_room with vpunch
         anothervoice "꿈인가..."
         "[nameless].{p=.5}그녀를 죽이려 한 이이자, 그녀의 멘토이자, 그녀의 어머니."
@@ -2274,16 +2276,15 @@ label star2:
         "길의 안전을 확인하는 파수가 둘. 싸우기 위한 사람이 하나. 그리고 짐을 들 사람 하나.{p=.5}최소 네 명이다. 이 수를 채우지 않고 가는 것은 죽여달라고 사정하는 것과 다를 바 없다."
         "나머지 한 명을 구해야한다."
         "...하지만, 어떻게?"
-        scene bg_balck with dissolve
+        scene bg_black with dissolve
         $firstcurious=None
         $secondcurious=None
         $thirdcurious=None        
-        $firstitem=None
-        $seconditem=None
         $thirditem=None
         $forthitem=None
         "나는, 잠에서, 깼다."
-        scene bg_floor with irisout
+        scene bg_floor 
+        show screen curious_button with irisout
         guard "......."
         "일어나지 않고서 천장을 바라보았다."
         "......."
@@ -2324,5 +2325,10 @@ label star2:
         guard "속일 생각 하지 마."
         anothervoice "...{w=.5}역시 관리자는 관리자라는 건가."
         guard "자, 그럼 하나 묻겠어.{p=.5}너는 누구지?"
+        anothervoice "내 이름은 Ψ{rt}한{/rt}. [main]의 신편이지."
+        guard ".......{w=.5}...[main]은 어떻게 했어?" 
+        anothervoice "아, 걱정하지 마. 지금 몸 속 어딘가에서 그 동안 취하지 못했던 휴식을 취하고 있을 뿐이야."
+        guard "왜... 이제 와서야 나타난 거야?"
+        anothervoice "나라고 좋아해서 네게 협력을 요구하는게 아니야.{p=.5}그날 죽어버린 동료들을 생각한다면... 아직도 피가 끓지만..."
         
         $renpy.full_restart() 

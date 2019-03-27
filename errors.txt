@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 2198: choice menuitem expects a non-empty block.
-    "계속한다.":
-            ^
+File "game/screens.rpy", line 121: keyword argument u'at' appears more than once in a textbutton statement.
+    textbutton "None" at alpha1(sec=1.5) at alpha1(sec=1.5)
+                                           ^
 
-Ren'Py Version: Ren'Py 7.0.0.196
-Wed Jul 18 11:25:26 2018
+Ren'Py Version: Ren'Py 7.1.3.1092
+Wed Mar 27 10:39:35 2019

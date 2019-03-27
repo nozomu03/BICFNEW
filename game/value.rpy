@@ -96,6 +96,8 @@ transform dodge:
     linear 0.2 align(.9, .5)
 image bg_roomblack = im.MatrixColor("bg_roomc.jpg", im.matrix.saturation(0.0))
 image bg_clubblack = im.MatrixColor("bg_club.jpg", im.matrix.invert())
+image continued2 = im.MatrixColor("continued.png", im.matrix.invert())
+
 define bg_clubblack = im.MatrixColor("bg_club.jpg", im.matrix.saturation(0.0))
 image seng_nomi = im.MatrixColor("seng_nom.png", im.matrix.invert())
 image bg_clubred =  im.MatrixColor(bg_clubblack, im.matrix.colorize("#DF0101", "#1C1C1C"))
@@ -194,7 +196,7 @@ init python:
     guard = Character("이스프킨", what_color="#FC9B9B", who_color="#806060")
     factory = Character("안슈아", color="#868A08")
     anothervoice = Character("Ψ", who_color="#000069", what_color="#C65FF9")
-    nameless = Character(" ", what_color="#B9062F")
+    nameless = Character("\[ \]", what_color="#B9062F")
     style.window.left_padding=30
     a=0
     b=0
