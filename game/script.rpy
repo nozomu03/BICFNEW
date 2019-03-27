@@ -2318,5 +2318,11 @@ label star2:
         $renpy.pause(2.0)
         guard "음?"
         anothervoice "왜 그러시죠?"
-        play sound 
+        play sound "sword.mp3"
+        guard "너는 다른 아이구나."
+        anothervoice "네? 무슨 뜻이죠?"
+        guard "속일 생각 하지 마."
+        anothervoice "...{w=.5}역시 관리자는 관리자라는 건가."
+        guard "자, 그럼 하나 묻겠어.{p=.5}너는 누구지?"
+        
         $renpy.full_restart() 

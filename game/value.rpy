@@ -11,8 +11,8 @@ init python:
     #style.newBar.tumb_offset = 13
     style.newBar.left_gutter = 10
     style.newBar.right_gutter = 10
-    style.newBar.left_bar = Frame("gui/bar/leftd.png", gui.bar_borders, tile=gui.bar_tile)
-    style.newBar.right_bar = Frame("gui/bar/rightd.png", gui.bar_borders, tile=gui.bar_tile)
+    style.newBar.left_bar = Frame("gui/bar/left.png", gui.bar_borders, tile=gui.bar_tile)
+    style.newBar.right_bar = Frame("gui/bar/right.png", gui.bar_borders, tile=gui.bar_tile)
 
     style.Buttoncolor=Style(style.button)
     style.Buttoncolor.background="#ffffff"
