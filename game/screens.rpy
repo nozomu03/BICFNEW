@@ -37,6 +37,12 @@ transform quake:
     linear .1 ypos 0
     linear .1 ypos 10
     repeat(10.0)
+transform lrquake:
+    align(.5, .5)
+    linear .1 xpos -10
+    linear .1 xpos 0
+    linear .1 xpos 10
+    repeat(3.0)
 
 transform alphamove(o_xpos=0, o_ypos=100):
     xpos o_xpos

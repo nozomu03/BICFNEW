@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 121: keyword argument u'at' appears more than once in a textbutton statement.
-    textbutton "None" at alpha1(sec=1.5) at alpha1(sec=1.5)
-                                           ^
+File "game/script.rpy", line 128: end of line expected.
+    with irisout    seng "잘 잤어?"
+                    ^
 
 Ren'Py Version: Ren'Py 7.1.3.1092
-Wed Mar 27 10:39:35 2019
+Wed Jun 05 12:01:39 2019

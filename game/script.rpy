@@ -107,9 +107,11 @@ label start:
     $renpy.fix_rollback() 
     call check from _call_check       
     call chsetting from _call_chsetting_1
-    if persistent.USB!=None:
-       show seng_nom2 at Position(xalign=.0, yalign=.0)
+    #if persistent.USB!=None:
+       #show seng_nom2 at Position(xalign=.0, yalign=.0)
     window show
+    scene warning with dissolve
+    $renpy.pause(5.0)
     nvlnarr "열심히 살아가야 하는 이유는 무엇인가.{p=1.0}하루하루 살아가는 삶 속에서 견디기 힘든 고난이 있다 하여도{p=1.0}우리는 나아가야만 하는가?"
     nvl clear
     window hide
@@ -124,9 +126,6 @@ label start:
     scene bg_room_night
     show seng_nom at right
     with irisout
-    show plorogue with dissolve
-    $renpy.pause(3.0)
-    hide plorogue with dissolve
     seng "잘 잤어?"
     main "뭐, 그럭저럭이지."
     play sound "walk_slow.mp3"
@@ -1596,7 +1595,6 @@ label star2:
         $renpy.pause(1.0)
         play sound "blooding.mp3" 
         show guard_nomred at Position(xalign=.5, yalign=1.0) with Dissolve(4.0)
-        guard "카렉... 파른... 그리운 사람들... {w=1.0}당신들의 곁으로 갑니다..."
         play sound "jab.mp3"
         hide guard_nom
         hide guard_nomred
@@ -1751,7 +1749,7 @@ label star2:
                 seng "무슨 일이죠? 아까전엔 총성까지 들리던데..."
                 teacher "우리와 똑같습니다. {w=.5}아마 무기 양산을 방해하려는 목적이겠죠."
                 "객귀들의 침입인가..."
-                teacher "지금은 전부 사라졌습니다만... 다시 올지 오지 않을 지는 모르겠습니다.{p=.5}혹여 총성이 들리더라도 너무 놀라지 마시고 이 곳에 있으면 될 겁니다."
+                teacher "지금은 전부 사라졌습니다만... 다시 올지 오지 않을 지 잘 모르겠습니다.{p=.5}혹여 총성이 들리더라도 너무 놀라지 마시고 이 곳에 있으면 될 겁니다."
                 main "밖으로 피난하는게 안전하지 않을까요?"
                 teacher "아뇨. 바깥은 돌아다니는 파수들을 제외하곤 거의 아무도 없습니다. 하지만 이곳은 마법과 경비병들이 지키고 있죠.{p=.5}괜찮을 겁니다."               
                 seng "알겠습니다. 그리 하지요."
@@ -2208,7 +2206,6 @@ label star2:
         main "예."
         teacher "알겠습니다. 찾아 보도록 하죠."
         window hide 
-        show continued2 with dissolve
         $renpy.pause(1.5)  
         scene bg_black with dissolve
         show chapter2 with dissolve
@@ -2232,11 +2229,11 @@ label star2:
         "CV-02" "학교라는 것은 본디 관리자들을 보호하기 위해 만들어진 곳. 저들이 찬양해 마지않는 \'첫번째 조커\'가 이루어낸 업적입니다."
         "CV-01" "더 이상 들을 가-"
         "의장" "닥쳐라. 계속해 보도록."
-        "CV-02" "다행이도 이번 조커는 우리가 확보했지 않습니까? 그것을 이용하는 겁니다.{p=.5}[nameless]을 보냅시다. 그에게."
+        "CV-02" "다행이도 이번 조커는 우리가 확보했지 않습니까? 그것을 이용하는 겁니다.{p=.5}\'그 녀석\'을 보냅시다. 그에게."
         play sound "jab.mp3"
         scene bg_room with vpunch
         anothervoice "꿈인가..."
-        "[nameless].{p=.5}그녀를 죽이려 한 이이자, 그녀의 멘토이자, 그녀의 어머니."
+        "무명.{p=.5}그녀를 죽이려 한 이이자, 그녀의 멘토이자, 그녀의 어머니."
         "나는 일어섰다."
         seng "유치한 가면 무도회에 어울려 주는 것도 한계가 있어."
         anothervoice "...이 몸을 빌리는 건 이번 달 말일까지야."
@@ -2258,7 +2255,7 @@ label star2:
         play sound "pen.mp3"
         "특정했다.{p=.5}나머지 검들이 있을 만한 곳을."
         anothervoice "음..."
-        "이것은 [nameless]의 발자취를 쫒는 일이다.{w=.5}나의 입장이 아닌 [nameless]의 입장에서 생각해야만 한다."        
+        "이것은 무명의 발자취를 쫒는 일이다.{w=.5}나의 입장이 아닌 무명의 입장에서 생각해야만 한다."        
         anothervoice "...역시 여긴가..."
         "\'재액의 화당\'. 누군가 고의로 깎은 것 마냥 날카로운 절벽과 꺼지지 않는 불꽃들과 객귀들이 있는 곳."
         "\'내려갈 때 열 명, 바닥에서 다섯 명 다시 올라오면 한 명\'.{p=.5}정신적으로나 육체적으로나 지치는 원정이다. 거기까지 가는 것으로도 일이겠지."
@@ -2284,7 +2281,8 @@ label star2:
         $forthitem=None
         "나는, 잠에서, 깼다."
         scene bg_floor 
-        show screen curious_button with irisout
+        show screen curious_button 
+        with irisout
         guard "......."
         "일어나지 않고서 천장을 바라보았다."
         "......."
@@ -2296,7 +2294,7 @@ label star2:
         "덥고 건조한 날씨다.{p=.5}불 바로 옆에 있기에 당연하다면 당연한 일이지만 익숙해 질 수는 없었다."
         guard "......."
         "머리맡에 놓여 있던 약을 집어들었다."
-        play sound "medicine.wav"
+        #play sound "medicine.wav"
         $renpy.pause(6.0)
         "물 없이 삼켰다.{p=.5}쓴 맛의 여운이 혀에 남았다."
         "밖으로는 여전히 작열하는 불꽃만이 보인다."
@@ -2313,10 +2311,15 @@ label star2:
         anothervoice "알고 있습니다."
         guard "좋다. 그대가 나에게 향하는 것을 허락하겠노라."
         "길잡이를 보냈다."
+        scene bg_black with dissolve
+        $renpy.pause(4.0)
         play sound "walk_slow.mp3"
         $renpy.pause(2.0)
         play sound "door.mp3"
         $renpy.pause(2.0)
+        scene bg_room
+        show guard_nom
+        with dissolve
         guard "음?"
         anothervoice "왜 그러시죠?"
         play sound "sword.mp3"
@@ -2326,9 +2329,107 @@ label star2:
         anothervoice "...{w=.5}역시 관리자는 관리자라는 건가."
         guard "자, 그럼 하나 묻겠어.{p=.5}너는 누구지?"
         anothervoice "내 이름은 Ψ{rt}한{/rt}. [main]의 신편이지."
-        guard ".......{w=.5}...[main]은 어떻게 했어?" 
+        guard ".......{w=.5}... 그녀는 어떻게 했어?" 
         anothervoice "아, 걱정하지 마. 지금 몸 속 어딘가에서 그 동안 취하지 못했던 휴식을 취하고 있을 뿐이야."
         guard "왜... 이제 와서야 나타난 거야?"
         anothervoice "나라고 좋아해서 네게 협력을 요구하는게 아니야.{p=.5}그날 죽어버린 동료들을 생각한다면... 아직도 피가 끓지만..."
-        
-        $renpy.full_restart() 
+        guard "안톤이 내게 어떤 \'가능성\'에 대해서 말한 적 있어.{p=.5}그때는 그냥 웃어 넘겼지만..."
+        anothervoice "안톤이 하는 말은 언제나 옳았지."
+        guard "그때 너까지 죽였어야 했어."
+        anothervoice "개탄해 봤자 바뀌지 않아."
+        guard "제기랄."
+        anothervoice "내가 원하는 건 간단해. 힘을 빌려줘."
+        guard "원수에게 손을 내밀다니, 그 고귀하던 한은 어디로 갔지?"
+        play sound "jab.mp3"
+        extend "{p=.5}...뭐, 좋아. 한 번 들어볼까."
+        anothervoice "재액의 회당으로 갈 거야."
+        guard "흠. 아마 네가 파수일 거고, 나는 싸움꾼... 나머지 둘은?"
+        anothervoice "[main]의 친구들을 데려갈 거야."
+        guard "너답지 않게 훌륭한 선택인걸. 확실히 그 둘이라면 나보다 더 믿음직하겠지."
+        anothervoice "어떻게 할래."
+        guard "내가 무슨 말을 할 지 너도 알고 있잖아?"
+        anothervoice ".......{w=.5}...뭘 원해?"
+        guard "네 컴퓨터의 암호."
+        $firstcurious = "이스프킨이 내 컴퓨터 암호를 원하는 이유가 뭐지?"
+        anothervoice "뭐야, 그걸 아직도 들고 있었어?"
+        guard "뭘 어떻게 해도 열리지 않아서 말이야."
+        anothervoice "네가 나한테 진 빚을 잊진 않았겠지."
+        guard "잊었어."
+        play sound "jab.mp3"
+        "어떤 말을 입에 담아도, 어떤 말을 들어도. 어떤 행동을 취해도. 어떤 행동을 당해도. 그리고 그 끝에서도.{w=.5} 이스프킨의 표정이 바뀌는 일은 없었다."
+        "안타슈프라인. 썩은 불꽃의 잔재. {w=.5}안톤에게 \'구조\'되기 전의 그녀는 피찬{rt}린{/rt}왕. 인간이 아닌 그 언저리의 무엇인가였다.{p=.5}살아가는 것이 아닌 생존하고 있었던, 오히려 스스로의 죽음조차 바랬던 무언가."
+        "나는 그녀를 좋게 볼 수 없었다. {p=.5}0에서 부터 모든 것을 타의로 수행한, 그리고 그 결과 죽음을 두 번 넘어선 자의 이야기를.{p=.5}내 동료들을 학살했기 때문만이 아닌, 한때 숨쉬던 생명이 다른 생명에게 가진 경멸감으로써."
+        "멸{rt}분{/rt}시{rt}노{/rt} 했고, 죽{rt}구{/rt}이{rt}하{/rt}려 했다. 그리고 실제로 성공했었다. {w=.5}성공했어야만 했다."
+        guard "암호만 넘겨준다면 나는 일이 끝날 때까지는 네 말에 따르겠어.{w=.5} 물론 암호 먼저."
+        anothervoice "...{w=.5}자랑스런 우리의 꿈."
+        guard ".......{p=.5}.......{p=.5}.......{p=.5}...{w=.5}멍청이."
+        "어께를 으쓱였다."
+        nvl clear
+        window show
+        nvlnarr "\'꿈\': 사람의 기저에 서식하며 사고와 행동을 제어하는 천성."
+        nvl clear
+        window hide
+        guard "꼭... 그렇게까지..."
+        anothervoice "네가 지은 죄의 무게를 조금은 알게 되었길 빌겠어."
+        guard "고작 이런 걸로 마음을 바꾸진 않아."
+        anothervoice "두고 보면 알게 되겠지."
+        show continued2 with dissolve
+        scene bg_black with dissolve
+        nvl clear
+        window show
+        nvlnarr "먼 옛날. 이 세상에 아직 \'신님\'이 남아있던 시절에. 별들은 손을 뻗으면 닿을 곳에 있었습니다.{p=.5}낮 동안 햇빛에 삶아지고 밤 동안 달빛에 얼려지는 것을 참다 못한 사람들은 가장 높은 산 꼭대기의 신님을 찾아갔답니다.\n\n\n\n돌맹이 왕자님 이야기 - 작자 미상"
+        window hide
+        scene chapter3 with dissolve 
+        $renpy.pause(3.0)
+        scene bg_hallway
+        show seng_nom at left
+        show rine_nom at right
+        with dissolve
+        anothervoice "그래서..."
+        rine "나는 상관 없을 것 같은데."
+        seng "나도 상관 없어."
+        anothervoice "고마워."
+        seng "...{w=.5}괜찮아. \'우리\' 사이니까."
+        "성과 리네를 설득하는데 성공했다.{w=.5}여장을 꾸려 길을 떠날 채비만 마치면 된다."
+        rine "이스프킨이랑 어디서 합류할 거야?"
+        anothervoice "제2 정거장 앞에서."
+        seng "정거장까지 나가는 건... 학교에 도착하기 전 잠깐 떠돌이 생활을 했을 때 이후로 처음인걸."
+        "[main]의 기억을 뒤졌다.{w=.5}생존자 구조를 위한 3차 구조대에 의해 발견되어 거두어지기 전까지, 성은 황폐화 된 도시들을 전전하며 살아왔다."
+        anothervoice "교장과 안톤에게도 허락을 구해 놨어. 준비가 끝나는 대로 바로 출발하자."
+        "{color=#DF0101}리네{/color}{color=#FFFFFF},{/color} {color=#91ff6d}성{/color}" "그래."
+        scene bg_black with dissolve
+        play sound "walk_slow.mp3"
+        $renpy.pause(2.0)
+        stop sound
+        scene bg_schooldoor with dissolve
+        "공무를 위한 외출이 아닌 학생 개인의 현장 답사.{p=.5}당연하게도 버스 대절 허가가 나올 리 없었다."
+        rine "나가면 두세달은 못 돌아오겠네."
+        anothervoice "짐은 확실히 챙겼어?"
+        seng "...챙겼어. 가자. 지체해서 좋을 일은 없어."
+        "교문 밖으로 나서기 전, 학교의 영역을 알리는 돌을 세번 건드리고 가볍게 기도했다."
+        anothervoice "...우리들을 품어주시는 주, 하늘에 계신 아버지. 모든 힘과, 모든 영광과, 국가를 당신께.{p=.5}저희 모두를 진심으로 가호해 주소서."
+        scene bg_black with dissolve
+        $renpy.transition(Dissolve(3.0))
+        show screen muzlet(temp="3주 후")
+        $renpy.pause(6.0)
+        $renpy.transition(Dissolve(3.0))
+        hide screen muzlet        
+        $renpy.pause(3.0)
+        hide curious_button
+        scene bg_black
+        with dissolve
+        nameless "....... {w=.5}....... {w=.5}...성부와 성좌와 성령의 이름으로, 아멘. 성 요셉, 존체의 정배 성 마리아와 함께 저희를 위해 기도하시고, 저희들로 하여금 천주님 자비 속에 있다는 것을 알게 하소서."
+        play first "shotgun.mp3"
+        show cg_blood_2 at sizeing1 with vpunch
+        "얼굴에 피가 튀었다."
+        $renpy.pause(2.0)
+        scene bg_black with dissolve
+        "문질러 닦았다."
+        "어째서 이렇게 되었을까."
+        nameless "구세주 예수 그리스도, 우리들은 주를 믿으며, 소원하니. 영원히 두려워 할 것 없으라."
+        "눈을 감겨주었다."
+        nameless "깨지 않는 영원한 안식을,\'어{rt}환{/rt}긋{rt}상{/rt}난{rt}기{/rt} 꿈{rt}행{/rt}\'이여."
+        "한 여인이 잠들었다. {w=.5}나의 인간성이 잘려나간다."
+        nameless "큭..."
+        show daruma_kickimage        
+        $renpy.full_restart()

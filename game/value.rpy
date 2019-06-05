@@ -182,9 +182,14 @@ transform sizeing:
     align(.5, .5)
     linear 6.0 zoom 80.0
 
+transform sizeing1:
+    xalign .5 yalign .5
+    linear 10.0 zoom 80.0
+    
 init python:
     temp=None
-    
+    renpy.music.register_channel("first", "sfx", False)
+    renpy.music.register_channel("second", "sfx", False)
     rine = Character("리네", color="#DF0101", image="rine")
     main = Character("[temp]", color="#6E6E6E")
     seng = Character("성", color="#91ff6d", image="seng")
@@ -196,12 +201,15 @@ init python:
     guard = Character("이스프킨", what_color="#FC9B9B", who_color="#806060")
     factory = Character("안슈아", color="#868A08")
     anothervoice = Character("Ψ", who_color="#000069", what_color="#C65FF9")
-    nameless = Character("\[ \]", what_color="#B9062F")
+    nameless = Character("□□□□", who_color="#3300FF", what_color="#B9062F")
     style.window.left_padding=30
     a=0
     b=0
 
 image white1d=im.MatrixColor("bg_white1.png", im.matrix.invert())
+
+screen muzlet(temp="tete"):
+    text "{size=40}{color=#FFFFFF}[temp]{/color}{/size}" align(.5, .5)
 
 label psycopuzzle:
     scene bg_white1 with dissolve
@@ -251,6 +259,7 @@ define left = Position(xalign=.1, yalign=1.0)
 define center = Position(xalign=.7, yalign=1.0)
 define center1 = Position(xalign=.5, yalign=.5)
 define center2 = Position(xalign=.5, yalign=.0)
+
 
 define nvlnarr=Character(None, kind=nvl)
 
