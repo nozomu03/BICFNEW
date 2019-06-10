@@ -1079,7 +1079,7 @@ label star2:
     "분명히 목이 잘렸을 터인 그녀가 멀쩡히 말하고 있다.{p=1.0}바닥에 떨어진 목을 주워 봉합."
     "{color=#088A68}???{/color}" "살려주고 싶은 마음이 싹 달아나 버렸어.{p=1.0}정말이지 \'안쪽\' 사람들은 이해할 수 없다니까."
     "머리에 닿는 차가운 금속.{p}펌프 액션 샷건이 내가 다른 이들에게 했던 것처럼 나의 뇌를 박살 낼 것이다."
-    "???" "이봐, 엘{rt}희{/rt}키{rt}망{/rt}. {w=1.0}하나만 물어봐도 될까?"
+    "???" "이봐, 에{rt}희{/rt}르{rt}망{/rt}. {w=1.0}하나만 물어봐도 될까?"
     "{color=#088A68}???{/color}" "?"
     "???" "마지막으로 봤을 때랑 상당히 다른 모습이네. {w=1.0}그 동안 무슨 일이 있었는지 짧게 설명해 주지 않을래?"
     "{color=#088A68}???{/color}" "싫어."
@@ -1895,7 +1895,6 @@ label star2:
         centered "다시 왔구나?"
         extend "\n음... 너무 강압적이었던 거려나?"
         extend "\n한 번 정도는 괜찮겠지."
-        extend "\n봐줄게. 이렇게 끝내는 것."
         extend "\n이어해도 좋아."
         extend "\n{color=#DF0101}네 이야기를{/color}."
         $emotion="ang"
@@ -2432,4 +2431,27 @@ label star2:
         "한 여인이 잠들었다. {w=.5}나의 인간성이 잘려나간다."
         nameless "큭..."
         show daruma_kickimage        
+        $renpy.pause(3.0)
+        "심장이 움츠러든다."
+        nameless "[main]..."
+        "[main]. 소라빛 소녀... {w=.5}나는 그 녀석을 위해 되돌아왔다.{p=.5}내 심장을 터뜨린 구슬들과, 내 양 눈을 꿰어버린 검을 넘어서."
+        $renpy.music.play('heartbeat.mp3', 'second')    
+        $renpy.music.set_volume(3.0, channel='second')
+        $renpy.pause(4.0)
+     #  $renpy.music.stop('heart', None)
+        $renpy.music.stop('second')
+        nameless "...후..."
+        "가라앉았다. {w=.5}기적과도 같이.{p=.5}이 몸도 얼마 가지 않아 붕괴될 것이다. {w=.5}그렇게 되면... {p=.5}의장의 말은 정확하다. {w=.5}그 녀석은 이리로, 반드시 올 것이다."
+        play sound "walk_slow.mp3"
+        "누군가 다가오고 있다."
+        $renpy.pause(2.0)
+        stop sound
+        "[main]의 것은 아니다."
+        "심호흡과 함께 임전 태세를 갖추었다."
+        er "쏘지 마십시오. 접니다."
+        nameless "...어떻게 됐어?"
+        er "그 늬들의 모습을 확인했습니다. 빨간 머리 하나, 검은 머리 하나."
+        nameless "수고했어."
+        er "그럼 가 봐도 됩니까?"
+        nameless "아니, ㅠ"
         $renpy.full_restart()

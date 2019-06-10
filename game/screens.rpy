@@ -1150,8 +1150,16 @@ style slider_vbox:
 ##
 ## https://www.renpy.org/doc/html/history.html
 
-screen history():
+init python:
+    a=0
+    _history_list = [ ]
+    _history = True
 
+define config.history_callbacks = _history_list
+
+
+
+screen history():
     tag menu
 
     ## Avoid predicting this screen, as it can be very large.
@@ -1162,27 +1170,29 @@ screen history():
         style_prefix "history"
 
         for h in _history_list:
-
             window:
-
                 ## This lays things out properly if history_height is None.
                 has fixed:
                     yfit True
-
-                if h.who:
-
-                    label h.who:
-                        style "history_name"
-
+                #if h.who:
+                    #label h.who:
+                     #   style "history_name"
                         ## Take the color of the who text from the Character, if
                         ## set.
-                        if "color" in h.who_args:
-                            text_color h.who_args["color"]
+                        #if "color" in h.who_args:
+                        #    text_color h.who_args["color"]
 
-                text h.what
+
+                $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
+                vbox:
+                    textbutton "[h.who]" style "history_name" action[RollbackToIdentifier(h.rollback_identifier)]
+                    text h.what
 
         if not _history_list:
             label _("The dialogue history is empty.")
+
+
+define gui.history_allow_tags = set()
 
 
 style history_window is empty
@@ -1205,6 +1215,7 @@ style history_name:
     xanchor gui.history_name_xalign
     ypos gui.history_name_ypos
     xsize gui.history_name_width
+    color gui.history_name_color
 
 style history_name_text:
     min_width gui.history_name_width

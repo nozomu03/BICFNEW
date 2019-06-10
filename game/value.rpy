@@ -202,6 +202,7 @@ init python:
     factory = Character("안슈아", color="#868A08")
     anothervoice = Character("Ψ", who_color="#000069", what_color="#C65FF9")
     nameless = Character("□□□□", who_color="#3300FF", what_color="#B9062F")
+    er = Character("에르", who_color="#088A68", what_color="#B9062F")
     style.window.left_padding=30
     a=0
     b=0

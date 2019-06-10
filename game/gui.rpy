@@ -344,6 +344,7 @@ define gui.history_name_xpos = 155
 define gui.history_name_ypos = 0
 define gui.history_name_width = 155
 define gui.history_name_xalign = 1.0
+define gui.history_name_color = "#000000"
 
 ## The position, width, and alignment of the dialogue text.
 define gui.history_text_xpos = 170
