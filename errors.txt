@@ -2,9 +2,10 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 2510: expected statement.
-    window clear
-          ^
+File "game/script.rpy", line 2665: invalid syntax
+    renpy.pause(2.-)
+                    ^
+    
 
 Ren'Py Version: Ren'Py 7.2.2.491
-Thu Jun 13 14:49:37 2019
+Fri Jun 14 12:28:17 2019

@@ -2378,8 +2378,6 @@ label star2:
         window show
         nvlnarr "먼 옛날. 이 세상에 아직 \'신님\'이 남아있던 시절에. 별들은 손을 뻗으면 닿을 곳에 있었습니다.{p=.5}낮 동안 햇빛에 삶아지고 밤 동안 달빛에 얼려지는 것을 참다 못한 사람들은 가장 높은 산 꼭대기의 신님을 찾아갔답니다.\n\n\n\n돌맹이 왕자님 이야기 - 작자 미상"
         window hide
-        scene chapter3 with dissolve 
-        $renpy.pause(3.0)
         scene bg_hallway
         show seng_nom at left
         show rine_nom at right
@@ -2479,10 +2477,11 @@ label star2:
         nameless "그거야 기량이 비슷할 때 이야기지."
         play sound "shotgun.mp3"
         seng "큭..."
-        $renpy.pause(2.0)
+        stop sound
+        play sound "blooding.mp3"
+        show seng_supred at right with Dissolve(3.0)
         stop sound
         hide seng_ang
-        show seng_supred at right with dissolve
         play sound "collapse.ogg"
         hide seng_supred with wipedown
         seng "이봐... 마지막으로 할 말...이 있어..."
@@ -2506,8 +2505,9 @@ label star2:
         $renpy.pause(2.0)
         scene bg_black with dissolve
         play sound "walk_slow.mp3"
+        nvl clear
         nvlnarr "무. 시간은 공간을 창조했고, 공간은 별을 낳았으며, 별은 갖은 추악함을 잉태했다."
-        window clear
+        nvl clear
         hide window
         scene bg_mountop
         show rine_ang
@@ -2537,9 +2537,9 @@ label star2:
                 rine "굳이 그럴 것까지도 없어. 지금 네 몸에서 성의 냄새가 진동을 하니까."
                 er "...이래서 눈치빠른 꼬맹이는 싫다니까...려나요. 뭐, 그렇습니다. 성은 제가 섬기고 있는 분의 공격을 받아 기절한 후 끌려갔습니다.{p=.5}되찾고 싶다면 따라 오시죠."
         play sound "walk_slow.mp3"    
-        scene bg_nameless
         $renpy.pause(2.0)
         stop sound
+        scene bg_nameless
         show rine_nom at right
         show bad_nom at left
         with dissolve
@@ -2547,7 +2547,7 @@ label star2:
         er "감사합니다."
         "이 목소리는..."
         play sound "walk_slow.mp3"
-        show nameless at center2 with dissolve
+        show nameless_nom at center with dissolve
         nameless "오랜만이야, [main]."
         play sound "heartbeat.mp3"
         "......."
@@ -2577,5 +2577,179 @@ label star2:
         nameless "이 총, 익숙하지?"
         anothervoice "그 녀석은 지금 제 안에 있어요."
         nameless "몸을 빼앗기다니, 답지 않은걸."
-        anothervoice "붕괴된 건 아니에요. 그 인격은 아직 살아남서 "
+        anothervoice "붕괴된 건 아니에요. 그 인격은 아직 살아남은 채 지금도 당신과 이야기 하기 위해 발버둥 치고 있으니까요."
+        nameless "강제로 뺏었다는 뜻이야?"
+        anothervoice "녀석의 붕괴도가 위험수치를 넘었어요. 저는 그 녀석을 보호하기 위해 어쩔 수 없는 선택을 한 거라고요."
+        nameless "좋아. 그럼 지금 당장 녀석을 해방해."
+        anothervoice "제 말, 안 듣고 계신 건가요?"
+        nameless "그런게 아냐. 죽음조차 거슬렀는데, 고작 신의 은총 하나 못 거스를까 봐?"
+        anothervoice "...붕괴도를 줄일 확실한 방법이라도 있나요?"
+        nameless "있어. 나와 [main]. 그 둘이기에 가능한게."
+        anothervoice "......."
+        "심호흡을 했다."
+        anothervoice "....... {w=.5}....... {w=.5}......."
+        main "....... {w=.5}....... {w=.5}......."
+        nameless "[main]."
+        main "나...는... [anothervoice]? [main]? {color=#FF0000}{b}나는...{/b}{/color}"
+        play sound "slap.ogg"
+        "따귀를 맏았다."
+        $renpy.pause(1.0)
+        main ".......{w=.5} [nameless]...?"
+        nameless "그래, 나야."
+        main "여긴... 큭..."
+        scene bg_nameless
+        show nameless_nom
+        with pixellate
+        nameless "정신 차려, [main]."
+        main "[nameless]... {w=.5}[nameless]...?"
+        nameless "여러가지 사정이 좀 있어서 말이야."
+        "그리운... 목소리..."
+        play sound "walk.mp3"
+        show guard_nom at left with dissolve
+        $renpy.pause(2.0)
+        stop sound
+        guard "젠장! 한 발 늦었나... [main]! [main]! 들려? [main!]"
+        main "이스...프킨..."
+        nameless "닥쳐 안타슈프라인."
+        guard "물러서! 저 녀석의 말을 들어선 안 돼!" 
+        play sound "shotgun.mp3"
+        $renpy.music.play('heartbeat.mp3', 'second')    
+        hide guard_nom 
+        show guard_nomred at left with dissolve
+        $renpy.pause(2.0)
+        stop sound
+        $renpy.music.stop('second')
+        hide guard_nomred with wipedown
+        "이스...프킨."
+        nameless "아아, 의장님. 당신을 사랑합니다."
+        play sound "shotgun.mp3"
+        main "......."
+        $renpy.pause(2.0)
+        "손을 복부로 뻗었다.{p=.5}묻어나오는 진홍빛 액체. 틀림없는 피였다."
+        "무슨 일이 일어난 것인가 이해할 수 없었다."
+        rine "{color=#FF0000}{b}[main]──────────!{/b}{/color}"
+        scene bg_black with Dissolve(4.0)
+        $renpy.pause(4.0)
+        play sound "collapse.ogg"
+        $renpy.pause(1.0)
+        stop sound
+        play sound "shotgun.mp3"
+        rine "큭..."
+        play sound "walk.mp3"
+        er "리네를 제압했습니다."
+        nameless "월척이군. 돌아가자. 의장께서 아주 좋아하실 거야."
+        main "...어째서..."
+        anothervoice "......."
+        scene bg_namelessG 
+        show nameless_gray
+        with Dissolve(4.0)
+        play sound "drawning.wav"
+        $renpy.pause(1.3)
+        stop sound
+        play sound "stab.ogg"
+        $renpy.pause(1.0)
+        "검이 [nameless]의 등허리를 뀄다."
+        "피는 흐르지 않는다."
+        nameless "......."
+        anothervoice "....... {w=.5}...?"
+        nameless "죽지 않은 이에게 혈액 따위... 남아있을 리 없잖아?"
+        play sound "punch.wav"
+        "정권."
+        stop sound
+        "버텨냈다."
+        play sound "mamiru.mp3"
+        $renpy.pause(.5)
+        stop sound
+        "휘둘렀다."
+        show nameless_mamiru 
+        hide nameless_gray
+        nameless "......."
+        "그녀는 아무 말 없이 바닥에 떨어진 목을 주워들었다."
+        hide nameless_mamiru    
+        show nameless_gray
+        nameless "[anothervoice]."
+        anothervoice "...젠장."
+        nameless "한 번. 봐주겠어."
+        anothervoice "......."
+        nameless "내가 있는 곳은 중앙의회. 어디에 있는 것인가, 너라면 알 수 있겠지."
+        play sound "blooding.mp3"
+        "가시가 나를 옭아맸다."
+        stop sound
+        nameless "네 친구들은 내가 데려가겠어."
+        anothervoice "그건!"
+        play sound "blooding.mp3"
+        anothervoice "아아아아아악!!!!"
+        nameless "가만히 기다리는 것은 지루하지. {w=.5}시간 제한이라도 한 번 걸어볼까. {w=5}50시간을 주겠어. 네 숙주의 친구들을 구하고 싶다면... 그 안에 찾아오라고."
+        anothervoice "잠깐! 마지막으로 하나만 알려주세요!"
+        nameless "뭐야?"
+        anothervoice "당신은 어째서... [main], 당신에게 가장 소중할 사람을 죽이려 하는 거죠?"
+        nameless "죽이려 하는게 아니야. 나는... {w=.5}흠. 이것 또한 시간이 지나면 알 수 있겠지. 나중에 보자고."
+        play sound "unsummon.mp3"
+        scene bg_black with dissolve
+        "인격을 점검했다."
+        stop sound
+        anothervoice "......."
+        "맥동이 끊겨있다."
+        "미세한 호흡, 눈을 감은 채 심층의식 한 켠 자신의 전당에 수감된 채 잠든 [main]."
+        "저 총, 프레{rt}먹{/rt}데{rt}는 자{/rt}토레라면 [main] 같은 복합 인격체의 생명을 끊는 것 정도는 일도 아닐 것이다.{p=.5}죽이지 않고 굳이 치명상을 입혀 인격을 봉인했다는 것은... 어쩌면 저 말이 사실일지도 모르겠다."
+        anothervoice "으으..."
+        play sound "blooding.mp3"
+        "가슴을 꿰뚫은 가시들을 억지로 뽑아냈다."
+        stop sound
+        er "가만히 계세요. 지금 치료해 드릴테니까."
+        $firstcurious = "[nameless]의 저의는 뭘까?"
+        $renpy.pause(3.0)
+        prin "계약도 어기고 멋대로 바깥으로 나서더니 꼴 좋군."
+        teacher "제 잘못입니다. 이스프킨과 함께라면 괜찮을 거라 생각했던 제 안일함 때문에..."
+        prin "넌 옛날에도 지금도 사람이 너무 좋아. 네 잘못이 아닌 것까지 뒤집어 쓰려 하면 나는 미뤄두었던 판결을 지금 선고할 수 밖에 없어."
+        "목소리."
+        anothervoice "으음..."
+        scene bg_prin
+        show prin_nom at left
+        show read_nom at center
+        with irisout
+        teacher "[main]! 정신이 들었습니까?"
+        "안톤. 교장실. 기절해 있는 사이 학교로 옮겨진 모양이었다."
+        anothervoice "성과 리네가... 그리고... 이스프킨..."
+        prin "넌 지금 네 몸 상태가 어떤 지도 모르지?"
+        "일어서려 했다."
+        anothervoice "...욱!"
+        "온 몸의 혈류가 멈췄다."
+        "뻣뻣해지며, 차가워졌다."
+        prin "이제 알겠지?"
+        "교장이 나를 눕혔다."
+        prin "3주. 가만히 쉬고 있어."
+        anothervoice "...-"
+        prin "네 친구들은 걱정하지 마. 너와 계약에 따라 탐사대를 꾸려 반드시 되찾아 줄 테니까. 은혜 모르는 네녀석들도 이걸로 나한테 복종할 수 밖에 없겠지."
+        anothervoice "......."
+        "[main], 성. 두 명의 소녀. {w=.5}관리자를 거둔다는 것은 그 힘을 노리는 세아릴 수 없을 습격을 받아내야 한다는 것이다. 그렇기에 그는 자신의 특기인 환술을 통해 두 사람의 몸에 각인을 박아 넣어 몇 예외를 제외하고 둘을 자유롭게 부릴 수 있도록 \'계약\'을 나누었다."
+        "그것은 둘을 얽메는 족쇄인 동시에, 모든 악몽과 아픔의 종주가 꾸민 간계로부터 암흑을 걷어내는 보루의 열쇠."
+        anothervoice "제 스승...이자 납치범인 [nameless]는 중앙의회에 있을 테니 찾아오라 말했어요."
+        prin "중앙의회?"
+        teacher "그건 이미 오래 전에 해체되었을 텐데요."
+        anothervoice "예. \'첫 조커\'가 그곳을 탈출할 때, 의장을 비롯한 열 다섯 명의 간부가 몰살당해 와해되었죠. {w=1.0}그저 이름만 빌려온 것인지, 아니면 옛 영광의 재건을 위해 누군가 의장을 자처했는지는 잘 모르겠습니다만 [nameless]는 분명히 의회라 하였습니다."
+        prin "...산문답인가."
+        anothervoice "아뇨, 진실은 가까운 곳에 있을 겁니다."
+        prin "뭐?"
+        anothervoice "류스의 성형 요새 \'왕의 무덤\'. {w=1.0}저는 알 수 있습니다. 그녀가 있을 곳은 거기 뿐이라는 것을."
+        prin "비약도 정도가 있다고 생각하지 않아?"
+        anothervoice "비약일지도 모르죠.{w=1.0} 하지만 저는 꿰뚫어 볼 수 있습니다. 그곳은 저와 [nameless]가 처음으로 만났던 장소이자 그녀와 작별을 고했던 장소이자, 목이 떨어지고, 피가 흩뿌려짐으로써 저희 둘의 인연이 멈추고, 닫겨 끊긴 장소."
+        anothervoice "개선장군으로써의 축배와 만리의 배신자로써의 저주. 들어맞는 곳은 거기 뿐이군요."
+        prin "허. 뭐, 상관없어. 조사해야할 구역은 많으니까. 그러나 교장과 관리자 그 둘의 제안과 수긍은 모두 계약. 예측이 빗나갔을 떄의 대가. 확실히 징수하겠어."
+        anothervoice "그때가 된다면, 얼마든지."
+        "떠든 대가일까. 팔이 저렸다."
+        prin "안톤. 저 녀석을 의무실로 치워버려."
+        teacher "예. 옮긴 후에 돌아오면 되겠습니까?"
+        prin "알아서 해."
+        teacher "예. 자, 부축해 드릴테니 아파도 의무실까지만 참아 주십시오."
+        "발을 딛었다."
+        scene bg_prin 
+        show prin_nom at left
+        show read_nom at center
+        with pixellate
+        anothervoice "큭..."
+        scene chapter3 with dissolve 
+        $renpy.pause(3.0)
+        show continued with dissolve
+        $renpy.pause(10.0)
         $renpy.full_restart()

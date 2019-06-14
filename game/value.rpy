@@ -104,7 +104,11 @@ image bg_clubred =  im.MatrixColor(bg_clubblack, im.matrix.colorize("#DF0101", "
 image seng_nomii = im.MatrixColor("seng_nom.png", im.matrix.colorize("#DF0101", "#1C1C1C"))
 image seng_supred = im.MatrixColor("seng_ang.png", im.matrix.colorize("#DF0101", "#1C1C1C"))
 image bg_nightschoolred = im.MatrixColor("bg_ground.jpg", im.matrix.colorize("#DF0101", "#1C1C1C"))
+image nameless_gray = im.MatrixColor("nameless_nom.png", im.matrix.saturation(0.0))
+image bg_namelessG = im.MatrixColor("bg_nameless.jpg", im.matrix.saturation(0.0))
 image seng_mamiru = im.Crop("seng_nom.png", (0, 254, 250, 307))
+define nameless_mamiru = im.Crop("nameless_nom.png", (0, 254, 320, 307))
+image nameless_mamiru = im.MatrixColor(nameless_mamiru, im.matrix.saturation(0.0))
 define seng_mamiru = im.Crop("seng_nom.png", (0, 254, 250, 307))
 define leftbad = Position(xalign=.1, yalign=.7)#1C1C1C
 image seng_mamirui = im.MatrixColor(seng_mamiru, im.matrix.colorize("#1C1C1C", "#DF0101"))
@@ -202,8 +206,8 @@ init python:
     guard = Character("이스프킨", what_color="#FC9B9B", who_color="#806060")
     factory = Character("안슈아", color="#868A08")
     anothervoice = Character("Ψ", who_color="#000069", what_color="#C65FF9")
-    nameless = Character("□□□□", who_color="#3300FF", what_color="#B9062F")
-    er = Character("에르", who_color="#088A68", what_color="#B9062F")
+    nameless = Character("□□□□", who_color="#3300FF", what_color="#FF0000")
+    er = Character("에르", who_color="#088A68", what_color="#FF0000")
     style.window.left_padding=30
     a=0
     b=0
@@ -258,7 +262,7 @@ label psycopuzzle:
 
 define right = Position(xalign=1.0, yalign=1.0)
 define left = Position(xalign=.1, yalign=1.0)
-define center = Position(xalign=.7, yalign=1.0)
+define center = Position(xalign=.5, yalign=1.0)
 define center1 = Position(xalign=.5, yalign=.5)
 define center2 = Position(xalign=.5, yalign=.0)
 
