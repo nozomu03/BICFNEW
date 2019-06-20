@@ -94,6 +94,17 @@ transform dodge:
     align (.5, .5)
     linear 0.2 align(.7, .7)
     linear 0.2 align(.9, .5)
+
+image showT:
+    additive(1.0)
+    "nameless_nom.png"
+    linear 3.0 additive(0.0)
+
+image showT2:
+    alpha(0.0)
+    "nameless_nom.png"
+    linear 3.0 alpha(1.0)
+
 image bg_roomblack = im.MatrixColor("bg_roomc.jpg", im.matrix.saturation(0.0))
 image bg_clubblack = im.MatrixColor("bg_club.jpg", im.matrix.invert())
 image continued2 = im.MatrixColor("continued.png", im.matrix.invert())
@@ -140,6 +151,10 @@ image cg_blood18 = "cg_blood.png"
 image cg_blood19 = "cg_blood.png"
 image cg_blood20 = "cg_blood.png"
 image cg_blood13 = "cg_blood.png"
+
+#image char_nom = "rine_nom.png"
+#image char_ang = "rine_ang.png"
+#image char_sad = "rine_sad.png"
 
 
 init python:

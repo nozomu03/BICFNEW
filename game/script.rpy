@@ -22,6 +22,9 @@ init python:
     location=None
   #  import getpass
 
+image char_nom = "rine_nom.png"
+image char_sad = "rine_sad.png"
+image char_ang = "rine_ang.png"
 
 
 label temp:
@@ -46,31 +49,48 @@ init python:
     f_ypos=None
     temp=None
     emotion="nom"
-    import os.path
+    USB=None
+    trigger = True
+    home = config.basedir.replace("\\", "/")
+    import shutil
+    count = 0
 # 여기에서부터 게임이 시작합니다.
 
 #######################################
-#미완성: USB에 mycharacter_감정.png 파일 넣어서 인벤토리, 겜 화면에서 활용...
-#구현률 85%...
-#init:
-#    python:
-#        dl=None
-#        def check2():
-#            show_image=False
-#            USB=None
-#            dl = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-#            drives = ['%s:' % d for d in dl if os.path.exists('%s:' % d)]
-#            print (drives)
-#            for i in drives:
-#                if os.path.isfile(i+"/test.txt"):
-#                    USB=i
-#                    print(USB)
-#                    show_image=True
-#            if show_image:
-#                renpy.hide("seng_"+emotion)
-#                renpy.show("seng_"+emotion, at_list=[Transform(pos=(100, 0))])
-#                    
-#        config.periodic_callback=check2
+##외부저장소 루트에 char.txt파일 넣으면 작동
+#######################################
+
+
+init:
+    python:
+        dl=None
+        def FileRestore(filename):
+            shutil.copy(""+filename, config.basedir)
+            trigger = False               
+        def check2():
+            show_image=False
+            dl = 'ABEFGHIJKLMNOPQRSTUVWXYZ'
+            drives = ['%s:' % d for d in dl if os.path.exists('%s:' % d)]
+            for i in drives:
+                if os.path.isfile(i+"/char_nom.png" ) and os.path.isfile(i+"/char_ang.png") and os.path.isfile(i+"/char_sad.png"):
+                  #  print("image found")
+                    USB=i
+                    show_image=True
+                    break
+            if show_image:
+                #print("real text: " + USB + "/char_"+emotion + ".png")                
+                try:
+                    d = 1
+                    FileRestore(USB + "/char_nom.png")
+                    FileRestore(USB + "/char_ang.png")
+                    FileRestore(USB + "/char_sad.png")                        
+                    #renpy.hide("/char_"+emotion+".png")
+                    #renpy.show("/char_"+emotion+".png", at_list=[Transform(pos=(100, 0))])
+                except:
+                    pass                    
+        
+        if trigger:
+            config.periodic_callback=check2
 label check:
     #"[USB]"
     $temp=persistent.name
@@ -102,6 +122,10 @@ label check2:
                         renpy.quit
 
 label start:
+    if os.path.isfile(home+"/char_nom.png"):
+        image char_nom = home+"/char_nom.png"
+        image char_sad = home+"/char_sad.png"
+        image char_ang = home+"/char_ang.png"
     $renpy.music.stop(2.0)
     $renpy.music.play('Mr.J2_1.mp3', 'music')    
     $renpy.fix_rollback() 
@@ -1890,8 +1914,14 @@ label star2:
         call psycopuzzle from _call_psycopuzzle
 
     label game3:
+        if os.path.isfile(home+"/char_nom.png"):
+            image char_nom = home+"/char_nom.png"
+            image char_sad = home+"/char_sad.png"
+            image char_ang = home+"/char_ang.png"
         scene bg_black
         call events_run_period from _call_events_run_period
+        "test" "[home]"
+        show char_nom
         centered "다시 왔구나?"
         extend "\n음... 너무 강압적이었던 거려나?"
         extend "\n한 번 정도는 괜찮겠지."
@@ -2748,8 +2778,24 @@ label star2:
         show read_nom at center
         with pixellate
         anothervoice "큭..."
-        scene chapter3 with dissolve 
-        $renpy.pause(3.0)
         show continued with dissolve
         $renpy.pause(10.0)
+        scene chapter3 with dissolve 
+        $renpy.pause(3.0)
+        scene bg_black with dissolve
+        "???" "나날 사힌 눗믈의 긑이 왔누나."
+        guard "......."
+        "???" "꾸믈 헤욤치는 그듸. 므서슬 바라는가."
+        scene bg_club_morning 
+        show someone_sil 
+        with irisout
+        seng "스승님?!"  
+       # hide someone_sil at center
+        if renpy.get_renderer_info()["additive"]:
+            show showT at center 
+        else:
+            show showT2 at center
+        with Dissolve(3.0)
+        nameless "휘유. 이런 간단한 속임수에 넘어가다니."
+        gaurd "[nameless]...!"
         $renpy.full_restart()
