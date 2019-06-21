@@ -140,6 +140,7 @@ label start:
     nvl clear
     window hide
     scene bg_black
+    show screen curious_button
     play sound "alarm.mp3"
     $renpy.pause(2.0)
     play sound "alarm.mp3"
@@ -1319,7 +1320,6 @@ label star2:
     show guard_nom
     with irisout
     guard "안녕, [main]."
-    show screen curious_button
     main "당신이... 이스프킨이군요."
     guard "응."
     "뒤에서 성과 안톤이 소곤거리는 소리가 들린다."
@@ -1918,10 +1918,12 @@ label star2:
             image char_nom = home+"/char_nom.png"
             image char_sad = home+"/char_sad.png"
             image char_ang = home+"/char_ang.png"
+        $renpy.music.stop(2.0)
+        $renpy.music.play('Mr.J2_1.mp3', 'music')    
         scene bg_black
         call events_run_period from _call_events_run_period
         "test" "[home]"
-        show char_nom
+#        show char_nom
         centered "다시 왔구나?"
         extend "\n음... 너무 강압적이었던 거려나?"
         extend "\n한 번 정도는 괜찮겠지."
@@ -2310,7 +2312,6 @@ label star2:
         $forthitem=None
         "나는, 잠에서, 깼다."
         scene bg_floor 
-        show screen curious_button 
         with irisout
         guard "......."
         "일어나지 않고서 천장을 바라보았다."
@@ -2778,11 +2779,7 @@ label star2:
         show read_nom at center
         with pixellate
         anothervoice "큭..."
-        show continued with dissolve
-        $renpy.pause(10.0)
-        scene chapter3 with dissolve 
-        $renpy.pause(3.0)
-        scene bg_black with dissolve
+        scene bg_black with Dissolve(6.0)
         "???" "나날 사힌 눗믈의 긑이 왔누나."
         guard "......."
         "???" "꾸믈 헤욤치는 그듸. 므서슬 바라는가."
@@ -2797,5 +2794,45 @@ label star2:
             show showT2 at center
         with Dissolve(3.0)
         nameless "휘유. 이런 간단한 속임수에 넘어가다니."
-        gaurd "[nameless]...!"
+        guard "[nameless]...!"
+        nameless "진정해. 싸우고 싶지 않으니까."
+        guard "닥쳐!"
+        play sound "punch.wav"
+        "복부에 명중. {w=.5}아파하는 기색조차 없다."
+        stop sound
+        nameless "네 머릿속에 심리 폭탄을 설치해 놨어. {w=.5}국지적 폭발과 함께 세상을 뜨고 싶지 않으면 가만히 있어."
+        play sound "chain.mp3"
+        "쇠사슬이 채워졌다."
+        stop sound 
+        nameless "50시간... 아니, 이제는 40시간이구나. {w=.5}전부 지나가면 네 방 안에 산성 가스가 살포될 거야.{p=.5}빠져나가려고 해도 바깥에는 내 부하들이 가득 깔려있지. 얌전히 구조를 기다리고 있으라고."
+        guard "아이들... 리네와 성에게도 똑같은 짓을 한 거야?"
+        nameless "당연하지. 나는 공평하니까."
+        "반항할 수 없었다. 마법 처리가 완료된 쇠사슬은 물리력으로 끊을 수 없다."
+        guard "아이들은 빼!"
+        nameless "나한테 무엇인가 요구할 수 있는 상황이 아닐텐데?"
+        guard "\'학교\'와 거래하기 위해서라면 나 하나만으로도 충분하잖아!"
+        nameless "\'학교\'와 거래하기 위해서가 아니야, 이스프킨.{w=.5} 잘못 짚어도 한참 잘못 짚었어."
+        play sound "punch.wav"
+        guard "욱!"
+        stop sound
+        nameless "\'의장\'께서 될 수 있으면 손 대지 말라고 했지만... {w=.5}자비로우신 그분이라면 이 정도 분풀이는 봐 주시겠지."
+        play sound "jab.mp3"
+        $renpy.pause(1.0)
+        stop sound
+        play sound "jab.mp3"
+        $renpy.pause(1.0)
+        stop sound
+        play sound "jab.mp3"
+        $renpy.pause(1.0)
+        stop sound
+        scene bg_club_morningB
+        show nameless_gray
+        with Dissolve(3.0)
+        guard "안톤... {w=.5}미안..."
+        scene bg_black with dissolve
+        play sound "chain.mp3"
+        $renpy.pause(2.0)
+        stop sound
+        scene continued with dissolve
+        $renpy.pause(2.0)
         $renpy.full_restart()

@@ -108,6 +108,7 @@ image showT2:
 image bg_roomblack = im.MatrixColor("bg_roomc.jpg", im.matrix.saturation(0.0))
 image bg_clubblack = im.MatrixColor("bg_club.jpg", im.matrix.invert())
 image continued2 = im.MatrixColor("continued.png", im.matrix.invert())
+image bg_club_morningB = im.MatrixColor("bg_club_morning.jpg", im.matrix.saturation(0.0))
 
 define bg_clubblack = im.MatrixColor("bg_club.jpg", im.matrix.saturation(0.0))
 image seng_nomi = im.MatrixColor("seng_nom.png", im.matrix.invert())
