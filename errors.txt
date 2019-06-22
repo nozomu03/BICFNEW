@@ -2,9 +2,18 @@
 errors listed below, and try again.
 
 
+<<<<<<< HEAD
 File "game/script.rpy", line 99: if statement expects a non-empty block.
     if persistent.check!=True:
                               ^
 
 Ren'Py Version: Ren'Py 7.2.2.491
 Sat Jun 22 18:28:21 2019
+=======
+File "game/script.rpy", line 2831: expected statement.
+    nameless_gray
+                 ^
+
+Ren'Py Version: Ren'Py 7.2.2.491
+Fri Jun 21 10:04:05 2019
+>>>>>>> 5faa992f524d92fc1d52512d4a1d3f76abd0433e
