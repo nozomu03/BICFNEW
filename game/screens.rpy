@@ -60,9 +60,15 @@ transform alphamove(o_xpos=0, o_ypos=100):
     pos(0, 0)
     linear (1.0) pos(o_xpos, renpy.random.randint(231, 525))
     repeat(90000)
+
+screen nonreal:
+    modal True
+    frame:
+        align(.5, .5)
+        vbox:
+            text "{color=#000000}{size=80}데이터 말소됨{/size}{/color}" 
+            textbutton "{size=50}{color=#000000}Y{/color}{/size}" action [Hide("nonreal", transition=dissolve), Return()] at center1 
     
-
-
 screen curious_button:
     textbutton "{color=#ffffff}메뉴{/color}" xalign .96 yalign .04 action[Hide('curious_button'), Show('curious', transition=dissolve)]
 
@@ -536,7 +542,8 @@ screen navigation():
         spacing gui.navigation_spacing
 
         if main_menu:
-
+         #   if persistent.ok and not persistent.trueR:
+                #textbutton _("{size=30}Start{/size}") at alpha1(sec=.5) action [Show("nonreal", transition=dissolve)]
             textbutton _("{size=30}Start{/size}") at alpha1(sec=.5) action Start() 
 
         else:
@@ -1417,6 +1424,8 @@ screen confirm(message, yes_action, no_action):
     style_prefix "confirm"
 
     add "gui/overlay/confirm.png"
+    if message == layout.QUIT:
+        $message = "데이터 더듬기를 그만두시겠습니까?"
 
     frame:
 
