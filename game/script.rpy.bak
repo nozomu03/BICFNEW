@@ -1,4 +1,6 @@
-﻿screen dest:
+﻿#define build.google_play_key = ""
+
+screen dest:
     hbox:
         text "{color=#ffffff}붕괴도{/color}"
         
@@ -12,14 +14,16 @@
             xmaximum 300
             value equal
             range 100
-image movie = Movie(channel="seng", play="testing.webm")
-
+image movie = Movie(play="noise.ogv", loops=2, delay=None)
 init python:
     import os
     user=None
     location=None
   #  import getpass
 
+image char_nom = "rine_nom.png"
+image char_sad = "rine_sad.png"
+image char_ang = "rine_ang.png"
 
 
 label temp:
@@ -44,39 +48,56 @@ init python:
     f_ypos=None
     temp=None
     emotion="nom"
-    import os.path
+    USB=None
+    trigger = True
+    home = config.basedir.replace("\\", "/")
+    import shutil
+    count = 0
 # 여기에서부터 게임이 시작합니다.
 
 #######################################
-#미완성: USB에 mycharacter_감정.png 파일 넣어서 인벤토리, 겜 화면에서 활용...
-#구현률 85%...
-#init:
-#    python:
-#        dl=None
-#        def check2():
-#            show_image=False
-#            USB=None
-#            dl = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-#            drives = ['%s:' % d for d in dl if os.path.exists('%s:' % d)]
-#            print (drives)
-#            for i in drives:
-#                if os.path.isfile(i+"/test.txt"):
-#                    USB=i
-#                    print(USB)
-#                    show_image=True
-#            if show_image:
-#                renpy.hide("seng_"+emotion)
-#                renpy.show("seng_"+emotion, at_list=[Transform(pos=(100, 0))])
-#                    
-#        config.periodic_callback=check2
+##외부저장소 루트에 char.txt파일 넣으면 작동
+#######################################
+
+
+init:
+    python:
+        dl=None
+        def FileRestore(filename):
+            shutil.copy(""+filename, config.basedir)
+            trigger = False               
+        def check2():
+            show_image=False
+            dl = 'ABDEFGHIJKLMNOPQRSTUVWXYZ'
+            drives = ['%s:' % d for d in dl if os.path.exists('%s:' % d)]
+            for i in drives:
+                if os.path.isfile(i+"/char_nom.png" ) and os.path.isfile(i+"/char_ang.png") and os.path.isfile(i+"/char_sad.png"):
+                  #  print("image found")
+                    USB=i
+                    show_image=True
+                    break
+            if show_image:
+                #print("real text: " + USB + "/char_"+emotion + ".png")                
+                try:
+                    d = 1
+                    FileRestore(USB + "/char_nom.png")
+                    FileRestore(USB + "/char_ang.png")
+                    FileRestore(USB + "/char_sad.png")                        
+                    #renpy.hide("/char_"+emotion+".png")
+                    #renpy.show("/char_"+emotion+".png", at_list=[Transform(pos=(100, 0))])
+                except:
+                    pass                    
+        
+        if trigger:
+            config.periodic_callback=check2
 label check:
     #"[USB]"
     $temp=persistent.name
     if not persistent.ok:
         return
     else:
-        if persistent.check!=True:
-            call temp from _call_temp
+       # if persistent.check!=True:
+           # call temp from _call_temp
         call game3 from _call_game3
 label chsetting:
     #show mon_rine 
@@ -100,18 +121,25 @@ label check2:
                         renpy.quit
 
 label start:
+    if os.path.isfile(home+"/char_nom.png"):
+        image char_nom = home+"/char_nom.png"
+        image char_sad = home+"/char_sad.png"
+        image char_ang = home+"/char_ang.png"
     $renpy.music.stop(2.0)
     $renpy.music.play('Mr.J2_1.mp3', 'music')    
     $renpy.fix_rollback() 
     call check from _call_check       
     call chsetting from _call_chsetting_1
-    if persistent.USB!=None:
-       show seng_nom2 at Position(xalign=.0, yalign=.0)
+    #if persistent.USB!=None:
+       #show seng_nom2 at Position(xalign=.0, yalign=.0)
     window show
+    scene warning with dissolve
+    $renpy.pause(5.0)
     nvlnarr "열심히 살아가야 하는 이유는 무엇인가.{p=1.0}하루하루 살아가는 삶 속에서 견디기 힘든 고난이 있다 하여도{p=1.0}우리는 나아가야만 하는가?"
     nvl clear
     window hide
     scene bg_black
+    show screen curious_button
     play sound "alarm.mp3"
     $renpy.pause(2.0)
     play sound "alarm.mp3"
@@ -122,9 +150,6 @@ label start:
     scene bg_room_night
     show seng_nom at right
     with irisout
-    show plorogue with dissolve
-    $renpy.pause(3.0)
-    hide plorogue with dissolve
     seng "잘 잤어?"
     main "뭐, 그럭저럭이지."
     play sound "walk_slow.mp3"
@@ -941,7 +966,7 @@ label star2:
     show seng_nomii
     with vpunch
     window show 
-    seng1 "아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파"
+    seng1 "아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아���아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파아파"
     $preferences.text_cps=40
     hide screen itai
     scene bg_black with dissolve
@@ -1078,7 +1103,7 @@ label star2:
     "분명히 목이 잘렸을 터인 그녀가 멀쩡히 말하고 있다.{p=1.0}바닥에 떨어진 목을 주워 봉합."
     "{color=#088A68}???{/color}" "살려주고 싶은 마음이 싹 달아나 버렸어.{p=1.0}정말이지 \'안쪽\' 사람들은 이해할 수 없다니까."
     "머리에 닿는 차가운 금속.{p}펌프 액션 샷건이 내가 다른 이들에게 했던 것처럼 나의 뇌를 박살 낼 것이다."
-    "???" "이봐, 엘{rt}희{/rt}키{rt}망{/rt}. {w=1.0}하나만 물어봐도 될까?"
+    "???" "이봐, 에{rt}희{/rt}르{rt}망{/rt}. {w=1.0}하나만 물어봐도 될까?"
     "{color=#088A68}???{/color}" "?"
     "???" "마지막으로 봤을 때랑 상당히 다른 모습이네. {w=1.0}그 동안 무슨 일이 있었는지 짧게 설명해 주지 않을래?"
     "{color=#088A68}???{/color}" "싫어."
@@ -1280,7 +1305,7 @@ label star2:
     "교문 앞에는 버스와 닮았지만 곳곳이 철로 된 봉으로 강화된 차에 몸을 실었다."
     play sound "car.mp3"
     "출발."
-    teacher "한참 걸릴티네 미리 좀 자 두세요."
+    teacher "한참 걸릴테니 미리 좀 자 두세요."
     main "알겠습니다."
     "나는 눈을 붙였다."
     nvl clear
@@ -1294,7 +1319,6 @@ label star2:
     show guard_nom
     with irisout
     guard "안녕, [main]."
-    show screen curious_button
     main "당신이... 이스프킨이군요."
     guard "응."
     "뒤에서 성과 안톤이 소곤거리는 소리가 들린다."
@@ -1326,7 +1350,7 @@ label star2:
     "이스프킨이 말했다."
     main "왜 그러죠?"
     guard "...별로... {w=1.0}좋은 꼴은 못 볼거야."
-    "알겠습니다."
+    seng "알겠습니다."
     play sound "walk_slow.mp3"
     $renpy.pause(2.0)
     "안톤은 이 학교의 교장과 다른 선생들과의 회담이 있다고 말하며 그리로 가고 이곳에는 우리 셋만 남았다."
@@ -1585,7 +1609,6 @@ label star2:
         "서서히 휘두르는 팔에 감각이 마비되어 간다."
         "내가 베어온 수많은 사람들과 같이. {w=1.0}나 역시 똑같은 운명을 맞이할 것이다.{p=1.0}결국... 실패하였다."
         show guard_nom at Position(xalign=.5, yalign=1.0)
-        guard "안톤... 미안해..."
         play sound "bite.mp3"
         $renpy.pause(1.0)
         play sound "bite.mp3"
@@ -1594,7 +1617,6 @@ label star2:
         $renpy.pause(1.0)
         play sound "blooding.mp3" 
         show guard_nomred at Position(xalign=.5, yalign=1.0) with Dissolve(4.0)
-        guard "카렉... 파른... 그리운 사람들... {w=1.0}당신들의 곁으로 갑니다..."
         play sound "jab.mp3"
         hide guard_nom
         hide guard_nomred
@@ -1666,102 +1688,102 @@ label star2:
         "아이들만은 건드리지 않았기를..."
         $renpy.pause(.4)    
         scene bg_black with wipeleft
-        play sound "walk.mp3"
-        $renpy.pause(5.0)
-        scene bg_room 
-        show seng_nom at right
-        with wiperight
-        "밖에서 빠른 걸음소리가 들린다.{w=.5}총성과 뜀박질..."
-        "누구지?"
-        $renpy.fix_rollback()        
-        menu:
-            "문을 연다.":
+    play sound "walk.mp3"
+    $renpy.pause(5.0)
+    scene bg_room 
+    show seng_nom at right
+    with wiperight
+    "밖에서 빠른 걸음소리가 들린다.{w=.5}총성과 뜀박질..."
+    "누구지?"
+    $renpy.fix_rollback()        
+    menu:
+        "문을 연다.":
+            $renpy.fix_rollback()        
+            play sound "door.mp3"
+            $renpy.pause(2.0)
+            show read_nom with dissolve
+            teacher "{size=5}하느님 감사합니다...{/size}몸은 괜찮은가요?"
+            main "왜 그러세요? 숨도 꽤 몰아쉬게 계신데, 달려 오셨나요?"
+            teacher "다행히군요... 여기는 아무 일도 없었나요..."
+            if temp2==True:
+                "우리를 막아섰던 이스프킨에게 무슨 일이 있었던 것일까?"
+                teacher "주무시는데 깨워서 죄송합니다. 계속 주무셔요."
                 $renpy.fix_rollback()        
+                menu:
+                    "이스프킨은 어디에 있죠?":
+                        $renpy.fix_rollback()        
+                        main "이스프킨은 어디에 있죠? 당신과 함께 있을 것이라 생각했는데..."
+                        teacher "그녀는... 지금 학교지대를 벗어나 공장까지 갔습니다."
+                        main "왜죠?"
+                        teacher "제가 무언가 부탁했기 때문이죠."
+                        main "그 부탁이 무엇인가요?"
+                        hide read_nom
+                        show read_think
+                        teacher "........"
+                        "무언가 고민하는 듯 하다."
+                        hide read_think
+                        show read_nom 
+                        teacher "이것과 똑같이 생긴 병을 가져와 달라고 했습니다."
+                        "가방에서 꺼내져 내 눈 앞에 놓인 것은 투명한 핑크색 액체처럼 보이는 것을 담고 있는 병이었다."
+                        seng "이건..."
+                        main "무엇인지 알 것 같아?"
+                        seng "응..."
+                        "머뭇거림."
+                        main "무엇이길래 그래?"
+                        seng "영혼... 저건...{w=.5} 인간의 영혼이야..."
+                        teacher "네. 당신이 말했듯이 이것은 사람의 영혼을 담아 놓은 병이지요."
+                        seng "이게 왜 당신께 있는 것이죠?"
+                        teacher "교장선생님의 명령...{w=.5}이라고 한다면 믿어 주실건가요?"
+                        main "그럴 리가요."
+                        teacher "...하지만 사실은 사실입니다.{p=.5}나머지는 좋을 대로 생각해 주세요."
+                        main "........"
+                        $secondcurious="안톤은 어째서 사람의 영혼이 든 병을 가지고 있을까?"
+                        teacher "아, 그렇지. {w=.5}이것을 가지고 계세요. 제가 달라고 할 때까지만."
+                        seng "...별로 내키진 않지만... 알겠습니다."
+                        $thirditem="영혼이 담긴 병"
+                        "그는 채 우리가 무엇을 말하기도 전에 나가버렸다."
+                    "알겠습니다.":
+                        $renpy.fix_rollback()        
+                        main "그럼 알겠습니다. 당신은 안 주무시나요?"
+                        teacher "아직은요."
+                        "성이 의심스러운 눈초리로 쳐다본다. 손을 뻗어서 제지."
+                hide read_nom
+                hide read_smile
+                play sound "walk_slow.mp3"
+                $renpy.pause(2.0)
                 play sound "door.mp3"
                 $renpy.pause(2.0)
-                show read_nom with dissolve
-                teacher "{size=5}하느님 감사합니다...{/size}몸은 괜찮은가요?"
-                main "왜 그러세요? 숨도 꽤 몰아쉬게 계신데, 달려 오셨나요?"
-                teacher "다행히군요... 여기는 아무 일도 없었나요..."
-                if temp2==True:
-                    "우리를 막아섰던 이스프킨에게 무슨 일이 있었던 것일까?"
-                    teacher "주무시는데 깨워서 죄송합니다. 계속 주무셔요."
-                    $renpy.fix_rollback()        
-                    menu:
-                        "이스프킨은 어디에 있죠?":
-                            $renpy.fix_rollback()        
-                            main "이스프킨은 어디에 있죠? 당신과 함께 있을 것이라 생각했는데..."
-                            teacher "그녀는... 지금 학교지대를 벗어나 공장까지 갔습니다."
-                            main "왜죠?"
-                            teacher "제가 무언가 부탁했기 때문이죠."
-                            main "그 부탁이 무엇인가요?"
-                            hide read_nom
-                            show read_think
-                            teacher "........"
-                            "무언가 고민하는 듯 하다."
-                            hide read_think
-                            show read_nom 
-                            teacher "이것과 똑같이 생긴 병을 가져와 달라고 했습니다."
-                            "가방에서 꺼내져 내 눈 앞에 놓인 것은 투명한 핑크색 액체처럼 보이는 것을 담고 있는 병이었다."
-                            seng "이건..."
-                            main "무엇인지 알 것 같아?"
-                            seng "응..."
-                            "머뭇거림."
-                            main "무엇이길래 그래?"
-                            seng "영혼... 저건...{w=.5} 인간의 영혼이야..."
-                            teacher "네. 당신이 말했듯이 이것은 사람의 영혼을 담아 놓은 병이지요."
-                            seng "이게 왜 당신께 있는 것이죠?"
-                            teacher "교장선생님의 명령...{w=.5}이라고 한다면 믿어 주실건가요?"
-                            main "그럴 리가요."
-                            teacher "...하지만 사실은 사실입니다.{p=.5}나머지는 좋을 대로 생각해 주세요."
-                            main "........"
-                            $secondcurious="안톤은 어째서 사람의 영혼이 든 병을 가지고 있을까?"
-                            teacher "아, 그렇지. {w=.5}이것을 가지고 계세요. 제가 달라고 할 때까지만."
-                            seng "...별로 내키진 않지만... 알겠습니다."
-                            $thirditem="영혼이 담긴 병"
-                            "그는 채 우리가 무엇을 말하기도 전에 나가버렸다."
-                        "알겠습니다.":
-                            $renpy.fix_rollback()        
-                            main "그럼 알겠습니다. 당신은 안 주무시나요?"
-                            teacher "아직은요."
-                            "성이 의심스러운 눈초리로 쳐다본다. 손을 뻗어서 제지."
-                    hide read_nom
-                    hide read_smile
-                    play sound "walk_slow.mp3"
-                    $renpy.pause(2.0)
-                    play sound "door.mp3"
-                    $renpy.pause(2.0)
-            "경계한다.":
-                $renpy.fix_rollback()   
-                play sound "knock.mp3"
-                teacher "[main] 양, 성 양. {w=.5}안톤입니다. 거기 안에 계시나요?"
-                seng "안톤이라는데 열어야 하는 거 아니야?"
-                main "잠깐 기다려."
-                play sound "knock.mp3"
-                teacher "제발... 안에 계신다면 대답해 주세요..."
-                main "당신은 누구인가요?"
-                teacher "아, 무사하셨군요... "
-                "...우리들의 안위를 제일 먼저 걱정했다.{p=.5}진짜...인가...?"
-                play sound "door.mp3"
-                show read_nom with dissolve
-                $renpy.pause(2.0)
-                teacher "성 양... [main] 양... 무사하셨군요..."
-                seng "무슨 일이죠? 아까전엔 총성까지 들리던데..."
-                teacher "우리와 똑같습니다. {w=.5}아마 무기 양산을 방해하려는 목적이겠죠."
-                "객귀들의 침입인가..."
-                teacher "지금은 전부 사라졌습니다만... 다시 올지 오지 않을 지는 모르겠습니다.{p=.5}혹여 총성이 들리더라도 너무 놀라지 마시고 이 곳에 있으면 될 겁니다."
-                main "밖으로 피난하는게 안전하지 않을까요?"
-                teacher "아뇨. 바깥은 돌아다니는 파수들을 제외하곤 거의 아무도 없습니다. 하지만 이곳은 마법과 경비병들이 지키고 있죠.{p=.5}괜찮을 겁니다."               
-                seng "알겠습니다. 그리 하지요."
-                hide read_nom 
-                play sound "door.mp3"
-                $renpy.pause(2.0)
-        main "무슨 일이 일어나고 있는걸까?"
-        seng "글쎄. 우리는 상상하지 못할 큰 일일지도 모르지."
-        main "걱정 마. 이번에는 내가 지켜줄테니까."
-        hide seng_nom
-        show seng_smile at right
-        seng "응!"
+        "경계한다.":
+            $renpy.fix_rollback()   
+            play sound "knock.mp3"
+            teacher "[main] 양, 성 양. {w=.5}안톤입니다. 거기 안에 계시나요?"
+            seng "안톤이라는데 열어야 하는 거 아니야?"
+            main "잠깐 기다려."
+            play sound "knock.mp3"
+            teacher "제발... 안에 계신다면 대답해 주세요..."
+            main "당신은 누구인가요?"
+            teacher "아, 무사하셨군요... "
+            "...우리들의 안위를 제일 먼저 걱정했다.{p=.5}진짜...인가...?"
+            play sound "door.mp3"
+            show read_nom with dissolve
+            $renpy.pause(2.0)
+            teacher "성 양... [main] 양... 무사하셨군요..."
+            seng "무슨 일이죠? 아까전엔 총성까지 들리던데..."
+            teacher "우리와 똑같습니다. {w=.5}아마 무기 양산을 방해하려는 목적이겠죠."
+            "객귀들의 침입인가..."
+            teacher "지금은 전부 사라졌습니다만... 다시 올지 오지 않을 지 잘 모르겠습니다.{p=.5}혹여 총성이 들리더라도 너무 놀라지 마시고 이 곳에 있으면 될 겁니다."
+            main "밖으로 피난하는게 안전하지 않을까요?"
+            teacher "아뇨. 바깥은 돌아다니는 파수들을 제외하곤 거의 아무도 없습니다. 하지만 이곳은 마법과 경비병들이 지키고 있죠.{p=.5}괜찮을 겁니다."               
+            seng "알겠습니다. 그리 하지요."
+            hide read_nom 
+            play sound "door.mp3"
+            $renpy.pause(2.0)
+    main "무슨 일이 일어나고 있는걸까?"
+    seng "글쎄. 우리는 상상하지 못할 큰 일일지도 모르지."
+    main "걱정 마. 이번에는 내가 지켜줄테니까."
+    hide seng_nom
+    show seng_smile at right
+    seng "응!"
     scene bg_black with dissolve
     "(다음날 아침)"
     scene bg_room 
@@ -1818,393 +1840,13 @@ label star2:
     hide read_nom 
     $renpy.pause(2.0)
     if temp2 != False:
-        seng "[main]."
-        main "그래. 쫒을거야."
-        scene bg_black with wiperight
-        "우리는 조심스럽게 안톤의 뒤를 밟았다."
-        play sound "walk_slow.mp3"
-        $renpy.pause(2.0)
-        "작은 컨테이너 화장실 안으로 들어간 그.{p=.5}창문으로 조심스럽게 엿보았다."
-        scene bg_bathroom 
-        show read_nom at right
-        with wipeleft
-        teacher "좋아... 이제 이것만 넣으면..."
-        "그가 무엇인가 만들고 있다."
-        main "(저... 저건!)"
-        "약학에 자신이 없는 나라 해도 저것이 무엇인지는 분명하게 알 수 있었다."
-        seng "달의 잠...? 저게 왜...?"
-        main "...분명 달의 잠은..."
-        seng "맞아. 죽은 사람을 다시 되살릴 때 쓰는 거지."
-        if thirditem!=None:
-            main "....왜? 어째서...? {w=.5}아!"
-            "뇌를 스치는 충격."
-            seng "...?"
-            main "나는 가방에서 \'그것\'을 꺼냈다."
-            seng "...!!!!"
-            main "이스프킨..."
-        else:
-            "숨을 죽인채 관찰했다."
-            teacher "이 일과 관계없는 모든 분들께... {w=.5}미안...합니다... "
-            "그는 무언가를 부었다."
-            play sound "explosion.mp3"
-            scene bg_bathroom at explosion 
-            main "큭!"
-            seng "지진?"
-            "나는 다시 보았다."
-            "그는 시체를 끌고 왔다."
-            "그... 시체는..."
-            show read_nom 
-            show guard_nomred 
-            with dissolve
-            "[main], 성" "이스프킨?"
-        seng "이스프킨은... 죽은거야?"
-        "이스프킨이... \'죽었다\'?"            
-        teacher "이스프킨..."
-        main "죽...음...?"
-        seng "[main]?"
-        main "아... 아..."
-        seng "젠장... 이 와중에 스위치가..."
-        $destroy+=10
-        seng "[main], [main]!"
-        $destroy+=10
-        seng "하... 이걸 어떻게 해야..."
-        "몸이 식어온다."
-        "지인의 죽음."
-        "목도."
-        "잊어야 하는.{p=.5}잊으려 했던.{p=.5}잊었다고 생각한 기억들이 솟는다."
-        main "아... 아... 아..."
-        $destroy+=10
-        seng "[main]. 조금만 참아...!"
-        $destroy+=10
-        main "아...아..."
-        $destroy+=10
-        seng "제기랄...!"
-        $renpy.transition(vpunch)
-        show screen aaaaa
-        scene bg_black 
-        with vpunch
-        seng "[main]!"
-        "Black, {w=1.0}Out."
-        $renpy.pause(4.0)
-        hide screen aaaaa
-        call psycopuzzle from _call_psycopuzzle
-
-    label game3:
-        scene bg_black
-        call events_run_period from _call_events_run_period
-        centered "다시 왔구나?"
-        extend "\n음... 너무 강압적이었던 거려나?"
-        extend "\n한 번 정도는 괜찮겠지."
-        extend "\n봐줄게. 이렇게 끝내는 것."
-        extend "\n이어해도 좋아."
-        extend "\n{color=#DF0101}네 이야기를{/color}."
-        $emotion="ang"
-        $destroy = persistent.destroy
-        $equal = persistent.equal
-        show screen dest
-        "의문의 목소리" "너는 생각했을 것이다."
-        main "......."
-        "의문의 목소리" "\'내가 도망치는것은 그네들과의 약속을 지키기 위해서\'라고."
-        main "......."
-        "의문의 목소리" "네 옆에서 죽었다."
-        main "......."
-        "의문의 목소리" "제일 먼저 네 어머니가."
-        play sound "scream.mp3"
-        show cg_blood at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        "의문의 목소리" "그 다음으로 네 동생들."
-        play sound "scream.mp3"
-        show cg_blood2 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood3 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood4 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        "의문의 목소리" "기타 등등..."
-        play sound "scream.mp3"
-        show cg_blood5 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood6 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood7 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood8 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood9 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood10 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood11 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood12 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood13 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood14 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood15 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood16 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood17 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood18 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood19 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        play sound "scream.mp3"
-        show cg_blood20 at Position(xpos=renpy.random.randint(100, 600), ypos=renpy.random.randint(0, 1000)) with vpunch
-        $renpy.pause(2.0)
-        main "{size=5}아니야... 나는... 그러지... 않았어...{/size}"
-        "의문의 목소리" "뭐라고?"
-        main "{size=10}나는... 그러지 않았어...{/size}"
-        "의문의 목소리" "잘 안들리는데?"
-        main "나는 그러지 않았어!!!!!!"
-        "의문의 목소리" "아니. {w=.5}네가 그랬어."
-        main "아니야, {w=.5}아니야, {w=.5}아니야, {w=.5}아니야, {w=.5}아니야!"
-        "의문의 목소리" "맞아, {w=.5}맞아, {w=.5}맞아, {w=.5}맞아, {w=.5}맞아, {w=.5}맞아."
-        main "......."
-        "의문의 목소리" "넌 그들을 \'배신\'했어. {w=.5}널 길러준 어머니를. {w=.5}너와 놀아준 친구들을. {w=.5}너의 소중한 동생들을. 전부."
-        main "불가항력... 이었잖아..."
-        "의문의 목소리" "과연 그럴까?"
-        main "........"
-        "의문의 목소리" "네가 달리던 발을 멈추어서 어떤 한 사람을 붙잡았다면.{p=.5}{color=#FF0000}{b}과연 그들은 죽었을까?{/b}{/color}"
-        main "아니야.... 아니라고... 그네들이 죽은 것은... 내 책임이..."
-        "의문의 목소리" "해답은 너도 알고 있잖아?"
-        main "...아..."
-        "알고 있었다. {w=.5}나는 도망쳤다. 다른 이들을 제물 삼아, 운명으로부터."
-        "의문의 목소리" "그러니, 너는 아무와도 같이 있을 수 없겠지."
-        main "........"
-        "의문의 목소리" "\'친구\' 한 명 없겠지."
-        main "아니."
-        "의문의 목소리" "\'성\'? \'리네\'? {p=.5}그들이 정말로 너의 친구일까?"
-        main "믿을 수 있어."
-        "의문의 목소리" "정말로? 그네들도 그렇게 생각할까? 자신의 목숨을 네게 맡기고 싶어할까?"
-        main "당연하지."
-        "의문의 목소리" "다짐하지 않았어? 그 날, 네 손으로 \'무명\'을 죽인 날에.{p=.5}아무도 믿지 않고, 모든 것을 의심하여 대비하겠다고?{p=.5}너도 알고 있잖아. \'친구\'라고, \'보호자\'라 믿을 수 있는 사람은 더 이상 이 세상에는 없다는 것을.{p=.5}믿음의 끝에는 \'파국\'과 \'아픔\'만이 있다는 것을."
-        "의문의 목소리" "사실은 그렇지? 그들을 신뢰하지 못하지? {p=1.0}{color=#FF0000}{b}의심{/b}{/color}하고 있지?"
-        main "........."
-        "\'아니다\'라 단언할 수 있다.{p=1.0}\'아니다\'라 단언해야만 한다."
-        "의문의 목소리" "너. 정말 이기적이야."
-        main "........"
-        "의문의 목소리" "남을 완전히 믿지 않으면서 스스로를 속이고, 남들을 속이고.{p=.5}그런게 용서받을 수 있을까?"
-        main "아... 아..."
-        "말이 나오지 않았다."
-        main "(뭐야... 왜... 목소리가...?)"
-        "의문의 목소리" "그들이 너를 어떻게 생각하는 지는 나 역시 알 수 없어.{p=.5}하지만 그것이 거짓된, 위선이라고 하여도 베풀어 준 사람한테는 고마워 해야하겠지?"
-        main "......."
-        main "(아... 그런가...)"
-        "나는 깨달았다."
-        main "(목소리가 나오지 않는 이유를. {w=.5}말을 할 수 없는 이유를.{p=1.0}마음 속으로 \'인정\'한 것이다. 나의 죄를. 그의 말을.)"
-        "의문의 목소리" "죄인에게는 그 자가 지은 죄에 맞는 벌이 있어야 하지. {w=.5}안 그래?"
-        "끄덕였다."
-        "그가 손을 뻗었다."
-        $destroy+=10
-        play sound "soul.mp3"
-        $destroy+=10
-        $destroy+=7
-        main "아."
-        "따스하다."
-        "아프지 않다."
-        "그저... 파도 없는 잔잔한 바다에서 느린 보트를 타고서 그 위에 누운 듯한 느낌."
-        "아주... 아주 오랜만에 느끼는... 그런 것..."
-        "의문의 목소리" "드디어... 몸을... 얻었다..."        
-        anothervoice "드디어..."
-        "손가락을 움직여 보았다.{p=.5}정상이다.{p=.5}치고 있었던 \'막\'을 거두었다."
-        scene bg_floor with irisout
-        anothervoice "크으으... 머리야..."
-        seng "[main]! 괜찮아? 무사해?"
-        anothervoice "......."
-        play sound "blanket.wav"
-        scene bg_room
-        show seng_nom at left
-        with dissolve
-        $renpy.pause(.2)
-        hide seng_nom
-        show seng_smile at left
-        seng "일어났구나! 다행이다..."
-        "나는 손을 휘둘렀다."
-        play sound "sword.mp3"
-        $renpy.pause(1.0)
-        seng "악!"
-        "보이지 않는 바람의 칼날이 \'그 녀석\'은 성이라 부르던 소녀의 손등에 상처를 냈다."
-        hide seng_smile
-        show seng_nom at left
-        seng "......."
-        anothervoice "......."
-        seng "너는... 내 친구가 아니구나."
-        anothervoice "인사가 늦었네. 내 이름은 Ψ{rt}한{/rt}.{p=.5}뭐, 당분간은 \'잘 부탁한다\'라고 해 두지."
-        hide seng_nom
-        show seng_battle 
-        "한 발짝 물러서 나를 경계한다.{p=.5}그 모습은 보고서 그녀 역시 또 다른 한 명의 \'관리자\'라고 내심 깨달았다."
-        seng "...어째서 [main]의 몸을 빼앗은 거지?"
-        anothervoice "그야 나는 \'신편\'이니까.{p=.5}빼앗는 것이 본능인걸?"
-        seng "........"
-        anothervoice "상처 입힌 건 미안해. 본의가 아니었어."
-        "여전히 나를 경계하며 말문을 열지 않고 있다."
-        anothervoice "너랑 싸우고 싶지 않아. {w=.5}너는 내가 존재할 수 있게 해주는 숙주의 친구니까."
-        seng "나는 너를 신뢰할 수 없어.{w=.5}신편을 믿는 것 만큼 바보같은 일도 없다는 것을 알고 있거든"
-        anothervoice "이런. 섭섭한걸. {w=.5}일단은 숙주의 행동 방침을 존중하고 있는데 말이지."
-        play sound "drawning.wav"
-        $renpy.pause(1.7)
-        stop sound
-        "성은 발검했다."
-        anothervoice "그래서 어떻게 할 거야?{p=.5}그걸로 날 찌르기려도 하려고?"
-        seng "당연하지."
-        anothervoice "헤? 넌 날 못 찔러."
-        seng "아니. 찌를 수 있어."
-        anothervoice "못 찔러. 너는 [main]의 몸을 상처 입힐 수 없어."
-        seng "아니야!"
-        anothervoice "{b}그럼 네 손이 떨고 있는 건 기분 탓일까?{/b}"
-        seng "...칫."
-        anothervoice "너는 어쩔 수 없이 나에게 협력할 수 밖에 없어.{p=.5}지금은 너를 해치지 않아.{w=1.0} 그런데, 자랑은 아니지만 나. 기분이 상당히 빨리 변하거든.{p=.5}언제 어떻게 변해서 너를 {b}{color=#F00}죽여{/color}{/b}버릴지 몰라."
-        play sound "sworddrop.wav" 
-        seng "........"
-        $renpy.pause(.5)
-        "검이 떨어졌다."
-        anothervoice "딱히 다른 사람들한테 피해를 끼칠 생각은 없어.{p=.5}내가 원하는 건 살아가는 것 뿐이니까."
-        seng "거짓말."
-        anothervoice "믿어 줬으면 좋겠어."
-        play sound "walk_slow.mp3"
-        "걸음을 내딛었다."
-        $renpy.pause(2.0)
-        "오랜만의 걸음."
-        "\'살아있다\'라는 것을 인식했다."
-        play sound "door.mp3"
-        seng "어디로 가는거야."
-        anothervoice "산책... 이려나..."
-        seng "길...을 잃을 일은 없겠군."
-        anothervoice "다녀올게."
-        play sound "walk_slow.mp3"
-        scene bg_hallway2 at walk with dissolve
-        "나는 [main]의 기억을 훑었다.{w=.5} 이 몸의 주인이 원래와 다르다는 것을 아는 사람은 성 한 명이면 충분하다."
-        play sound "door.mp3"
-        show rine_nom at right with dissolve
-        $renpy.pause(1.5)
-        hide rine_sad
-        show rine_nom at right
-        rine "[main]!"
-        "마침 좋은 상대가 나타났다."
-        anothervoice "리네."
-        rine "몸은 이제 괜찮은거야?"
-        anothervoice "당연하지. 잠깐 기절한 걸로 어떻게 되지는 않아."
-        rine "다행이다..."
-        menu:
-            "잠깐 산책하고 있었는데, 같이 갈래?":
-                main "잠깐 산책하고 있었는데, 같이 갈래?"
-                rine "아니, 괜찮아."
-                anothervoice "그럼 안녕."
-
-            "뭐하고 있었어?":
-                main "뭐하고 있었어?"
-                rine "연구...{w=.5}려나?"       
-                anothervoice "잘 되가?"
-                rine "응!{p=.5}{size=3}평소랑 뭔가 다른데...{/size}{p=.5}너는 뭐해?"
-                anothervoice "잠깐 산책."
-                rine "그럼 잘가!"
-                anothervoice "응. 열심히 해!"
-                $rine_mis+=3
-
-        hide rine_nom
-        scene bg_middle with dissolve        
-        play sound "walk_slow.mp3"
-        $renpy.pause(1.5)
-        "성공적으로 넘긴건가.{p=.5}조금 불안했지만 문제는 없어 보인다."
-        play sound "walk_slow.mp3"
-        "그대로 몸을 돌려 계단을 내려갔다."
-        $renpy.pause(2.0)
-        scene bg_inschool with dissolve
-        "여기가 운동장인가."
-        play sound "walk_slow.mp3"
-        $renpy.pause(2.0)
-        "퍼석이는 흙이 운동화를 더럽힌다.{p=.5}아니, 더럽히려 했다."
-        "흙과, 물과, 피로 더럽혀지고 불에 그을려 형태를 유지하는 것 자체가 신기할 정도인 이 운동화에 약간의 흙이 만든 얼룩은 티 조차 나지 않았다."
-        play sound "sandwalk.wav"
-        "자박거리며 갈라지고, 부서지는 흙의 소리."
-        $renpy.pause(6.0)
-        "흙에 운동화의 자국이 남았다.{p=.5}미묘하게 물기가 남아있는 흙.{p=.5}내가 \'저쪽\'에 있는 동안 비라도 내렸던 걸까."
-        anothervoice "그러고보니 오늘이 무슨 요일인지도 모르네..."
-        "하지만 중요한 일은 아니다."
-        play sound "walk_slow.mp3"
-        $renpy.pause(2.0)
-        "탁한 공기의 냄새"
-        "그대로이다."
-        show guard_nom at right with dissolve
-        "이스프킨이란 이름의 떠돌이이다."
-        guard "{size=10}죽었다 살아난 사람이면 좀 더 새로이 주어진 기회에 감사하며 살아가면 되는데 ... 왜 굳이 피곤하게 사는걸까.{/size}"
-        anothervoice "네?"
-        guard "오, [main]. 몸은 좀 괜찮아?"
-        anothervoice "네. 이제 괜찮아졌어요."
-        guard '다행이네. 그래도 너무 무리는 하지 말고.'
-        hide guard_nom
-        play sound "walk_slow.mp3"
-        "중얼거리며 사라지는 이스프킨."
-        $renpy.pause(2.0)
-        "감회에 젖어있는 것은 여기까지이다."
-        "어서 검의 회수를 서두르지 않으면 약속을 지킬 수 없게 되어버린다.{p=.5}운이 좋게도 \'궤\'는 지금 나의 손에 있다.{p=.5}후딱 끝내버리고 원래대로 돌려놓자."
-        play sound "walk_slow.mp3"
-        $renpy.pause(2.0)
-        scene bg_black with wiperight
-        play sound "walk_slow.mp3"
-        $renpy.pause(2.0)
-        scene bg_teacher with wipeleft
-        nvlnarr "사랑. 인간은 누군가를 사랑하기에 약해진다.\n\n-가장 쓸모 없는 감정에 대한 물음에 돌아온 린의 대답.-"
-        play sound "sliding.mp3"
-        scene bg_teacher 
-        $renpy.pause(1.5)
-        anothervoice "저... 선생님?"
-        show read_nom at right with dissolve    
-        teacher "[main] 양이군요. 움직여도 괜찮은가요?"
-        main "멀쩡해요."
-        teacher "왜 오신 지 용건을 물어봐도 될까요?"
-        main "선생님은 \'다섯 개의 검\'이라는 이야기를 아시나요?"
-        teacher "아, 알고 있습니다. 당신의 검인 \'궤\' 역시 그 중 하나이죠."
-        main "네. 그... 나머지 검들에 대한 기록된 책 같은 걸 얻을 수 없을까요?"
-        teacher "찾아보면 몇 개 나올 것 같지만서도... 왜 그러시죠?"
-        main "이스프킨 때문에요."
-        teacher "호오... 그건 무슨 뜻이죠?"
-        main "그녀에게선 \'냄새\'가 나요."
-        teacher "......."
-        "그의 눈이 날카로워졌다."
-        teacher "......."
-        main "........"
-        teacher "냄새, 인가요..."
-        main "네."
-        teacher "무슨 냄새였죠?"
-        main "피와 살육과 증오의 냄새.{p=.5}저와 같은 냄새가 났어요. 정상적으로 살아온 사람이라면 절대 풍길 수 없는 냄새죠."
-        teacher "지금 같은 시대에 과연 정상적으로 사는 사람이 있을까요?"
-        main "안톤. 살인과 살육은 다릅니다. 그 사람은 살인자가 아니에요."
-        main "그런 사람이 어떻게 당신과 알고 있는 거죠?"
-        teacher "비밀입니다." 
-        "비밀... 인가.{w=.5} 확실히 선뜻 말해 줄 만한 일은 아니겠지.{p=.5}어떻게 할까?"        
-        #$renpy.fix_rollback()        
-        call anton_dia        
-        main "그러면 그 이야기는 그만하겠습니다."
-        teacher "예, 아무튼 이스프킨 때문에 \'다섯 개의 검\'에 대한 관심이 생겼다고요?"
-        main "네. 그 냄새를 맡고 그녀가 등에 지고 있는 것을 다시 보았을 떄 깨달았어요.{p=.5}진품인지 아닌지는 모르겠지만 \'아\'와 비슷하게 생겼더군요."                
-        teacher "그건 복제품입니다. 더군다나 그녀는 관리자도 아니고요."
-        main "제 \'신편\'의 능력을 기억하시나요?"
-        teacher "\'이야기를 듣는다\'. {w=.5}음, 그렇군요."
-        main "그 검의 이야기는 저를 아찔하게 만들 정도였습니다.{p=.5}저는 진품이라고 생각했지만 복제품이면서도 그 정도의 힘을 낼 수 있다면, 제 것은 얼마나 큰 힘을 내 줄까요."
-        teacher "요컨대 알지 못하는 사용법이 있을지 모르니 검에 대해 자세히 기록된 자료를 읽어보고 싶다는 것이군요."
-        main "예."
-        teacher "알겠습니다. 찾아 보도록 하죠."
-        show continued with dissolve
-        $renpy.pause(1.5)    
-        $renpy.full_restart() 
+        call antoncurous
+    else:
+        call antonnocurious
+    $deleteSave()
+    $renpy.quit()
+    
+    label game3: 
+        call afterreset
+        "???" ".......{w=.5} ....... {w=.5}....... {w=.5}....... {w=.5}....... {w=.5}....... {w=.5}End."
+        $renpy.full_restart()

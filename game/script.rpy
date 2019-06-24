@@ -1840,13 +1840,13 @@ label star2:
     hide read_nom 
     $renpy.pause(2.0)
     if temp2 != False:
-        call antoncurous
+        call antoncurous from _call_antoncurous
     else:
-        call antonnocurious
+        call antonnocurious from _call_antonnocurious
     $deleteSave()
     $renpy.quit()
     
     label game3: 
-        call afterreset
+        call afterreset from _call_afterreset
         "???" ".......{w=.5} ....... {w=.5}....... {w=.5}....... {w=.5}....... {w=.5}....... {w=.5}End."
         $renpy.full_restart()
