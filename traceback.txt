@@ -1,109 +1,69 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-<<<<<<< HEAD
 While running game code:
-  File "renpy/common/00start.rpy", line 264, in script
-    python:
-  File "renpy/common/00start.rpy", line 268, in <module>
-    renpy.call_in_new_context("_main_menu")
-KeyError: u'_main_menu_screen'
-=======
-While loading <'MatrixColor' <'Image' u'bg_club_mornig.jpg'> (0.2126, 0.7152, 0.0722, 0, 0, 0.2126, 0.7152, 0.0722, 0, 0, 0.2126, 0.7152, 0.0722, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1)>:
-  File "game/script.rpy", line 132, in script call
-    call check from _call_check
-  File "game/script.rpy", line 102, in script call
-    call game3 from _call_game3
-  File "game/script.rpy", line 2830, in script
-    scene bg_club_morningB with Dissolve(3.0)
-IOError: Couldn't find file 'bg_club_mornig.jpg'.
->>>>>>> 5faa992f524d92fc1d52512d4a1d3f76abd0433e
+  File "game/screens.rpy", line 596, in execute
+    screen main_menu():
+  File "game/screens.rpy", line 596, in execute
+    screen main_menu():
+  File "game/screens.rpy", line 615, in execute
+    if gui.show_name:
+  File "game/screens.rpy", line 617, in execute
+    vbox:
+  File "game/screens.rpy", line 619, in execute
+    text "{font=SDMiSaeng.ttf}{size=72}{color=#FFFFFF}버{w=.5}드{w=.5}나{w=.5}무{w=.5} 꽃{w=.5} 만{w=.5}발{w=.5}할{w=.5} 그{w=.5}날{w=.5}까{w=.5}지{w=.5}{w=.5}...{/color}{/size}{/font}" at alpha(30.0)
+  File "game/screens.rpy", line 619, in keywords
+    text "{font=SDMiSaeng.ttf}{size=72}{color=#FFFFFF}버{w=.5}드{w=.5}나{w=.5}무{w=.5} 꽃{w=.5} 만{w=.5}발{w=.5}할{w=.5} 그{w=.5}날{w=.5}까{w=.5}지{w=.5}{w=.5}...{/color}{/size}{/font}" at alpha(30.0)
+NameError: name 'alpha' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-<<<<<<< HEAD
-  File "renpy/common/00start.rpy", line 264, in script
-    python:
-  File "C:\renpy-7.2.2-sdk\renpy\ast.py", line 900, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "C:\renpy-7.2.2-sdk\renpy\python.py", line 1930, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "renpy/common/00start.rpy", line 268, in <module>
-    renpy.call_in_new_context("_main_menu")
-  File "C:\renpy-7.2.2-sdk\renpy\game.py", line 332, in call_in_new_context
-    return renpy.execution.run_context(False)
-  File "C:\renpy-7.2.2-sdk\renpy\execution.py", line 917, in run_context
-    context.pop_all_dynamic()
   File "renpy/common/_layout/screen_main_menu.rpym", line 28, in script
     python hide:
-  File "C:\renpy-7.2.2-sdk\renpy\execution.py", line 372, in pop_dynamic
-    del store[k]
-KeyError: u'_main_menu_screen'
-=======
-  File "game/script.rpy", line 132, in script call
-    call check from _call_check
-  File "game/script.rpy", line 102, in script call
-    call game3 from _call_game3
-  File "game/script.rpy", line 2830, in script
-    scene bg_club_morningB with Dissolve(3.0)
-  File "C:\renpy-7.2.2-sdk\renpy\ast.py", line 1375, in execute
-    renpy.exports.with_statement(trans, paired)
-  File "C:\renpy-7.2.2-sdk\renpy\exports.py", line 1578, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 2240, in do_with
-    clear=clear)
-  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 2690, in interact
+  File "C:\renpy-7.2.2-sdk\renpy\ast.py", line 912, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\renpy-7.2.2-sdk\renpy\python.py", line 1959, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "renpy/common/_layout/screen_main_menu.rpym", line 28, in <module>
+    python hide:
+  File "renpy/common/_layout/screen_main_menu.rpym", line 35, in _execute_python_hide
+    ui.interact()
+  File "C:\renpy-7.2.2-sdk\renpy\ui.py", line 295, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 2701, in interact
     repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 3174, in interact_core
-    self.draw_screen(root_widget, fullscreen_video, (not fullscreen_video) or video_frame_drawn)
-  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 2086, in draw_screen
-    renpy.config.screen_height,
-  File "render.pyx", line 516, in renpy.display.render.render_screen
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "C:\renpy-7.2.2-sdk\renpy\display\layout.py", line 722, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "C:\renpy-7.2.2-sdk\renpy\display\transition.py", line 361, in render
-    top = render(self.new_widget, width, height, st, at)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "C:\renpy-7.2.2-sdk\renpy\display\layout.py", line 722, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "C:\renpy-7.2.2-sdk\renpy\display\layout.py", line 722, in render
-    surf = render(child, width, height, cst, cat)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "accelerator.pyx", line 110, in renpy.display.accelerator.transform_render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "C:\renpy-7.2.2-sdk\renpy\display\image.py", line 500, in render
-    return wrap_render(self.target, width, height, st, at)
-  File "C:\renpy-7.2.2-sdk\renpy\display\image.py", line 306, in wrap_render
-    rend = render(child, w, h, st, at)
-  File "render.pyx", line 151, in renpy.display.render.render
-  File "render.pyx", line 244, in renpy.display.render.render
-  File "C:\renpy-7.2.2-sdk\renpy\display\im.py", line 580, in render
-    return cache.get(self, render=True)
-  File "C:\renpy-7.2.2-sdk\renpy\display\im.py", line 266, in get
-    surf = image.load()
-  File "C:\renpy-7.2.2-sdk\renpy\display\im.py", line 1256, in load
-    surf = cache.get(self.image)
-  File "C:\renpy-7.2.2-sdk\renpy\display\im.py", line 266, in get
-    surf = image.load()
-  File "C:\renpy-7.2.2-sdk\renpy\display\im.py", line 625, in load
-    surf = renpy.display.pgrender.load_image(renpy.loader.load(self.filename), self.filename)
-  File "C:\renpy-7.2.2-sdk\renpy\loader.py", line 576, in load
-    raise IOError("Couldn't find file '%s'." % name)
-IOError: Couldn't find file 'bg_club_mornig.jpg'.
->>>>>>> 5faa992f524d92fc1d52512d4a1d3f76abd0433e
+  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 3093, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\renpy-7.2.2-sdk\renpy\display\screen.py", line 430, in visit_all
+    callback(self)
+  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 3093, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "C:\renpy-7.2.2-sdk\renpy\display\screen.py", line 440, in per_interact
+    self.update()
+  File "C:\renpy-7.2.2-sdk\renpy\display\screen.py", line 625, in update
+    self.screen.function(**self.scope)
+  File "game/screens.rpy", line 596, in execute
+    screen main_menu():
+  File "game/screens.rpy", line 596, in execute
+    screen main_menu():
+  File "game/screens.rpy", line 615, in execute
+    if gui.show_name:
+  File "game/screens.rpy", line 617, in execute
+    vbox:
+  File "game/screens.rpy", line 619, in execute
+    text "{font=SDMiSaeng.ttf}{size=72}{color=#FFFFFF}버{w=.5}드{w=.5}나{w=.5}무{w=.5} 꽃{w=.5} 만{w=.5}발{w=.5}할{w=.5} 그{w=.5}날{w=.5}까{w=.5}지{w=.5}{w=.5}...{/color}{/size}{/font}" at alpha(30.0)
+  File "game/screens.rpy", line 619, in keywords
+    text "{font=SDMiSaeng.ttf}{size=72}{color=#FFFFFF}버{w=.5}드{w=.5}나{w=.5}무{w=.5} 꽃{w=.5} 만{w=.5}발{w=.5}할{w=.5} 그{w=.5}날{w=.5}까{w=.5}지{w=.5}{w=.5}...{/color}{/size}{/font}" at alpha(30.0)
+  File "<screen language>", line 619, in <module>
+NameError: name 'alpha' is not defined
 
 Windows-8-6.2.9200
-Ren'Py 7.2.2.491
-버드나무 꽃 만개할 그날까지 1.1
-<<<<<<< HEAD
-Sat Jun 22 18:41:41 2019
-=======
-Fri Jun 21 10:00:15 2019
->>>>>>> 5faa992f524d92fc1d52512d4a1d3f76abd0433e
+Ren'Py 7.3.0.271
+버드나무 꽃 만개할 그날까지 1.1.2
+Wed Jun 26 11:33:24 2019

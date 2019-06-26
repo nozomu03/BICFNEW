@@ -547,7 +547,6 @@ screen navigation():
             textbutton _("{size=30}Start{/size}") at alpha1(sec=.5) action Start() 
 
         else:
-
             textbutton _("{size=30}History{/size}") at alpha1(sec=1.0) action ShowMenu("history")
 
             textbutton _("{size=30}Save{/size}") at alpha1(sec=1.5) action ShowMenu("save")
@@ -601,7 +600,7 @@ screen main_menu():
        # $renpy.music.queue('door.mp3', 'music')
        ## $renpy.music.queue('Mr.J tema.mp3', 'music', False)
     #$renpy.music.stop()
-    #tag menu
+    tag menu
     style_prefix "main_menu"
 
     add gui.main_menu_background
@@ -613,9 +612,11 @@ screen main_menu():
     ## The use statement includes another screen inside this one. The actual
     ## contents of the main menu are in the navigation screen.
     use navigation
-    vbox:
-        align(.77, .85)
-        text "{font=SDMiSaeng.ttf}{size=72}{color=#FFFFFF}버{w=.5}드{w=.5}나{w=.5}무{w=.5} 꽃{w=.5} 만{w=.5}발{w=.5}할{w=.5} 그{w=.5}날{w=.5}까{w=.5}지{w=.5}{w=.5}...{/color}{/size}{/font}" at alpha2(sec=15.0)
+    if gui.show_name:
+
+        vbox:
+            align(.77, .85)
+            text "{font=SDMiSaeng.ttf}{size=72}{color=#FFFFFF}버{w=.5}드{w=.5}나{w=.5}무{w=.5} 꽃{w=.5} 만{w=.5}발{w=.5}할{w=.5} 그{w=.5}날{w=.5}까{w=.5}지{w=.5}{w=.5}...{/color}{/size}{/font}" at alpha1(sec=7.0)
 
 
 
@@ -693,7 +694,6 @@ screen game_menu(title, scroll=None):
                         mousewheel True
                         draggable True
                         pagekeys True
-
 
                         side_yfill True
 
@@ -798,21 +798,20 @@ screen about():
     ## This use statement includes the game_menu screen inside this one. The
     ## vbox child is then included inside the viewport inside the game_menu
     ## screen.
-    use game_menu(_("About"), scroll="viewport"):
+    use game_menu(_("버전정보"), scroll="viewport"):
 
         style_prefix "about"
 
         vbox:
 
             label "[config.name!t]"
-            text _("Version [config.version!t]\n")
+            text _("버젼 [config.version!t]\n")
 
-            ## gui.about is usually set in options.rpy.
+            ## gui.about 의 내용은 보통 options.rpy에 있습니다.
             if gui.about:
                 text "[gui.about!t]\n"
 
-            text _("Made with {a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only].\n\n[renpy.license!t]")
-
+            text _("{a=https://www.renpy.org/}Ren'Py{/a} [renpy.version_only] 으로 만들어진 게임.\n\n[renpy.license!t]")
 
 ## This is redefined in options.rpy to add text to the about screen.
 define gui.about = ""
@@ -968,12 +967,7 @@ screen preferences():
 
     tag menu
 
-    if renpy.mobile:
-        $ cols = 2
-    else:
-        $ cols = 4
-
-    use game_menu(_("Preferences"), scroll="viewport"):
+    use game_menu(_("환경설정"), scroll="viewport"):
 
         vbox:
 
@@ -984,47 +978,26 @@ screen preferences():
 
                     vbox:
                         style_prefix "radio"
-                        label _("Display")
-                        textbutton _("Window") action Preference("display", "window")
-                        textbutton _("Fullscreen") action Preference("display", "fullscreen")
-
-#                 vbox:
-#                     style_prefix "radio"
-#                     label _("Rollback Side")
-#                     textbutton _("Disable") action Preference("rollback side", "disable")
-#                     textbutton _("Left") action Preference("rollback side", "left")
-#                     textbutton _("Right") action Preference("rollback side", "right")
-
-                vbox:
-                    style_prefix "check"
-                    label _("Skip")
-                    textbutton _("Unseen Text") action Preference("skip", "toggle")
-                    textbutton _("After Choices") action Preference("after choices", "toggle")
-                    textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
-
-
-                vbox:
-                    style_prefix "check"
-                    label _("Examples")
-                    textbutton _("Translations") action ToggleField(persistent, "show_translation_marker")
-
-#begin language_picker
-                ## Additional vboxes of type "radio_pref" or "check_pref" can be
-                ## added here, to add additional creator-defined preferences.
+                        label _("화면 모드")
+                        textbutton _("창 화면") action Preference("display", "window")
+                        textbutton _("전체 화면") action Preference("display", "fullscreen")
 
                 vbox:
                     style_prefix "radio"
-                    label _("Language")
+                    label _("측면 되감기")
+                    textbutton _("비활성화") action Preference("rollback side", "disable")
+                    textbutton _("화면 왼쪽 클릭") action Preference("rollback side", "left")
+                    textbutton _("화면 오른쪽 클릭") action Preference("rollback side", "right")
 
-                    # Real languages should go alphabetical order by English name.
-                    textbutton "English" text_font "DejaVuSans.ttf"action Language(None)
-                    textbutton "Русский" text_font "DejaVuSans.ttf" action Language("russian")
+                vbox:
+                    style_prefix "check"
+                    label _("넘기기")
+                    textbutton _("읽지 않은 지문") action Preference("skip", "toggle")
+                    textbutton _("선택지 이후") action Preference("after choices", "toggle")
+                    textbutton _("화면 전환 효과") action InvertSelected(Preference("transitions", "toggle"))
 
-                    # This should be last.
-                    textbutton "Pig Latin" text_font "DejaVuSans.ttf" action Language("piglatin")
-
-
-#end language_picker
+                ## "radio_pref" 나 "check_pref" 를 추가하여 그 외에도 환경설정
+                ## 항목을 추가할 수 있습니다.
 
             null height (4 * gui.pref_spacing)
 
@@ -1034,48 +1007,51 @@ screen preferences():
 
                 vbox:
 
-                    label _("Text Speed")
+                    label _("텍스트 속도")
 
                     bar value Preference("text speed")
 
-                    label _("Auto-Forward Time")
+                    label _("자동 진행 시간")
 
                     bar value Preference("auto-forward time")
 
                 vbox:
 
                     if config.has_music:
-                        label _("Music Volume")
+                        label _("배경음 음량")
 
                         hbox:
                             bar value Preference("music volume")
 
                     if config.has_sound:
 
-                        label _("Sound Volume")
+                        label _("효과음 음량")
 
                         hbox:
                             bar value Preference("sound volume")
 
                             if config.sample_sound:
-                                textbutton _("Test") action Play("sound", config.sample_sound)
+                                textbutton _("테스트") action Play("sound", config.sample_sound)
 
 
                     if config.has_voice:
-                        label _("Voice Volume")
+                        label _("음성 음량")
 
                         hbox:
                             bar value Preference("voice volume")
 
                             if config.sample_voice:
-                                textbutton _("Test") action Play("voice", config.sample_voice)
+                                textbutton _("테스트") action Play("voice", config.sample_voice)
 
                     if config.has_music or config.has_sound or config.has_voice:
                         null height gui.pref_spacing
 
-                        textbutton _("Mute All"):
+                        textbutton _("모두 음소거"):
                             action Preference("all mute", "toggle")
                             style "mute_all_button"
+
+
+#end language_picker
 
 
 style pref_label is gui_label
@@ -1256,7 +1232,7 @@ screen help():
 
     default device = "keyboard"
 
-    use game_menu(_("Help"), scroll="viewport"):
+    use game_menu(_("조작방법"), scroll="viewport"):
 
         style_prefix "help"
 
@@ -1265,11 +1241,11 @@ screen help():
 
             hbox:
 
-                textbutton _("Keyboard") action SetScreenVariable("device", "keyboard")
-                textbutton _("Mouse") action SetScreenVariable("device", "mouse")
+                textbutton _("키보드") action SetScreenVariable("device", "keyboard")
+                textbutton _("마우스") action SetScreenVariable("device", "mouse")
 
                 if GamepadExists():
-                    textbutton _("Gamepad") action SetScreenVariable("device", "gamepad")
+                    textbutton _("게임패드") action SetScreenVariable("device", "gamepad")
 
             if device == "keyboard":
                 use keyboard_help
@@ -1282,100 +1258,101 @@ screen help():
 screen keyboard_help():
 
     hbox:
-        label _("Enter")
-        text _("Advances dialogue and activates the interface.")
+        label _("엔터(Enter)")
+        text _("대사 진행 및 UI (선택지 포함) 선택.")
 
     hbox:
-        label _("Space")
-        text _("Advances dialogue without selecting choices.")
+        label _("스페이스(Space)")
+        text _("대사를 진행하되 선택지는 선택하지 않음.")
 
     hbox:
-        label _("Arrow Keys")
-        text _("Navigate the interface.")
+        label _("화살표 키")
+        text _("UI 이동.")
 
     hbox:
-        label _("Escape")
-        text _("Accesses the game menu.")
+        label _("이스케이프(Esc)")
+        text _("게임 메뉴 불러옴.")
 
     hbox:
-        label _("Ctrl")
-        text _("Skips dialogue while held down.")
+        label _("컨트롤(Ctrl)")
+        text _("누르고 있는 동안 대사를 스킵.")
 
     hbox:
-        label _("Tab")
-        text _("Toggles dialogue skipping.")
+        label _("탭(Tab)")
+        text _("대사 스킵 토글.")
 
     hbox:
-        label _("Page Up")
-        text _("Rolls back to earlier dialogue.")
+        label _("페이지 업(Page Up)")
+        text _("이전 대사로 롤백.")
 
     hbox:
-        label _("Page Down")
-        text _("Rolls forward to later dialogue.")
+        label _("페이지 다운(Page Down)")
+        text _("이후 대사로 롤포워드.")
 
     hbox:
         label "H"
-        text _("Hides the user interface.")
+        text _("UI를 숨김.")
 
     hbox:
         label "S"
-        text _("Takes a screenshot.")
+        text _("스크린샷 저장.")
 
     hbox:
         label "V"
-        text _("Toggles assistive {a=https://www.renpy.org/l/voicing}self-voicing{/a}.")
+        text _("{a=https://www.renpy.org/l/voicing}대사 읽어주기 기능{/a} 토글.")
 
 
 screen mouse_help():
 
     hbox:
-        label _("Left Click")
-        text _("Advances dialogue and activates the interface.")
+        label _("클릭")
+        text _("대사 진행 및 UI (선택지 포함) 선택.")
 
     hbox:
-        label _("Middle Click")
-        text _("Hides the user interface.")
+        label _("가운데 버튼이나 휠버튼 클릭")
+        text _("UI를 숨김.")
 
     hbox:
-        label _("Right Click")
-        text _("Accesses the game menu.")
+        label _("우클릭")
+        text _("게임 메뉴 불러옴.")
 
     hbox:
-        label _("Mouse Wheel Up\nClick Rollback Side")
-        text _("Rolls back to earlier dialogue.")
+        label _("휠 위로\n롤백 클릭")
+        text _("이전 대사로 롤백.")
 
     hbox:
-        label _("Mouse Wheel Down")
-        text _("Rolls forward to later dialogue.")
+        label _("휠 아래로")
+        text _("이후 대사로 롤포워드.")
 
 
 screen gamepad_help():
 
     hbox:
-        label _("Right Trigger\nA/Bottom Button")
-        text _("Advances dialogue and activates the interface.")
+        label _("오른쪽 트리거(RT)\nA버튼/아래 버튼")
+        text _("대사 진행 및 UI (선택지 포함) 선택.")
 
     hbox:
         label _("Left Trigger\nLeft Shoulder")
-        text _("Rolls back to earlier dialogue.")
+        text _("이전 대사로 롤백.")
 
     hbox:
-        label _("Right Shoulder")
-        text _("Rolls forward to later dialogue.")
+        label _("오른쪽 범퍼(RB)")
+        text _("이후 대사로 롤포워드.")
+
 
     hbox:
-        label _("D-Pad, Sticks")
-        text _("Navigate the interface.")
+        label _("D-Pad, 아날로그 스틱")
+        text _("UI 이동.")
 
     hbox:
-        label _("Start, Guide")
-        text _("Accesses the game menu.")
+        label _("스타트 버튼/가이드 버튼")
+        text _("게임 메뉴 불러옴.")
 
     hbox:
-        label _("Y/Top Button")
-        text _("Hides the user interface.")
+        label _("Y버튼/위 버튼")
+        text _("UI를 숨김.")
 
-    textbutton _("Calibrate") action GamepadCalibrate()
+    textbutton _("조정") action GamepadCalibrate()
 
 
 style help_button is gui_button
