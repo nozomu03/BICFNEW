@@ -876,7 +876,7 @@ label start:
     $renpy.fix_rollback()        
     call rinedia from _call_rinedia 
 label star2:    
-    show screen phonebutton
+    #show screen phonebutton
     $renpy.fix_rollback()        
     scene bg_black with wiperight
     play sound "walk_slow.mp3"
