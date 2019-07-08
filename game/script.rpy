@@ -139,7 +139,6 @@ label start:
     nvl clear
     window hide
     scene bg_black
-    show screen curious_button
     play sound "alarm.mp3"
     $renpy.pause(2.0)
     play sound "alarm.mp3"

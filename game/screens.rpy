@@ -44,21 +44,11 @@ transform lrquake:
     linear .1 xpos 10
     repeat(3.0)
 
-transform alphamove(o_xpos=0, o_ypos=100):
-    xpos o_xpos
-    linear(2.0) pos(1400, o_ypos)
+transform alphamove():
     #pause(.2)
-    pos(0, 0) 
-    linear(1.0) pos(o_xpos, o_ypos)
-    #pause(.2)
-    linear (1.0) pos(1400, 0)
-    pos(0, 0)
-    linear (1.0) pos(o_xpos, renpy.random.randint(254, 600))
-    linear (1.0) pos(o_ypos, renpy.random.randint(254, 600))
-    linear (1.0) pos(o_xpos, renpy.random.randint(254, 600))
-    linear (1.0) pos(1400, renpy.random.randint(254, 600))
-    pos(0, 0)
-    linear (1.0) pos(o_xpos, renpy.random.randint(231, 525))
+    linear (1.0) pos(renpy.random.randint(0, 1280), renpy.random.randint(0, 600))
+    linear (1.0) pos(renpy.random.randint(0, 1280), renpy.random.randint(0, 600))
+    linear (1.0) pos(renpy.random.randint(0, 1280), renpy.random.randint(0, 525))
     repeat(90000)
 
 screen nonreal:
@@ -67,82 +57,79 @@ screen nonreal:
         align(.5, .5)
         vbox:
             text "{color=#000000}{size=80}데이터 말소됨{/size}{/color}" 
-            textbutton "{size=50}{color=#000000}Y{/color}{/size}" action [Hide("nonreal", transition=dissolve), Return()] at center1 
-    
-screen curious_button:
-    textbutton "{color=#ffffff}메뉴{/color}" xalign .96 yalign .04 action[Hide('curious_button'), Show('curious', transition=dissolve)]
-
+            textbutton "{size=50}{color=#000000}Y{/color}{/size}" action [Hide("nonreal", transition=dissolve), Return()] at center1     
 screen curious:
-    #group_big
-    $f_ypos=renpy.random.randint(100, 600)
-    $f_xpos=renpy.random.randint(0, 1000)
-    $s_ypos=renpy.random.randint(100, 600)
-    $s_xpos=renpy.random.randint(0, 1000)
-    $t_ypos=renpy.random.randint(100, 600)
-    $t_xpos=renpy.random.randint(0, 1000)
-    $f1_ypos=renpy.random.randint(100, 600)
-    $f1_xpos=renpy.random.randint(0, 1000)
-    $f2_ypos=renpy.random.randint(100, 600)
-    $f2_xpos=renpy.random.randint(0, 1000)
-
+            #group_big
+    $f_ypos=renpy.random.randint(0, 720)
+    $f_xpos=renpy.random.randint(0, 1280)
+    $s_ypos=renpy.random.randint(0, 720)
+    $s_xpos=renpy.random.randint(0, 1280)
+    $t_ypos=renpy.random.randint(0, 720)
+    $t_xpos=renpy.random.randint(0, 1280)
+    $f1_ypos=renpy.random.randint(0, 720)
+    $f1_xpos=renpy.random.randint(0, 1280)
+    $f2_ypos=renpy.random.randint(0, 720)
+    $f2_xpos=renpy.random.randint(0, 1280)
+                
     #group_small 
-    $fs_ypos=renpy.random.randint(0, 630)
-    $fs_xpos=renpy.random.randint(100, 500)
-    $ss_ypos=renpy.random.randint(300, 630)
-    $ss_xpos=renpy.random.randint(50, 500)
-    $ts_ypos=renpy.random.randint(30, 630)
-    $ts_xpos=renpy.random.randint(400, 500)
-    $f1s_ypos=renpy.random.randint(20, 630)
-    $f1s_xpos=renpy.random.randint(379, 500)
-    $f2s_ypos=renpy.random.randint(427, 630)
-    $f2s_xpos=renpy.random.randint(329, 500)
+    $fs_ypos=renpy.random.randint(0, 720)
+    $fs_xpos=renpy.random.randint(0, 1280)
+    $ss_ypos=renpy.random.randint(0, 720)
+    $ss_xpos=renpy.random.randint(0, 1280)
+    $ts_ypos=renpy.random.randint(0, 720)
+    $ts_xpos=renpy.random.randint(0, 1280)
+    $f1s_ypos=renpy.random.randint(0, 720)
+    $f1s_xpos=renpy.random.randint(0, 1280)
+    $f2s_ypos=renpy.random.randint(0, 720)
+    $f2s_xpos=renpy.random.randint(0, 1280)
 ##############################################
 
 
 
-    add "bg_redblack.png"
 #    text "[f_ypos]" xpos 100 ypos 100
-    add "mark_1.png" ypos f_ypos at alphamove(o_xpos=f_xpos, o_ypos=f_ypos)
-    add "mark_2.png" ypos s_ypos at alphamove(o_xpos=s_xpos, o_ypos=s_ypos)
-    add "mark_3.png" ypos t_ypos at alphamove(o_xpos=t_xpos, o_ypos=t_ypos)
-    add "mark_4.png" ypos f1_ypos at alphamove(o_xpos=f1_xpos, o_ypos=f1_ypos)
-    add "mark_5.png" ypos f2_ypos at alphamove(o_xpos=f2_xpos, o_ypos=f2_ypos)
-    #####################################################################################
-
-    add "mark_6.png" ypos fs_ypos at alphamove(o_xpos=fs_xpos, o_ypos=fs_ypos)
-    add "mark_7.png" ypos ss_ypos at alphamove(o_xpos=ss_xpos, o_ypos=ss_ypos)
-    add "mark_8.png" ypos ts_ypos at alphamove(o_xpos=ts_xpos, o_ypos=ts_ypos)
-    add "mark_9.png" ypos f1s_ypos at alphamove(o_xpos=f1s_xpos, o_ypos=f1s_ypos)
-    add "mark_10.png" ypos f2s_ypos at alphamove(o_xpos=f2s_xpos, o_ypos=f2s_ypos)
-
-    textbutton "{font=SDMiSaeng.ttf}{color=#FF0101}{size=100}Menu{/size}{/color}{/font}" xalign 0.01 yalign -0.3 at downing
     modal True
-    textbutton "닫기" xalign .96 yalign .04 action[Hide('curious'), Show('curious_button', transition=dissolve)]
 
-    vbox:
-        align(.08, .2)
-        textbutton "{color=#FFFFFF}의문점들{/color}" at alpha1(sec=.5)
-        textbutton "{color=#FFFFFF}[firstcurious]{/color}" at alpha1(sec=.7)
-        textbutton "{color=#FFFFFF}[secondcurious]{/color}" at alpha1(sec=.9)
-        textbutton "{color=#FFFFFF}[thirdcurious]{/color}" at alpha1(sec=1.1)
+    tag menu
+    use game_menu(_("의문점"), scroll=None):
+        
+        vbox:
+            align(.3, .2)
+            textbutton "{color=#FFFFFF}의문점들{/color}" at alpha1(sec=.5)
+            textbutton "{color=#FFFFFF}[firstcurious]{/color}" at alpha1(sec=.7)
+            textbutton "{color=#FFFFFF}[secondcurious]{/color}" at alpha1(sec=.9)
+            textbutton "{color=#FFFFFF}[thirdcurious]{/color}" at alpha1(sec=1.1)
 
-    vbox:
-        align(.5, .35)
-        textbutton "{color=#FFFFFF}소유물{/color}" at alpha1(sec=1.3)
-        if firstitem == None:
-            textbutton "None" at alpha1(sec=1.5)
-        else:
-            textbutton "[firstitem]" at alpha1(sec=1.5) action Show('firstitem', transition=dissolve) 
-        if seconditem == None:
-            textbutton "None" at alpha1(sec=1.7)
-        else:
-            textbutton "[seconditem]" at alpha1(sec=1.7) action Show('seconditem', transition=dissolve)
-        if thirditem == None:
-            textbutton "None" at alpha1(sec=1.9)
-        else:
-            textbutton "[thirditem]" at alpha1(sec=1.7) action Show('thirditem', transition=dissolve)
 
-       # textbutton "[forthitem]" at alpha1(sec=2.1) action Show('forthitem', transition=dissolve)
+        add "mark_1.png" xpos f_xpos ypos f_ypos at alphamove
+        add "mark_2.png" xpos s_xpos ypos s_ypos at alphamove
+        add "mark_3.png" xpos t_xpos ypos t_ypos at alphamove
+        add "mark_4.png" xpos f1_xpos ypos f1_ypos at alphamove
+        add "mark_5.png" xpos f2_xpos ypos f2_ypos at alphamove
+        #####################################################################################
+
+        add "mark_6.png" xpos fs_xpos ypos fs_ypos at alphamove
+        add "mark_7.png" xpos ss_xpos ypos ss_ypos at alphamove
+        add "mark_8.png" xpos ts_xpos ypos ts_ypos at alphamove
+        add "mark_9.png" xpos f1s_xpos ypos f1s_ypos at alphamove
+        add "mark_10.png" ypos f2s_ypos at alphamove
+
+        #vbox:
+        #    align(.5, .35)
+        #    textbutton "{color=#FFFFFF}소유물{/color}" at alpha1(sec=1.3)
+        #    if firstitem == None:
+        #        textbutton "None" at alpha1(sec=1.5)
+        #    else:
+        #        textbutton "[firstitem]" at alpha1(sec=1.5) action Show('firstitem', transition=dissolve) 
+        #    if seconditem == None:
+        #        textbutton "None" at alpha1(sec=1.7)
+        #    else:
+        #        textbutton "[seconditem]" at alpha1(sec=1.7) action Show('seconditem', transition=dissolve)
+        #    if thirditem == None:
+        #        textbutton "None" at alpha1(sec=1.9)
+        #    else:
+        #        textbutton "[thirditem]" at alpha1(sec=1.7) action Show('thirditem', transition=dissolve)
+
+        # textbutton "[forthitem]" at alpha1(sec=2.1) action Show('forthitem', transition=dissolve)
     
 
 screen firstitem:
@@ -544,36 +531,37 @@ screen navigation():
         if main_menu:
          #   if persistent.ok and not persistent.trueR:
                 #textbutton _("{size=30}Start{/size}") at alpha1(sec=.5) action [Show("nonreal", transition=dissolve)]
-            textbutton _("{size=30}Start{/size}") at alpha1(sec=.5) action Start() 
+            textbutton _("{size=30}Start{/size}") at alpha1(sec=.2) action Start() 
 
         else:
-            textbutton _("{size=30}History{/size}") at alpha1(sec=1.0) action ShowMenu("history")
+            textbutton _("{size=30}History{/size}") at alpha1(sec=.4) action ShowMenu("history")
 
-            textbutton _("{size=30}Save{/size}") at alpha1(sec=1.5) action ShowMenu("save")
+            textbutton _("{size=30}Save{/size}") at alpha1(sec=.6) action ShowMenu("save")
 
-        textbutton _("{size=30}Load{/size}") at alpha1(sec=2.0) action ShowMenu("load")
+        textbutton _("{size=30}Load{/size}") at alpha1(sec=.8) action ShowMenu("load")
 
-        textbutton _("{size=30}Preferences{/size}") at alpha1(sec=2.5) action ShowMenu("preferences")
+        textbutton _("{size=30}Preferences{/size}") at alpha1(sec=1.0) action ShowMenu("preferences")
 
         #textbutton ("Update") action updater.Update(url="https://nozomu466.000webhostapp.com/update.json")
 
         if _in_replay:
 
-            textbutton _("{size=30}End Replay{/size}") at alpha1(sec=3.0) action EndReplay(confirm=True) 
+            textbutton _("{size=30}End Replay{/size}") at alpha1(sec=1.2) action EndReplay(confirm=True) 
 
         elif not main_menu:
 
-            textbutton _("{size=30}Main Menu{/size}") at alpha1(sec=3.5) action MainMenu()
+            textbutton _("{size=30}Main Menu{/size}") at alpha1(sec=1.4) action MainMenu()
+            textbutton "{size=30}Curious{/size}" action[Show('curious', transition=dissolve)] at alpha1(sec=1.6)
 
-        textbutton _("{size=30}About{/size}") at alpha1(sec=4.0) action ShowMenu("about")
+        textbutton _("{size=30}About{/size}") at alpha1(sec=1.8) action ShowMenu("about")
 
         if renpy.variant("pc"):
 
             ## Help isn't necessary or relevant to mobile devices.
-            textbutton _("{size=30}Help{/size}") at alpha1(sec=4.5) action ShowMenu("help")
+            textbutton _("{size=30}Help{/size}") at alpha1(sec=2.0) action ShowMenu("help")
 
             ## The quit button is banned on iOS and unnecessary on Android.
-            textbutton _("{size=30}Exit{/size}") at alpha1(sec=5.0) action Quit(confirm=not main_menu)
+            textbutton _("{size=30}Exit{/size}") at alpha1(sec=2.2) action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -667,7 +655,6 @@ style main_menu_version:
 ## transcluded (placed) inside it.
 
 screen game_menu(title, scroll=None):
-
     style_prefix "game_menu"
 
     if main_menu:
