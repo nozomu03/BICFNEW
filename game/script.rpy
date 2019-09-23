@@ -1842,7 +1842,7 @@ label star2:
     hide read_nom 
     $renpy.pause(2.0)
     if temp2 != False:
-        call antoncurous from _call_antoncurous
+        call antoncurious from _call_antoncurious
     else:
         call antonnocurious from _call_antonnocurious
     $deleteSave()

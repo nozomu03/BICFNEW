@@ -118,10 +118,10 @@ image seng_supred = im.MatrixColor("seng_ang.png", im.matrix.colorize("#DF0101",
 image bg_nightschoolred = im.MatrixColor("bg_ground.jpg", im.matrix.colorize("#DF0101", "#1C1C1C"))
 image nameless_gray = im.MatrixColor("nameless_nom.png", im.matrix.saturation(0.0))
 image bg_namelessG = im.MatrixColor("bg_nameless.jpg", im.matrix.saturation(0.0))
-image seng_mamiru = im.Crop("seng_nom.png", (0, 254, 250, 307))
+image seng_mamiru = im.Crop("seng_nom.png", (0, 200, 200, 420))
 define nameless_mamiru = im.Crop("nameless_nom.png", (0, 254, 320, 307))
 image nameless_mamiru = im.MatrixColor(nameless_mamiru, im.matrix.saturation(0.0))
-define seng_mamiru = im.Crop("seng_nom.png", (0, 254, 250, 307))
+define seng_mamiru = im.Crop("seng_nom.png", (0, 200, 200, 420))
 define leftbad = Position(xalign=.1, yalign=.7)#1C1C1C
 image seng_mamirui = im.MatrixColor(seng_mamiru, im.matrix.colorize("#1C1C1C", "#DF0101"))
 image seng_mamiruii = im.MatrixColor(seng_mamiru, im.matrix.invert())
@@ -276,7 +276,7 @@ label psycopuzzle:
     $renpy.quit()
     return
 
-define right = Position(xalign=.7, yalign=1.0)
+define right = Position(xalign=.9, yalign=1.0)
 define left = Position(xalign=.1, yalign=1.0)
 define center = Position(xalign=.5, yalign=1.0)
 define center1 = Position(xalign=.5, yalign=.5)

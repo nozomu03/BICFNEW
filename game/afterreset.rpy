@@ -814,7 +814,7 @@ label afterreset:
         stop sound
         er "가만히 계세요. 지금 치료해 드릴테니까."
         $firstcurious = "[nameless]의 저의는 뭘까?"
-        $renpy.pause(3.0)
+        $renpy.pause(5.0)
         prin "계약도 어기고 멋대로 바깥으로 나서더니 꼴 좋군."
         teacher "제 잘못입니다. 이스프킨과 함께라면 괜찮을 거라 생각했던 제 안일함 때문에..."
         prin "넌 옛날에도 지금도 사람이 너무 좋아. 네 잘못이 아닌 것까지 뒤집어 쓰려 하면 나는 미뤄두었던 판결을 지금 선고할 수 밖에 없어."
@@ -910,6 +910,7 @@ label afterreset:
         play sound "jab.mp3"
         $renpy.pause(1.0)
         stop sound
+        ".......{w=.5} ...정신이 몽롱해져 간다.{p=.5}[nameless]... 나는 또 다시..."
         scene bg_club_morningB
         show nameless_gray
         with Dissolve(3.0)
@@ -918,8 +919,43 @@ label afterreset:
         play sound "chain.mp3"
         $renpy.pause(2.0)
         stop sound
-        scene continued with dissolve
         $renpy.pause(2.0)
+        scene bg_black with Dissolve(5.0)
+        nvlnarr "진정, 재앙은 다른 곳에 있다.{p=.5}그 어느 곳에서도 다시 살아날 수 있으리라 생각하는 희망.{p=.5}그것은 우리로 하여금 계속 절망을 반복케 하는 진정한 재잉이다."
+        nvl clear
+        window hide 
+        scene bg_room with irisout
+        "눈을 떴다."
+        anothervoice "...음..."
+        "아무도 없는 조용한 방."
+        "[main]의 친구들과 이스프킨을 구하기 위해 탐사대가 떠난지 1주일.{p=.5}족히 300명은 될 병력을 이끌고 향했음에도 어떠한 소식도 닿지 않는 것에 모종의 불안감이 느껴졌다."
+        "아나운서" "[main]학생은 지금 즉시 교장실로 오길 바랍니다. 다시 한 번 알립니다. [main] 학생은 지금 즉시 교장실로 와 주십시오."
+        "......."
+        "내가 잠들어있는 사이에 돌아온 것일까?"
+        "순간 머릿속을 스쳐간 그 가능성을 부정했다.{p=.5}제아무리 깊은 잠이라 하여도 교장이 깨우지 않았을 리 없다."
+        play sound "blanket.wav"
+        "옷을 입었다."
+        $renpy.pause(2.0)
+        stop sound 
+        play sound "door.mp3"
+        $renpy.pause(2.0)
+        stop sound
+        play sound "walk.mp3"
+        scene bg_black with dissolve
+        $renpy.pause(2.0)
+        stop sound
+        scene bg_prin
+        show read_ang
+        with dissolve
+        teacher "왜 이렇게 늦게 온 거죠!"
+        anothervoice "안톤...?"
+        teacher "그 이름으로 부르지 마십시오."
+        "...입술을 꺠물었다."
+        teacher "[main]... 어떻게 했습니까?"
+        anothervoice "멀쩡해."
+        teacher "거짓말 마세요. 당신이라면 알고 있지 않습니까, 한.{p=.5}피차 피곤할 일은 하지 맙시다."
+        anothervoice "프레데토레에 당해서 지금은 잠들어 있어. 원한다면 보여줄 수도 있다고."
+
     else:
         centered "다시 왔구나?"
         extend "\n음... 너무 강압적이었던 거려나?"
