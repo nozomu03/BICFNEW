@@ -133,9 +133,12 @@ label start:
     #if persistent.USB!=None:
        #show seng_nom2 at Position(xalign=.0, yalign=.0)
     window show
-    scene warning with dissolve
+    window hide
+    show warning with Dissolve(4.0)
     $renpy.pause(5.0)
     nvlnarr "열심히 살아가야 하는 이유는 무엇인가.{p=1.0}하루하루 살아가는 삶 속에서 견디기 힘든 고난이 있다 하여도{p=1.0}우리는 나아가야만 하는가?"
+    scene warning with dissolve
+    "abc"
     nvl clear
     window hide
     scene bg_black

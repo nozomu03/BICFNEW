@@ -79,19 +79,19 @@ define config.enter_transition = dissolve
 define config.exit_transition = dissolve
 
 
-## Between screens of the game menu.
+## 게임 메뉴 화면 사이입니다.
 
 define config.intra_transition = dissolve
 
 
-## A transition that is used after a game has been loaded.
+## 게임이 로드된 후 사용되는 전환입니다.
 
-define config.after_load_transition = dissolve
+define config.after_load_transition = None
 
 
-## Used when entering the main menu after the game has ended.
+## 게임 종료 후 주 메뉴에 진입할 때 사용됩니다.
 
-define config.end_game_transition = dissolve
+define config.end_game_transition = None
 
 
 ## A variable to set the transition used when the game starts does not exist.
@@ -113,8 +113,8 @@ define config.window = "auto"
 
 ## Transitions used to show and hide the dialogue window
 
-define config.window_show_transition = None
-define config.window_hide_transition = None
+define config.window_show_transition = Dissolve(.2)
+define config.window_hide_transition = Dissolve(.2)
 
 
 ## Preference defaults #########################################################

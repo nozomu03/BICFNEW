@@ -276,7 +276,7 @@ label psycopuzzle:
     $renpy.quit()
     return
 
-define right = Position(xalign=1.0, yalign=1.0)
+define right = Position(xalign=.7, yalign=1.0)
 define left = Position(xalign=.1, yalign=1.0)
 define center = Position(xalign=.5, yalign=1.0)
 define center1 = Position(xalign=.5, yalign=.5)

@@ -1124,6 +1124,7 @@ init python:
     a=0
     _history_list = [ ]
     _history = True
+    message = None
 
 define config.history_callbacks = _history_list
 
@@ -1144,25 +1145,38 @@ screen history():
                 ## This lays things out properly if history_height is None.
                 has fixed:
                     yfit True
-                #if h.who:
-                    #label h.who:
-                     #   style "history_name"
+                if h.who is not None:
+                    label h.who:
+                        style "history_name"
                         ## Take the color of the who text from the Character, if
                         ## set.
-                        #if "color" in h.who_args:
-                        #    text_color h.who_args["color"]
+                        if "color" in h.who_args:
+                            text_color h.who_args["color"]
 
 
                 $ what = renpy.filter_text_tags(h.what, allow=gui.history_allow_tags)
+                $message = h
                 vbox:
-                    textbutton "[h.who]" style "history_name" action[RollbackToIdentifier(h.rollback_identifier)]
+                    text "[h.rollback_identifier]"
+                    textbutton "[h.who]" style "history_name" action [SetVariable("message", h.rollback_identifier), ShowMenu("history_confirm")]
                     text h.what
 
         if not _history_list:
-            label _("The dialogue history is empty.")
+            label _("기억 정보 없음.")
 
 
 define gui.history_allow_tags = set()
+
+screen history_confirm:
+    modal True
+    frame:
+        align(.5, .5)
+        vbox:
+            text "기억을 이 상태로 복원하시겠습니까?"
+            hbox:
+                xalign .5
+                textbutton "Y" action[RollbackToIdentifier(message)]
+                textbutton "N"
 
 
 style history_window is empty
