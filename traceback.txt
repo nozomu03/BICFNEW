@@ -1,44 +1,105 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 131, in script call
-    call check from _call_check
-  File "game/script.rpy", line 101, in script call
-    call game3 from _call_game3
-  File "game/script.rpy", line 1852, in script call
-    call afterreset from _call_afterreset
-  File "game/afterreset.rpy", line 13, in script call
-    extend "\n음... 너무 강압적이었던 거려나?"
-  File "renpy/common/00console.rpy", line 807, in script call
-    python in _console:
-NameError: name 'centor' is not defined
+  File "game/screens.rpy", line 62, in execute
+    repeat(90000)
+  File "game/screens.rpy", line 62, in execute
+    repeat(90000)
+  File "game/screens.rpy", line 94, in execute
+    $f2s_xpos=renpy.random.randint(0, 1280)
+  File "game/screens.rpy", line 658, in execute
+    ## Game Menu screen ############################################################
+  File "game/screens.rpy", line 658, in execute
+    ## Game Menu screen ############################################################
+  File "game/screens.rpy", line 666, in execute
+    
+  File "game/screens.rpy", line 669, in execute
+    
+  File "game/screens.rpy", line 675, in execute
+    frame:
+  File "game/screens.rpy", line 678, in execute
+    hbox:
+  File "game/screens.rpy", line 708, in execute
+    draggable True
+  File "game/screens.rpy", line 94, in execute
+    $f2s_xpos=renpy.random.randint(0, 1280)
+  File "game/screens.rpy", line 104, in execute
+    
+  File "game/screens.rpy", line 104, in keywords
+    
+  File "game/screens.rpy", line 47, in <module>
+    transform alphamove(o_xpos=0, o_ypos=100):
+NameError: name 'f_xpos' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 131, in script call
-    call check from _call_check
-  File "game/script.rpy", line 101, in script call
-    call game3 from _call_game3
-  File "game/script.rpy", line 1852, in script call
-    call afterreset from _call_afterreset
-  File "game/afterreset.rpy", line 13, in script call
-    extend "\n음... 너무 강압적이었던 거려나?"
-  File "renpy/common/00console.rpy", line 807, in script call
-    python in _console:
-  File "lib/windows-i686/<string>", line 1, in script
-  File "C:\renpy-7.2.2-sdk\renpy\ast.py", line 1181, in execute
-    show_imspec(self.imspec, atl=getattr(self, "atl", None))
-  File "C:\renpy-7.2.2-sdk\renpy\ast.py", line 1140, in show_imspec
-    at_list = [ renpy.python.py_eval(i) for i in at_list ]
+  File "renpy/common/_layout/screen_load_save.rpym", line 35, in script
+    $ ui.interact()
+  File "C:\renpy-7.2.2-sdk\renpy\ast.py", line 912, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "C:\renpy-7.2.2-sdk\renpy\python.py", line 1959, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "renpy/common/_layout/screen_load_save.rpym", line 35, in <module>
+    $ ui.interact()
+  File "C:\renpy-7.2.2-sdk\renpy\ui.py", line 295, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 2701, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
+  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 3093, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "C:\renpy-7.2.2-sdk\renpy\display\screen.py", line 430, in visit_all
+    callback(self)
+  File "C:\renpy-7.2.2-sdk\renpy\display\core.py", line 3093, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "C:\renpy-7.2.2-sdk\renpy\display\screen.py", line 440, in per_interact
+    self.update()
+  File "C:\renpy-7.2.2-sdk\renpy\display\screen.py", line 625, in update
+    self.screen.function(**self.scope)
+  File "game/screens.rpy", line 62, in execute
+    repeat(90000)
+  File "game/screens.rpy", line 62, in execute
+    repeat(90000)
+  File "game/screens.rpy", line 94, in execute
+    $f2s_xpos=renpy.random.randint(0, 1280)
+  File "game/screens.rpy", line 658, in execute
+    ## Game Menu screen ############################################################
+  File "game/screens.rpy", line 658, in execute
+    ## Game Menu screen ############################################################
+  File "game/screens.rpy", line 666, in execute
+    
+  File "game/screens.rpy", line 669, in execute
+    
+  File "game/screens.rpy", line 675, in execute
+    frame:
+  File "game/screens.rpy", line 678, in execute
+    hbox:
+  File "game/screens.rpy", line 708, in execute
+    draggable True
+  File "game/screens.rpy", line 94, in execute
+    $f2s_xpos=renpy.random.randint(0, 1280)
+  File "game/screens.rpy", line 104, in execute
+    
+  File "game/screens.rpy", line 104, in keywords
+    
+  File "<screen language>", line 104, in <module>
+  File "C:\renpy-7.2.2-sdk\renpy\atl.py", line 402, in __call__
+    context[k] = renpy.python.py_eval(v)
   File "C:\renpy-7.2.2-sdk\renpy\python.py", line 1990, in py_eval
     return py_eval_bytecode(code, globals, locals)
   File "C:\renpy-7.2.2-sdk\renpy\python.py", line 1983, in py_eval_bytecode
     return eval(bytecode, globals, locals)
-  File "lib/windows-i686/<string>", line 1, in <module>
-NameError: name 'centor' is not defined
+  File "game/screens.rpy", line 47, in <module>
+    transform alphamove(o_xpos=0, o_ypos=100):
+NameError: name 'f_xpos' is not defined
 
 Windows-8-6.2.9200
 Ren'Py 7.3.0.271
 버드나무 꽃 만개할 그날까지 1.1.2
-Mon Sep 23 15:33:32 2019
+Mon Jul 08 18:19:19 2019
