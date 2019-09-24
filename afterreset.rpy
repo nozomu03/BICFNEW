@@ -8,6 +8,7 @@ label afterreset:
     call events_run_period from _call_events_run_period
     # "test" "[home]"       
 #        show char_nom
+    $persistent.trueR = True
     if persistent.trueR:
         centered "다시 왔구나?"
         extend "\n음... 너무 강압적이었던 거려나?"
@@ -942,17 +943,56 @@ label afterreset:
         $renpy.pause(1.5)
         stop sound
         anothervoice "무슨 일인가요, 안톤?"
-        read ".......{w=.5} ...당신..."
+        teacher ".......{w=.5} ...당신..."
         anothervoice "안톤...?"
         hide read_nom
         show read_ang at right
-        read "역겹군요. 당신에게 그 이름으로 절 부를 자격이 있다고 생각하는겁니까?!"
+        teacher "역겹군요. 당신에게 그 이름으로 절 부를 자격이 있다고 생각하는겁니까?!"
         ".......{p=.5}눈치 챈 것이 틀림없었다."
         anothervoice "어디까지 알고 있어?"
         hide read_ang
-        show read_nom at right.
-        read "다 끝났잖습니까... 저희의 이야기는...{p=.5}왜... {w=.5}이제와서 다시 나타난 겁니까, 한?"
-
+        show read_nom at right
+        teacher "다 끝났잖습니까... 저희의 이야기는...{p=.5}왜... {w=.5}이제와서 다시 나타난 겁니까, 한?"
+        anothervoice "나도 이런 식으로 돌아오고 싶은 마음은 없었어."
+        teacher "...당신은..."
+        anothervoice "오해는 하지 마. 나도 이렇게 될 거라곤 생각 못했어."
+        teacher "아무래도 교수님 이론이 맞는 것 같군요."
+        anothervoice ".......{w=.5}[main]... 살아있어."
+        teacher "그걸 제가 어떻게 믿죠?"
+        anothervoice "[nameless]에게 들었을 거 아냐."
+        teacher ".......{w=.5} 여전히 감은 좋으시군요."
+        anothervoice "원한다면 도와주겠어."
+        teacher "괜찮으시겠어요?"
+        anothervoice "이미 들켜버린 거... 더 이상 숨길 필요는 없잖아?"
+        teacher "그 뜻이 아닙니다. {w=.5}...저는 여전히 당신이 두렵거든요."
+        anothervoice "이스프킨... {w=.5}\'안타슈프라인\'을 이용해먹는 너라면 {p=.5}나 따위에 대한 두려움은 극복한 줄 알았는데."
+        teacher "그래요... 그럴 지도 모르겠지요. 하지만 아닙니다. 당신은... {w=.5}{i}있었던 일을 모르니까.{/i}"
+        anothervoice "왜, 개심이라도 했어?"
+        teacher "개심... 조금 다르군요. {w=.5}아니, 전혀 다릅니다."
+        anothervoice "...?"
+        teacher "설명할 기회가 있겠죠."
+        "으쓱였다."
+        scene bg_black with irisin
+        "눈을 감았다."
+        "......."
+        play sound "unlock.ogg"
+        $rnepy.pause(.5)
+        stop sound
+        "교장이 [mian]의 몸에 걸어둔 제약이 해제되었다."
+        "\'황금의 재앙\'과 똑같은 일이 벌어지지 않도록 방지하기 위해 학생의 몸에 심어진 저항할 수 없는 계약."
+        "그의 수법을 뻔히 알고 있는 내게는 통하지 않는다."
+        "그 녀석도 눈치 챘을 것이다. 그리고 그것이 두려웠기에 가만히 방치해 두었을 뿐이다.{p=.5}안톤이 나에 대해서 알아차렸다면, 퍼지는 것은 순식간."
+        "알려지는 것은 더 이상 두렵지 않다."
+        anothervoice "가자. {w=.5}그 녀석... 깜짝 놀라려나."      
+        teacher "댱신을 재차 죽이려 들지도 모르죠."
+        play sound "door.mp3"
+        $renpy.pause(2.0)
+        stop sound
+        scene bg_black with dissolve
+        play sound "walk_slow.mp3"
+        $renpy.pause(2.0)
+        stop sound 
+        nvlnarr "\"무엇을 보았니?\"{p=.5}임금은 말했다.{p=.5}파발꾼은 겁에 떨며 말했다. \"악마를 보았습니다.\""
     else:
         centered "다시 왔구나?"
         extend "\n음... 너무 강압적이었던 거려나?"

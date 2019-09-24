@@ -121,7 +121,7 @@ image bg_namelessG = im.MatrixColor("bg_nameless.jpg", im.matrix.saturation(0.0)
 image seng_mamiru = im.Crop("seng_nom.png", (0, 254, 250, 307))
 define nameless_mamiru = im.Crop("nameless_nom.png", (0, 254, 320, 307))
 image nameless_mamiru = im.MatrixColor(nameless_mamiru, im.matrix.saturation(0.0))
-define seng_mamiru = im.Crop("seng_nom.png", (0, 254, 250, 307))
+define seng_mamiru = im.Crop("seng_nom.png", (0, 170, 200, 400))
 define leftbad = Position(xalign=.1, yalign=.7)#1C1C1C
 image seng_mamirui = im.MatrixColor(seng_mamiru, im.matrix.colorize("#1C1C1C", "#DF0101"))
 image seng_mamiruii = im.MatrixColor(seng_mamiru, im.matrix.invert())
