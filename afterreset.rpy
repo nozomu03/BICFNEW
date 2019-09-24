@@ -976,9 +976,9 @@ label afterreset:
         "눈을 감았다."
         "......."
         play sound "unlock.ogg"
-        $rnepy.pause(.5)
+        $renpy.pause(.5)
         stop sound
-        "교장이 [mian]의 몸에 걸어둔 제약이 해제되었다."
+        "교장이 [main]의 몸에 걸어둔 제약이 해제되었다."
         "\'황금의 재앙\'과 똑같은 일이 벌어지지 않도록 방지하기 위해 학생의 몸에 심어진 저항할 수 없는 계약."
         "그의 수법을 뻔히 알고 있는 내게는 통하지 않는다."
         "그 녀석도 눈치 챘을 것이다. 그리고 그것이 두려웠기에 가만히 방치해 두었을 뿐이다.{p=.5}안톤이 나에 대해서 알아차렸다면, 퍼지는 것은 순식간."
@@ -992,7 +992,13 @@ label afterreset:
         play sound "walk_slow.mp3"
         $renpy.pause(2.0)
         stop sound 
-        nvlnarr "\"무엇을 보았니?\"{p=.5}임금은 말했다.{p=.5}파발꾼은 겁에 떨며 말했다. \"악마를 보았습니다.\""
+        nvlnarr "\"무엇을 보았는가?\"{p=.5}황제는 말했다.{p=.5}파발꾼은 겁에 떨며 말했다.{p=.5}\"악마를 보았습니다.\""
+        nvlnarr "{p=.5}\"오오, 가련한 이여. 그로부터 도망칠 수 있겠느뇨?\"{p=.5}\"위대하신 분이시여, 저를 구해주소서.\""
+        window hide
+        nvl clear
+        show continued2 with Dissolve(4.0)
+        $renpy.pause(10.0)
+        
     else:
         centered "다시 왔구나?"
         extend "\n음... 너무 강압적이었던 거려나?"
