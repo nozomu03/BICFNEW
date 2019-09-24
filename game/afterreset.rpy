@@ -226,7 +226,6 @@ label afterreset:
                 main "잠깐 산책하고 있었는데, 같이 갈래?"
                 rine "아니, 괜찮아."
                 anothervoice "그럼 안녕."
-
             "뭐하고 있었어?":
                 main "뭐하고 있었어?"
                 rine "연구...{w=.5}려나?"       
@@ -236,7 +235,6 @@ label afterreset:
                 rine "그럼 잘가!"
                 anothervoice "응. 열심히 해!"
                 $rine_mis+=3
-
         hide rine_nom
         scene bg_middle with dissolve        
         play sound "walk_slow.mp3"
@@ -918,8 +916,43 @@ label afterreset:
         play sound "chain.mp3"
         $renpy.pause(2.0)
         stop sound
-        scene continued with dissolve
+        $renpy.pause(5.0)
+        scene bg_room with irisout
+        "잠에서 깨어났다."
+        "고요한 방. 선생들과 대부분의 학생들은 [nameless]에게 붙잡힌{p=.5} [main]의 동료들을 구하러 갔으니 당연했다."
+        "몸에 문제는 없다."
+        teacher "[main]. 지금 즉시 교장실로 와 주십시오. 다시 한 번 말하겠습니다. [main], 지금 즉시 교장실로 와 주세요."
+        "안톤의 목소리. 내가 자고 있는 동안 탐사대가 돌아온 것일까?"
+        ".......{w=.5} ...교장의 성격 상 그럴 리 없었다."
+        play sound "blanket.wav"
+        "옷을 입었다."
         $renpy.pause(2.0)
+        stop sound
+        play sound "door.mp3"
+        scene bg_black with dissolve
+        $renpy.pause(1.5)
+        stop sound
+        play sound "walk.mp3"
+        $renpy.pause(5.0)
+        stop sound
+        play sound "walk.mp3"
+        scene bg_prin
+        show read_nom at right 
+        with dissolve
+        $renpy.pause(1.5)
+        stop sound
+        anothervoice "무슨 일인가요, 안톤?"
+        read ".......{w=.5} ...당신..."
+        anothervoice "안톤...?"
+        hide read_nom
+        show read_ang at right
+        read "역겹군요. 당신에게 그 이름으로 절 부를 자격이 있다고 생각하는겁니까?!"
+        ".......{p=.5}눈치 챈 것이 틀림없었다."
+        anothervoice "어디까지 알고 있어?"
+        hide read_ang
+        show read_nom at right.
+        read "다 끝났잖습니까... 저희의 이야기는...{p=.5}왜... {w=.5}이제와서 다시 나타난 겁니까, 한?"
+
     else:
         centered "다시 왔구나?"
         extend "\n음... 너무 강압적이었던 거려나?"
