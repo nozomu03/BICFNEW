@@ -105,6 +105,7 @@ image showT2:
     "nameless_nom.png"
     linear 3.0 alpha(1.0)
 
+
 image bg_roomblack = im.MatrixColor("bg_roomc.jpg", im.matrix.saturation(0.0))
 image bg_clubblack = im.MatrixColor("bg_club.jpg", im.matrix.invert())
 image continued2 = im.MatrixColor("continued.png", im.matrix.invert())
@@ -127,6 +128,7 @@ image seng_mamirui = im.MatrixColor(seng_mamiru, im.matrix.colorize("#1C1C1C", "
 image seng_mamiruii = im.MatrixColor(seng_mamiru, im.matrix.invert())
 image mon_rine = im.MatrixColor("rine_ang.png", im.matrix.colorize("#DF0101", "#000000"))
 image bg_red = im.MatrixColor("bg_black.png", im.matrix.colorize("#f00000", "#DF0101"))
+image someone_silR = im.MatrixColor("someone_sil.png", im.matrix.colorize("#DF0101", "#000000"))
 image guard_nomred = im.MatrixColor('guard_nom.png', im.matrix.colorize("#DF0101", "#000000"))
 image side another nom:
     "seng_another"
@@ -188,6 +190,8 @@ transform search:
     linear 1.0 align(1.0, .5)
     linear .5 align(.5, .5)
     linear 1.0 zoom 1.0
+
+
 #
 
 transform explosion:
@@ -199,6 +203,10 @@ transform explosion:
     linear .1 align(.5, .5)
     repeat(2.0)
 
+transform moving2(where=1.0, to=0.5, origin_x=0.5):
+    align(origin_x, where)
+    linear 1.0 yalign to
+
 transform sizeing:
     align(.5, .5)
     linear 6.0 zoom 80.0
@@ -206,6 +214,10 @@ transform sizeing:
 transform sizeing1:
     xalign .5 yalign .5
     linear 10.0 zoom 80.0
+
+transform sizeing2(x=30, y=200):
+    xpos x, ypos y
+    linear 0.1 zoom 2.0
     
 init python:
     temp=None
@@ -295,7 +307,19 @@ screen aaaaa:
     
 
 init python:
+    #image d = "bg_black.png"
     def deleteSave():
         saveList = renpy.list_slots()
         for i in saveList:
             renpy.unlink_save(i)
+
+    def SoundPlay(fn="walk_slow.mp3", t=2.0):
+        renpy.music.play(fn, channel='sound')
+        renpy.pause(t)
+        renpy.music.stop(channel='sound')
+        return
+
+    def ImgResizer(img="bg_balck.png", size=1.5):
+        d = im.FactorScale(img, size)
+        return d
+  #SoundMaster = SoundPlay()

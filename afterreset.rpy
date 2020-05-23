@@ -997,7 +997,111 @@ label afterreset:
         window hide
         nvl clear
         show continued2 with Dissolve(4.0)
-        $renpy.pause(10.0)            
+        $renpy.pause(10.0)                 
+        scene bg_black with dissolve
+        er "Perfecto odio oderam. {w=1.0}illos et inimici facti sunt mihi....."
+        play sound "shotgun.mp3"
+        show cg_blood at sizeing2(640, 360) with vpunch
+        $renpy.pause(2.0)
+        stop sound
+        "몇 번 째일까."    
+        "[nameless].{w=.5} 나의 주인님."
+        "그 분을 위하여 나는 오늘도 인두겁을 벗고 야차의 탈을 쓴다."
+        play sound "shotgun.mp3"
+        show cg_blood2 at sizeing2(renpy.random.randint(100, 600), renpy.random.randint(0, 1000)) with vpunch
+        "???" "윽!"
+        "미안합니다."
+        $renpy.pause(2.0)
+        stop sound
+        play sound "shotgun.mp3"
+        show cg_blood3 at sizeing2(renpy.random.randint(100, 1200), renpy.random.randint(100, 600)) with vpunch
+        "???" "...!"
+        "죄송합니다."
+        stop sound
+        play sound "shotgun.mp3"        
+        show cg_blood4 at sizeing2(renpy.random.randint(100, 1200), renpy.random.randint(100, 600)) with vpunch
+        "???" "어째...서..."
+        "제 바램이 아닙니다..."
+        stop sound
+        play sound "shotgun.mp3"
+        show cg_blood5 at sizeing2(renpy.random.randint(100, 1200), renpy.random.randint(100, 600)) with vpunch
+        "???" "죽기... 싫어..."
+        "어쩔 수 없습니다."
+        stop sound
+        play sound "shotgun.mp3"        
+        show cg_blood6 at sizeing2(renpy.random.randint(100, 1200), renpy.random.randint(100, 600)) with vpunch
+        "???" "당...신..."
+        "......."
+        stop sound
+        "......."
+        "...{w=.5}...."
+        play sound "shotgun.mp3"
+        show cg_blood7 at sizeing2(renpy.random.randint(100, 1200), renpy.random.randint(100, 600)) with vpunch
+        $renpy.pause(2.0)
+        stop sound
+        play sound "shotgun.mp3"
+        show cg_blood8 at sizeing2(renpy.random.randint(100, 1200), renpy.random.randint(100, 600)) with vpunch
+        $renpy.pause(2.0)
+        stop sound
+        play sound "shotgun.mp3"
+        show cg_blood9 at sizeing2(renpy.random.randint(100, 1200), renpy.random.randint(100, 600)) with vpunch
+        $renpy.pause(2.0)
+        stop sound
+        play sound "shotgun.mp3"
+        show cg_blood10 at sizeing2(renpy.random.randint(100, 1200), renpy.random.randint(100, 600)) with vpunch
+        $renpy.pause(2.0)
+        stop sound
+        "...나는...."
+        play sound "shotgun.mp3"
+        show cg_blood11 at sizeing2(renpy.random.randint(100, 1200), renpy.random.randint(100, 600)) with vpunch
+        $renpy.pause(2.0)
+        stop sound
+        "왜..."
+        play sound "shotgun.mp3"
+        show cg_blood12 at sizeing2(renpy.random.randint(100, 1200), renpy.random.randint(100, 600)) with vpunch
+        $renpy.pause(2.0)
+        stop sound
+        "피웅덩이."
+        "그 한 가운데에 내가 있었다."
+        "마치 그 때 \'그 빌어먹을 놈\'이 그랬던 것처럼."
+        "손바닥을 들여다 보았다."
+        "시뻘겋게 물들어버린 살구색 손가락들."
+        play sound "walk_slow.mp3"
+        $renpy.pause(2.0)
+        stop sound
+        "발소리."    
+        nameless "정신 차려!"
+        er "....... ...{w=.5}핫!"
+        scene expression ImgResizer("bg_kf.jpg", 1.5) with Pixellate(2.0, 9):
+            align(.5, 1.0)
+        $renpy.pause(2, hard = True)     
+        play sound "slash.mp3"
+        show nameless_nom at Position(xalign=.93, yalign=1.4)
+        show someone_sil at Position(xalign=.1, yalign=1.4) 
+        with moveinright
+        $renpy.pause(1.0)
+        stop sound
+        nameless "여긴... 전장이야. {w=.5}한눈 팔았다간 죽어."
+        "내 두개골을 노리고 내리쳐졌던 검이 튕겨나갔다."
+        "오른편에서 나를 기습하려 했던 습격자가 [nameless]의 개입으로 밀려났다."
+        $SoundMaster = SoundPlay(fn="sword.mp3", t=0.5)
+        "잠깐의 힘싸움도 없이 날카롭게 벼려진  방검복을 찢어 갈랐다."
+        "???" "......."        
+        "그는 자신에게 무슨 일이 일어났는지 끝까지 이해하지 못했다."
+        #$SoundMaster = SoundPlay(fn="blooding.mp3", t=5.0)
+        play sound "blooding.mp3"
+        show someone_silR at Position(xalign=.1, yalign=1.4) with Dissolve(5.0)
+        hide someone_sil
+        stop sound
+        $renpy.pause(1.0)
+        play sound "collapse.ogg"
+        hide someone_silR with wipedown
+        #$SoundMaster = SoundPlay(fn="collapse.ogg", t=1.0)
+        nameless "일어설 수 있겠어?"
+        er "예..."
+        scene expression ImgResizer("bg_kf.jpg", 1.5) at moving2(1.0, 0.5)
+        show nameless_nom at moving2(1.4, 1.0, 0.93)
+        "....."
     else:
         centered "다시 왔구나?"
         extend "\n음... 너무 강압적이었던 거려나?"
