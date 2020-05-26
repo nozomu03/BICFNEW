@@ -1099,9 +1099,162 @@ label afterreset:
         #$SoundMaster = SoundPlay(fn="collapse.ogg", t=1.0)
         nameless "일어설 수 있겠어?"
         er "예..."
+        "내밀어진 손을 붙잡았다."
         scene expression ImgResizer("bg_kf.jpg", 1.5) at moving2(1.0, 0.5)
-        show nameless_nom at moving2(1.4, 1.0, 0.93)
-        "....."
+        show nameless_nom at moving2(1.4, 1.0, 0.93)    
+        nameless "...서풍인가."
+        er "왔습니까?"
+        nameless "아니, 아직.{p=.5}힘 조절을 잘못했나..."
+        $SoundMaster = SoundPlay("walk.mp3", 2.0)
+        show read_nom at left with dissolve
+        teacher "여전하시군요."
+        nameless "이게 누구야. 안톤 아닌가."
+        teacher "그릇된 시간의 망령... {w=.5}어째서 다시 나타난 겁니까."
+        nameless "그야 뻔하지 않아? 못다한 꿈을 이루기 위해서지."
+        teacher "....... ...누구도 시간의 흐름을 거슬러선 안됩니다. 설령 그것이... 인류의 영웅... \'조커\'라고 해도."
+        nameless "그럼 실력으로 증명해. {w=.5}옛날에 했던 것처럼 내 심장을 남도질해 보라고."
+        "과거, 들었던 적 있다. [nameless]께서 아직 살아계셨을 무렵의 이야기."
+        "\'황금의 재앙\' 탓에 황폐화된 세계에서 극천에서 세상을 내려다보는 ��와 마지막 도박에 나섰다."
+        "신의 편린을 받아 세상을 부흥시킬 운명을 받은 이 [관리자]."
+        "모든 관리자가 숙{rt}fa{/rt}명{rt}te{/rt}에 따른 것은 아니었다.{p=.5}과거 존재했던 인류를 기저에서 떠받혔다 잊혀진 세아리지 못할 수의 얼굴 없는 영웅들과 같이 기억해주는 이 하나 없는 부흥의 초석이 되고싶지 않다 말하며 뛰쳐나간 이도 분명 있었다."
+        "운{rt}des{/rt}명{rt}tiny{/rt}을 개척하겠다 부르짖으며 얻은 힘의 대가로 응당 짊어져야 할 책임으로부터 등을 돌린 자를 징벌키 위해 태어나 모든 이의 위에서 관리자를 관리하는 이."
+        "그것이 \'조커\'. {w=.5}[nameless]께 내려진 숙명이었다."
+        hide read_nom
+        show read_ang at left
+        $SoundMaster = SoundPlay("drawning.wav", 1.0)
+        teacher "죄책감 따위는 없습니다. 오십시요. 한 때 당신을 막았던 이로써 다시 한 번 상대해 드리죠."
+        nameless "바라던 바야. 이전과 같이... 날 쓰러뜨릴 수 있다면 한 번 해 봐!"
+        play sound "slash.mp3"
+        nameless "[er], 돌아가!"
+        $renpy.pause(2.0)
+        stop sound
+        scene bg_black with Dissolve(5.0)        
+        main "안타깝지만 [nameless]... 네 머리 이상으로 안톤은 영리해졌단 말이지."
+        "버려진 공사장. {w=.5}짓다 만 건물 옥상에서는 주변 풍경이 한눈에 들어왔다."
+        "제약이 사라진 지금이라면 전력을 낼 수 있다."
+        "본래부터 신의 일부. {w=.5}모든 것을 삼키고자 하는 분노의 파도가 떨어져 나와 형성된 나라면 저런 괴물이라도 처리하는데 무리가 없다."
+        main "문제라면 오히려 [main] 쪽인데 말이지..."
+        "인간의 육체는 연약하다.{p=.5}[main]의 인격이 완전히 붕괴되어 오롯이 나 홀로 육체를 제어하는 상태가 아닌 이상 내가 힘을 발휘한다면 그 부하는 [main] 역시 부담한다."
+        "\'전당\'에 잠든 [main]. {w=.5}눈을 뜨지 못하는 그녀에게 의견을 구하는 것은 불가능."
+        main "여신이여, 강분을 울리소서. 그 분노는 눈물이요, 긍휼히 여기는 마음이니."
+        "주문을 욌다. 지금은 안톤을 믿을 때다."
+        "스코프에 눈을 가져다 댔다."        
+        $renpy.pause(2.0, hard=True)        
+        scene bg_kf
+        show read_nom at left
+        show nameless_nom at right
+        with dissolve
+        $SoundMaster = SoundPlay("slash.mp3", 1.0)
+        nameless "꽤 하는데."
+        teacher "당신이야 말로 성장했군요."
+        nameless "...무슨 꿍꿍이야?"
+        teacher "꿍꿍이라니요. 당치도 않은."
+        "[er]를 후방으로 보냈으니 교란 작전은 의미를 잃을 터였다."
+        "의장이 지원군을 보냈다는 사실은 저 녀석도 틀림없이 알고 있다."
+        nameless "시간을 끌어서 불리해지는 건 네 쪽일텐데."
+        teacher "글쎄요."
+        $SoundMaster = SoundPlay("slash.mp3", 1.0)
+        "검이 맞부딪혔다."
+        $SoundMaster = SoundPlay("slash.mp3", 1.0)
+        hide read_nom
+        show read_ang at left
+        teacher "[anothervoice]! 지금입니다!"        
+        play sound "shotgun.mp3"
+        hide read_ang with moveoutleft
+        stop sound
+        "무언가 바람을 가른다."
+        $SoundMaster = SoundPlay("wind.ogg", 5.0)
+        nameless "아하하하하하하! 그래... 바로... 이거지!"
+        play sound "explosion.mp3"
+        $renpy.pause(.5)
+        scene bg_kf at explosion(1.5, .5, .9)
+        show nameless_nom at explosion(1.0, .93, 1.0)
+        #nameless "큭...!"
+        $renpy.pause(0.8)
+        scene bg_black with pixellate
+        nameless "큭...!"
+        "시야가 아뜩해졌다."
+        "피는 나지 않는다. {w=.5}당연하다. {p=.5}이미 생명체조차 아닌 몸에 혈액이 흐를 리 없다."
+        teacher "잠드십쇼, \'조커\'."
+        nameless "마지막으로 한 마디만 할게.{p=.5}여기서 날 죽여봤자 아무것도 변하지 않아."
+        teacher "예전에도 그런 말을 하셨죠. {w=.5}고정된 채 흐르지 않는 것은 이미 죽은 것 뿐입니다."
+        nameless "세계가 죽었다는 생각은 안해봤어? 네 \'독선\'으로."
+        teacher "......."
+        $SoundMaster = SoundPlay("sword.mp3", 1.0)
+        "지난 번과 같은 요행은 일어나지 않았다.{p=.5}안톤은 [anothervoice]와는 다르게 정확히 나의 심장을 으깼다."
+        $SoundMaster = SoundPlay("walk_slow.mp3", 2.0)
+        $renpy.pause(4.0, hard=True)
+        er ".......!"
+        nameless "......."
+        scene bg_black with pixellate
+        er "....! ...요...!"
+        "목소리."
+        er "[nameless]...!"
+        "[er]의."
+        scene bg_warroom with irisout
+        nameless "......."
+        "꿈?"
+        nameless "여긴... 어디지?"
+        scene bg_warroom at search
+        "처음 보는 공간. 방 안에는 아무도 없다."
+        scene bg_warroom with pixellate
+        "머리가 지끈거렸다."
+        scene bg_warroom with pixellate
+        scene bg_warroom with pixellate
+        "몸 상태를 확인했다."
+        "내 검은 캐비닛에 기대어져 있었다."
+        $SoundMaster = SoundPlay("drawning.wav", 1.0)
+        "날카롭게 벼려진 날.{w=.5} 틀림없이 누군가 손을 댄 흔적이다."
+        $SoundMaster = SoundPlay("walk_slow.mp3", 2.0)
+        "복도에 발소리가 울린다."
+        nameless "거기 누구야!"
+        "???" "Eternita..."
+        scene bg_subway with Pixellate(4.0, 15)
+        $renpy.pause(4.0, hard=True)        
+        "???" "때때로 너무 과도한 지식은 스스로를 함정으로 밀어넣지. {w=.5}안 그래, [nameless]?"
+        $SoundMaster = SoundPlay("walk_slow.mp3", 2.0)
+        show guard_nom at left with dissolve
+        guard "네가 아무리 노력해 봤자... {w=.5}{b}이제 세상은 너를 원하지 않아.{/b}"
+        nameless "안타슈프라인? {w=.5}왜 여기에..."
+        guard "그런 건 중요하지 않아."
+        $SoundMaster = SoundPlay("walk_slow.mp3", 2.0)
+        show read_nom at center with dissolve
+        teacher "예, 그렇고 말고요.{w=.5} 이미 한 번 죽은 이에게 누가 관심을 가지겠습니까."
+        nameless "안톤...?"
+        teacher "당신은 죽었습니다. {w=.5}제 손에, 제 검에."
+        teacher "그 날... 목표는 달랐으나 부흥을 위해 힘썼던 이께 바치는 마지막 경의로 그네들에게 당신의 최후를 보이지 않았던 것이 잘못이었습니다."
+        $SoundMaster = SoundPlay("walk_slow.mp3", 2.0)
+        show seng_nom at right with dissolve 
+        seng "당신은 대체됐어요, [nameless]. {w=.5}그 어떤 관리자도 더 이상 당신을 필요로 하지 않아요."
+        nameless "아니!"
+        seng "[main]에게는 제가 있어요, 리네가 있어요. {w=.5}하지만 당신에게는 아무것도 남지 않았군요."
+        $SoundMaster = SoundPlay("sword.mp3", 1.0)
+        seng "그래...{w=.5} 언제까지고...{w=.5} 그렇게 이뤄질 수 없는 혼자만의 망상 속에서 살아가도록 하세요."
+        play sound "collapse.ogg"
+        hide seng_nom with wipedown
+        guard "너는 언제까지나 혼자야.{w=1.0}{nw}"
+        teacher "외로움 끝에 미친 불쌍한 사람.{w=1.0}{nw}"
+        nameless "내 한 줌 남은 의지마저 짓밟으려는 모양인데... {w=.5}소용없어.{p=1.0}의장께서 내가 다시 살아갈 이유를 알려줬으니까."
+        teacher "그 자가 당신을 다시 한 번 파멸시킬 겁니다.{p=1.0}제 말 명심-{w=.3}{nw}"
+        nameless "닥쳐! {w=.5}...네가 뭘 안다고 지껄-{w=.3}{nw}"
+        teacher "잘 알다마다요. {w=.5}교장께서는... 훌륭한 교육자는 아닙니다만 대단한 전략가거든요.{p=1.0}당신에 관한 것 뿐 아니라 당신네들이... 그 \'의장\'이라는 사람의 계획도 자세히 알고 있습니다."
+        nameless "아니, 넌 아무것도 몰라. {w=.5}언제나 그래왔어..."
+        guard "한 번 두고보자고. {w=.5}결국 살아남는 건 옳은 선택을 한 사람 뿐일 테니까."
+        hide guard_nom
+        hide read_nom
+        with pixellate
+        "그들은 처음부터 존재하지 않았던 양 사라졌다."
+        nameless "......."
+        "지하철 역 같이 생긴 공간. {w=.5}역시나 기억에는 없는 장소이다."
+        scene bg_subway with pixellate
+        nameless "큭..."
+        "두통이 강해지고 있다."
+        scene bg_subway with pixellate
+        scene bg_subway with pixellate
+        scene bg_subway with pixellate
+        "\'의장\'은 내가 필요하다 말했다.{p=.5}하늘께 버림받고, 베푼 이에게 되찔려, 어긋난 정의에 짓밟힌 나에게. {w=.5}스러져 흙이 되고 붕괴가 예견된 사회의 초석이 된 나에게.{p=.5}\'자유\'. {w=.5}모든 안식과 안도를 그 이름이 지워 세상에 내린 마지막 자비마저 화마에 휩싸이기 전에 구원키 위해서."
+        "비창.{w=1.0} {b}나는 나를 버린 더 없이 소중한 이를 위해 기꺼이 칼을 뽑고 휘두르리라.{/b}"
+        
     else:
         centered "다시 왔구나?"
         extend "\n음... 너무 강압적이었던 거려나?"
