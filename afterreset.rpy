@@ -1272,7 +1272,15 @@ label afterreset:
         nvl clear
         $gui.nvl_height = 100
         $SoundMaster = SoundPlay("crumble.mp3", 3.0)
-        "종이를 구겼다. {w=.5}이딴 장난질에 번롱당할 내가 아니다.{p=.5}두 번은 없다.{w=.5} 사실은 변하지 않는다."
+        "종이를 구겼다. {w=.5}이딴 헛수작에 번롱당할 내가 아니다.{p=.5}두 번은 없다.{w=.5} 사실은 변하지 않는다."
+        nameless "장난질은 이쯤 하는게 어때? {w=.5}슬슬 부아가 치밀려고 하는데."
+        "공간의 특징이 파악되었다.{p=.5}넓게 펼쳐진 환술. {w=.5}마치 내가 실존하는 한 장소에 갇힌 것처럼 착각을 일으키는 마법."
+        "내가 알고 있는 한 사람의 마법과 너무나도 닮아 있었다."
+        nameless "같은 수가 두 번 통할 리 없잖아..."
+        $SoundMaster = SoundPlay("drawning.wav", 1.5)
+        nameless "나는 샛별의 그늘에서 기도하는 자.{w} 누군가의 소{rt}{color=#505050}{b}도피자의 소명{/b}{/color}{/rt}망을 짓밟는 자.{w} 하늘에 계신 검의 주인이여,{w} 이 부름에 응답해 기적을 현현시키소서."
+        $SoundMaster = SoundPlay("sword.mp3", 2.0)
+        scene bg_kf with Pixellate(2.0, 20)
 
     else:
         centered "다시 왔구나?"
