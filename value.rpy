@@ -17,6 +17,17 @@ init python:
     style.Buttoncolor=Style(style.button)
     style.Buttoncolor.background="#ffffff"
 
+image eyeing:
+    "eye.png"
+    align(.5, .5)
+    linear 5.0 zoom 10.0
+
+image eyeing2:
+    "eye.png"
+    zoom 10.0
+    align(.5, .5)
+    linear 1.0 zoom 30.0
+
 image bg_hallway2:
     "bg_hallway.jpg"
     zoom 1.5

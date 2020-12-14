@@ -1280,7 +1280,18 @@ label afterreset:
         $SoundMaster = SoundPlay("drawning.wav", 1.5)
         nameless "나는 샛별의 그늘에서 기도하는 자.{w} 누군가의 소{rt}{color=#505050}{b}도피자의 소명{/b}{/color}{/rt}망을 짓밟는 자.{w} 하늘에 계신 검의 주인이여,{w} 이 부름에 응답해 기적을 현현시키소서."
         $SoundMaster = SoundPlay("sword.mp3", 2.0)
-        scene bg_kf with Pixellate(2.0, 20)
+        scene bg_black with Pixellate(2.0, 20)
+        "컴컴한 시야.{w=1.0} 조심스레 눈을 떠 보았다."
+        scene bg_kf
+        show bad_nom at center
+        show eyeing
+        with dissolve
+        $renpy.pause(5.0, hard=True)
+        er "[nameless]...! {w=1.0}정신이 드셨나요?"
+        "몽롱한 정신이 각성하며 몸의 제어권이 돌아온다."
+        hide eyeing
+        show eyeing2
+        $renpy.pause(1.0, hard=True)
 
     else:
         centered "다시 왔구나?"
